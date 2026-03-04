@@ -1,1 +1,6 @@
 pnpm lint-staged && pnpm run lint:file-length && pnpm run build
+
+if echo "$BRANCH_NAME" | grep -E "^(main|develop|release/.*)$" > /dev/null; then
+  echo "❌ Direct commits to protected branch '$BRANCH_NAME' are not allowed."
+  exit 1
+fi
