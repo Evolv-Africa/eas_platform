@@ -1,0 +1,43 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+@theme {
+  /* custom fonts */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-geist: "Geist", sans-serif;
+}
+
+body {
+  overscroll-behavior: none;
+  font-family: var(--font-geist);
+  background-color: #f7f7f7;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, and Opera */
+}
+
+/* Remove browser autofill background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #f7f7f7 inset !important; /* background color */
+  box-shadow: 0 0 0px 1000px white inset !important;
+  -webkit-text-fill-color: #0d0b0b !important; /* text color */
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+button,
+input[button] {
+  cursor: pointer;
+}
