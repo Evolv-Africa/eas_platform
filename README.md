@@ -1,3 +1,3 @@
 # EAS Platform
 
-## React + TypeScript + Vite
+## React + TypeScript + Vite + TailwindCSS

@@ -1,16 +1,16 @@
-import { NavItem } from "@/types/header";
+import { NavItem } from "@/types";
 
-export const NAV_ITEMS: NavItem[] = [
+export const NavMenu: NavItem[] = [
   {
-    title: "Home",
-    href: "/",
+    id: "home",
+    label: "Home",
+    icon: "Home",
+    path: "/",
   },
   {
-    title: "About",
-    href: "/about",
-  },
-  {
-    title: "Contact",
-    href: "/contact",
+    id: "about-us",
+    label: "About Us",
+    icon: "AtSign",
+    path: "/about-us",
   },
 ];

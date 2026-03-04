@@ -1,7 +1,7 @@
 import { Icon } from "@/components/core";
+import { NavMenu } from "@/constants";
 import { FC } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { NavMenu } from "./helper";
 
 export const Navbar: FC = () => {
   const { pathname } = useLocation();

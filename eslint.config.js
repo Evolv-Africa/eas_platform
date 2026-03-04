@@ -44,7 +44,7 @@ export default defineConfig([
       "max-params": ["warn", 4],
       "@typescript-eslint/no-unused-vars": "warn",
       "@typescript-eslint/no-explicit-any": "error",
-      "@typescript-eslint/no-console": "error",
+      "no-console": "error",
     },
   },
 ]);
