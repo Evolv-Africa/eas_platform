@@ -1,7 +1,7 @@
-export default function Heading({ children }) {
+export default function Heading({ content, className }) {
   return (
-    <h1 className="text-3xl font-bold">
-      {children}
+    <h1 className={clsx("text-3xl font-bold", className)}>
+      {content}
     </h1>
   );
 }
