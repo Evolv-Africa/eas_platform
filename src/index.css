@@ -1,16 +1,41 @@
 @import "tailwindcss";
 @config "../tailwind.config.ts";
 
+@font-face {
+  font-family: "Neue Machina";
+  src: url("./assets/fonts/NeueMachina-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neue Machina";
+  src: url("./assets/fonts/NeueMachina-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neue Machina";
+  src: url("./assets/fonts/NeueMachina-Ultrabold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   /* custom fonts */
   --font-sans: "Inter", system-ui, sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+  --font-neue-machina: "Neue Machina", serif;
   --font-geist: "Geist", sans-serif;
 }
 
 body {
   overscroll-behavior: none;
-  font-family: var(--font-geist);
-  background-color: #f7f7f7;
+  background-color: #ffffff;
 }
 
 .no-scrollbar {
@@ -40,4 +65,89 @@ select:-webkit-autofill {
 button,
 input[button] {
   cursor: pointer;
+}
+
+/* ─── Semantic design tokens ─────────────────────────────────────────────── */
+:root {
+  /* Text */
+  --sem-text-primary: #00081d;
+  --sem-text-secondary: #2f2f2f;
+  --sem-text-tertiary: #d6d6d6;
+  --sem-text-accent: #003ca0;
+  --sem-text-link: #003ca0;
+  --sem-text-link-hover: #002d77;
+  --sem-text-success: #4c9e36;
+  --sem-text-error: #c20000;
+  --sem-text-warning: #d59c00;
+  /* Backgrounds */
+  --sem-bg-default: #ffffff;
+  --sem-bg-surface: #eaf2ff;
+  --sem-bg-inverse: #00081d;
+  --sem-bg-accent: #c5dbff;
+  /* Surface */
+  --sem-surface-l0: #ffffff;
+  --sem-surface-l1: #ffffff;
+  --sem-surface-l2: #ffffff;
+  --sem-surface-l3: #ffffff;
+  /* Border */
+  --sem-border-default: #f7f7f7;
+  --sem-border-muted: #f2f2f2;
+  --sem-border-focus: #003ca0;
+  --sem-border-error: #c20000;
+  /* State */
+  --sem-state-primary: #003ca0;
+  --sem-state-hover: #002d77;
+  --sem-state-secondary: #eaf2ff;
+  --sem-state-disabled: #f7f7f7;
+  /* Status / Feedback */
+  --sem-status-success: #4c9e36;
+  --sem-status-success-subtle: #def2d9;
+  --sem-status-error: #c20000;
+  --sem-status-error-subtle: #ffcccc;
+  --sem-status-warning: #d59c00;
+  --sem-status-warning-subtle: #fff1cc;
+  --sem-status-info: #003ca0;
+  --sem-status-info-subtle: #eaf2ff;
+}
+
+.dark {
+  /* Text */
+  --sem-text-primary: #eaf2ff;
+  --sem-text-secondary: #f2f2f2;
+  --sem-text-tertiary: #d6d6d6;
+  --sem-text-accent: #3078f2;
+  --sem-text-link: #3078f2;
+  --sem-text-link-hover: #a1c4ff;
+  --sem-text-success: #67c34f;
+  --sem-text-error: #ff2d2d;
+  --sem-text-warning: #ffca38;
+  /* Backgrounds */
+  --sem-bg-default: #00081d;
+  --sem-bg-surface: #000d31;
+  --sem-bg-inverse: #eaf2ff;
+  --sem-bg-accent: #c5dbff;
+  /* Surface */
+  --sem-surface-l0: #00081d;
+  --sem-surface-l1: #000d31;
+  --sem-surface-l2: #001242;
+  --sem-surface-l3: #002d77;
+  /* Border */
+  --sem-border-default: #ffffff33;
+  --sem-border-muted: #ffffff80;
+  --sem-border-focus: #3078f2;
+  --sem-border-error: #ff2d2d;
+  /* State */
+  --sem-state-primary: #3078f2;
+  --sem-state-hover: #a1c4ff;
+  --sem-state-secondary: #00081d;
+  --sem-state-disabled: #858585;
+  /* Status / Feedback */
+  --sem-status-success: #67c34f;
+  --sem-status-success-subtle: #001d00;
+  --sem-status-error: #ff2d2d;
+  --sem-status-error-subtle: #300d0d;
+  --sem-status-warning: #ffca38;
+  --sem-status-warning-subtle: #524216;
+  --sem-status-info: #3078f2;
+  --sem-status-info-subtle: #00081d;
 }

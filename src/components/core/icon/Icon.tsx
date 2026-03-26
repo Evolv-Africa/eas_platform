@@ -29,6 +29,7 @@ export function Icon({ className, name, ...otherProps }: Props) {
     const icon = modules[iconPath]?.default;
 
     if (!icon && process.env.NODE_ENV === "development") {
+      // eslint-disable-next-line no-console
       console.warn(`Icon "${name}" not found at path: ${iconPath}`);
     }
 

@@ -4,3 +4,5 @@ export * from "./icon/Icon";
 export * from "./pageNotFound/PageNotFound";
 export * from "./errorBoundary/ErrorBoundary";
 export * from "./pageLoader/PageLoader";
+export * from "./typography";
+export * from "./button/Button";
