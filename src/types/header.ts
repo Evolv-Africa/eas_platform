@@ -1,8 +1,5 @@
-import { IconNames } from "@/components/core/icon/types";
-
 export interface NavItem {
-  id: string;
+  id: number;
   label: string;
-  icon: IconNames;
   path: string;
 }
