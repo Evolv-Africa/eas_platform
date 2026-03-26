@@ -126,16 +126,20 @@ const Hero: FC = () => {
           pauseOnHover={false}
           repetitionArray={["primary", "duplicate", "triple", "quadruple"]}
         >
-          {[GoogleLogo, UpworkLogo, MicrosoftLogo, ShopifyLogo, TokoLogo].map(
-            (icon) => (
-              <img
-                src={icon}
-                alt={icon}
-                key={icon}
-                className="h-5 w-auto grayscale"
-              />
-            ),
-          )}
+          {[
+            { src: GoogleLogo, name: "Google" },
+            { src: UpworkLogo, name: "Upwork" },
+            { src: MicrosoftLogo, name: "Microsoft" },
+            { src: ShopifyLogo, name: "Shopify" },
+            { src: TokoLogo, name: "Tokopedia" },
+          ].map(({ src, name }) => (
+            <img
+              key={name}
+              src={src}
+              alt={name}
+              className="h-5 w-auto grayscale"
+            />
+          ))}
         </Marquee>
         <p className="w-fit mx-auto text-gray-600 text-base md:text-xl leading-7">
           Formerly LinkedIn Local Nigeria
