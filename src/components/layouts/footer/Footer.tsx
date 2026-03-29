@@ -1,6 +1,6 @@
 import { Icon } from "@/components/core";
 import { IconNames } from "@/components/core/icon/types";
-import type { FC, SVGProps } from "react";
+import type { FC } from "react";
 import { Link } from "react-router-dom";
 
 type FooterLink = {
