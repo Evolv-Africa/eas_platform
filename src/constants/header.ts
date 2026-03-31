@@ -2,15 +2,28 @@ import { NavItem } from "@/types";
 
 export const NavMenu: NavItem[] = [
   {
-    id: "home",
+    id: 1,
     label: "Home",
-    icon: "Home",
     path: "/",
   },
   {
-    id: "about-us",
+    id: 2,
     label: "About Us",
-    icon: "AtSign",
     path: "/about-us",
+  },
+  {
+    id: 3,
+    label: "Blog",
+    path: "/blog",
+  },
+  {
+    id: 4,
+    label: "Team",
+    path: "/team",
+  },
+  {
+    id: 5,
+    label: "Events",
+    path: "/events",
   },
 ];

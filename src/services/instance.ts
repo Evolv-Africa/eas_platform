@@ -63,7 +63,6 @@ const processQueue = (error: unknown, token: string | null = null) => {
 
 const redirectToLogin = () => {
   clearCookie("loginData");
-  console.error("Session expired. Please log in again.");
   globalThis.location.href = "/auth/login";
 };
 

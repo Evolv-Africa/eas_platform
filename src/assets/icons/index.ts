@@ -1,5 +1,13 @@
-// export all icons from a single file
-export { default as warningOctagonFill } from "./warning_octagon_fill.svg?url";
-export { default as caretLeft } from "./caret_left.svg?url";
-export { default as home } from "./home.svg?url";
+export { default as arrowDown2 } from "./arrow_down_2.svg?url";
+export { default as arrowLeft2 } from "./arrow_left_2.svg?url";
+export { default as arrowRight2 } from "./arrow_right_2.svg?url";
+export { default as arrowUp2 } from "./arrow_up_2.svg?url";
 export { default as atSign } from "./at_sign.svg?url";
+export { default as caretLeft } from "./caret_left.svg?url";
+export { default as facebook } from "./facebook.svg?url";
+export { default as github } from "./github.svg?url";
+export { default as home } from "./home.svg?url";
+export { default as instagram } from "./instagram.svg?url";
+export { default as logo } from "./logo.svg?url";
+export { default as warningOctagonFill } from "./warning_octagon_fill.svg?url";
+export { default as x } from "./x.svg?url";
