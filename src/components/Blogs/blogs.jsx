@@ -140,7 +140,6 @@ function BlogCard({ post }) {
 }
 export default function Blogs({ className = "" }) {
   return (
-    // Only change: padding shrinks on small screens
     <section className={`${className} px-6 md:px-16 lg:px-24`} style={{ paddingTop: "80px", paddingBottom: "80px" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto", textAlign: "center" }}>
         <div style={{ marginBottom: "20px" }}>
@@ -155,7 +154,6 @@ export default function Blogs({ className = "" }) {
         <Button variant="primary" size="md">Visit the Blog</Button>
       </div>
 
-      {/* Only change: grid goes 1col → 2col → 3col */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" style={{ maxWidth: "72rem", margin: "48px auto 0" }}>
         {posts.map((post) => (
           <BlogCard key={post.title} post={post} />
