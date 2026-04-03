@@ -53,7 +53,6 @@ export default function WhatWeDo({ className = "" }) {
       </div>
 
       <div style={{ maxWidth: "72rem", margin: "48px auto 0", display: "flex", flexDirection: "column", gap: "16px" }}>
-        {/* Only change: grid goes 1col on mobile, asymmetric on md+ */}
         <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-4">
           <Card card={cards[0]} />
           <Card card={cards[1]} />
