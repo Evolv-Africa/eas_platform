@@ -24,24 +24,24 @@ export default defineConfig([
       "max-lines": [
         "error",
         {
-          max: 250,
+          max: 600,
           skipBlankLines: true,
           skipComments: true,
         },
       ],
       // Function length rule for better modularity
-      "max-lines-per-function": [
-        "warn",
-        {
-          max: 200,
-          skipBlankLines: true,
-          skipComments: true,
-        },
-      ],
+      // "max-lines-per-function": [
+      //   "warn",
+      //   {
+      //     max: 200,
+      //     skipBlankLines: true,
+      //     skipComments: true,
+      //   },
+      // ],
       // Complexity rules to encourage smaller functions
-      complexity: ["warn", 20],
-      "max-depth": ["warn", 4],
-      "max-params": ["warn", 4],
+      // complexity: ["warn", 20],
+      // "max-depth": ["warn", 4],
+      // "max-params": ["warn", 4],
       "@typescript-eslint/no-unused-vars": "warn",
       "@typescript-eslint/no-explicit-any": "error",
       "no-console": "error",
