@@ -21,7 +21,7 @@ export default function Button({
 
   return (
     <button
-      className={clsx(base, variants[variant], sizes[size])}
+      className={[base, variants[variant], sizes[size]].join(" ")}
       {...props}
     >
       {children}
