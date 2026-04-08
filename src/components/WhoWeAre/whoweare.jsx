@@ -6,7 +6,7 @@ import storyImg3 from "../../assets/Images/story-2.png";
 
 export default function WhoWeAre({ className = "" }) {
   return (
-    <div className={("relative px-5 py-10 md:py-20 overflow-hidden", className)}>
+    <div className={`relative px-5 py-10 md:py-20 overflow-hidden ${className}`}>
       <div className="mx-auto max-w-320 flex flex-col lg:flex-row items-center gap-12">
 
         {/* LEFT: Text */}
@@ -26,50 +26,46 @@ export default function WhoWeAre({ className = "" }) {
 
         {/* RIGHT: Images */}
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-end relative z-10">
-          <div className="flex gap-4">
-            <div className="flex flex-col gap-4">
+          <div className="flex gap-3 w-full max-w-sm sm:max-w-md lg:max-w-none">
+            {/* Left column - two stacked images */}
+            <div className="flex flex-col gap-3 flex-1">
               <img
                 src={storyImg2}
                 alt="Evolv Africa Summit attendees"
-                className="w-56 h-64 md:w-64 md:h-72 object-cover"
+                className="w-full h-40 sm:h-52 md:h-64 object-cover rounded-lg"
               />
               <img
                 src={storyImg3}
                 alt="Evolv Africa Summit community"
-                className="w-56 h-64 md:w-64 md:h-72 object-cover"
+                className="w-full h-40 sm:h-52 md:h-64 object-cover rounded-lg"
               />
             </div>
+            {/* Right column - single tall image */}
             <img
               src={storyImg1}
               alt="Evolv Africa Summit event"
-              className="w-56 md:w-64 object-cover"
+              className="flex-1 object-cover rounded-lg"
             />
           </div>
         </div>
 
       </div>
 
-      {/* Wave - absolute, pulled up to sit behind/under images */}
+      {/* Wave */}
       <div className="absolute bottom-0 left-0 w-full pointer-events-none z-0">
         <svg
-            viewBox="0 0 1600 250"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-[220px]"
-            preserveAspectRatio="none"
+          viewBox="0 0 1600 250"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-[220px]"
+          preserveAspectRatio="none"
         >
-            <path
-            d="
-                M0,140
-                C120,-20 220,280 380,120
-                C520,-10 620,260 780,100
-                C940,-20 1040,250 1220,90
-                C1360,0 1480,180 1600,50
-            "
+          <path
+            d="M0,140 C120,-20 220,280 380,120 C520,-10 620,260 780,100 C940,-20 1040,250 1220,90 C1360,0 1480,180 1600,50"
             fill="none"
             stroke="#4CAF50"
             strokeWidth="35"
             strokeLinecap="round"
-            />
+          />
         </svg>
       </div>
 
