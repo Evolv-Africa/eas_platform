@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Button from "@/components/Button/Button";
 import Badge from "@/components/Badge/Badge";
 import storyImg1 from "../../assets/Images/story-3.png";
@@ -6,7 +7,7 @@ import storyImg3 from "../../assets/Images/story-2.png";
 
 export default function WhoWeAre({ className = "" }) {
   return (
-    <div className={`relative px-5 py-10 md:py-20 overflow-hidden ${className}`}>
+    <div className={clsx("relative px-5 py-10 md:py-20 overflow-hidden", className)}>
       <div className="mx-auto max-w-320 flex flex-col lg:flex-row items-center gap-12">
 
         {/* LEFT: Text */}
