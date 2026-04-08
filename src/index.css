@@ -36,6 +36,8 @@
 body {
   overscroll-behavior: none;
   background-color: #ffffff;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 .no-scrollbar {
@@ -44,6 +46,10 @@ body {
   -ms-overflow-style: none;
   /* IE and Edge */
 }
+* {
+  box-sizing: border-box;
+}
+
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;

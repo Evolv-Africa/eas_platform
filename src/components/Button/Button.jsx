@@ -1,3 +1,4 @@
+import clsx from "clsx";
 
 export default function Button({
   children,
@@ -21,7 +22,7 @@ export default function Button({
 
   return (
     <button
-      className={[base, variants[variant], sizes[size]].join(" ")}
+      className={clsx(base, variants[variant], sizes[size])}
       {...props}
     >
       {children}

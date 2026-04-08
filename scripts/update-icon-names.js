@@ -40,7 +40,6 @@ fs.readdir(iconsDirectory, (err, files) => {
           `export { default as ${snakeToCamelCase(name)} } from "./${name}.svg?url";`,
       )
       .join("\n") + "\n";
-
   // Write to the types file
   fs.writeFile(typesFile, typesContent, (err) => {
     if (err) {
