@@ -7,7 +7,9 @@ export const AppLayout: FC = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
-      <Outlet />
+       <main className="flex-1 pt-[88px]">
+          <Outlet />
+       </main>
       <Footer />
     </div>
   );
