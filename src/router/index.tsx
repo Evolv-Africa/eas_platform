@@ -5,6 +5,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 const Home = lazy(() => import("@/pages/home/Home"));
 const AboutUs = lazy(() => import("@/pages/aboutUs/AboutUs"));
+const Events = lazy(() => import("@/pages/events/Events"));
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: "about-us",
         element: <AboutUs />,
+      },
+      {
+        path: "events",
+        element: <Events />,
       },
     ],
   },
