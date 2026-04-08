@@ -7,9 +7,8 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "types": ["vite/client", "node"],
-    "baseUrl": "src",
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["./src/*"]
     },
     "jsx": "react-jsx",
     "moduleResolution": "bundler",
@@ -24,7 +23,6 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "ignoreDeprecations": "6.0"
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
