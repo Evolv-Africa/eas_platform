@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import Button from "@/components/Button/Button";
 import Badge from "@/components/Badge/Badge";
 import storyImg1 from "../../assets/Images/story-3.png";
@@ -7,7 +6,7 @@ import storyImg3 from "../../assets/Images/story-2.png";
 
 export default function WhoWeAre({ className = "" }) {
   return (
-    <div className={clsx("relative px-5 py-10 md:py-20 overflow-hidden", className)}>
+    <div className={("relative px-5 py-10 md:py-20 overflow-hidden", className)}>
       <div className="mx-auto max-w-320 flex flex-col lg:flex-row items-center gap-12">
 
         {/* LEFT: Text */}
@@ -50,13 +49,27 @@ export default function WhoWeAre({ className = "" }) {
 
       </div>
 
-      {/* Wave — absolute, pulled up to sit behind/under images */}
+      {/* Wave - absolute, pulled up to sit behind/under images */}
       <div className="absolute bottom-0 left-0 w-full pointer-events-none z-0">
-        <svg viewBox="0 0 1390 160" xmlns="http://www.w3.org/2000/svg" className="w-full" preserveAspectRatio="none">
-          <path
-            d="M0,130 C120,160 240,60 400,100 C560,140 620,50 780,90 C940,130 1000,30 1180,60 C1300,80 1380,10 1440,0"
-            fill="none" stroke="#4CAF50" strokeWidth="30" strokeLinecap="round"
-          />
+        <svg
+            viewBox="0 0 1600 250"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-[220px]"
+            preserveAspectRatio="none"
+        >
+            <path
+            d="
+                M0,140
+                C120,-20 220,280 380,120
+                C520,-10 620,260 780,100
+                C940,-20 1040,250 1220,90
+                C1360,0 1480,180 1600,50
+            "
+            fill="none"
+            stroke="#4CAF50"
+            strokeWidth="35"
+            strokeLinecap="round"
+            />
         </svg>
       </div>
 

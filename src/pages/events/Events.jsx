@@ -2,8 +2,8 @@ import { Hero } from "@/components/home";
 import eventImage from "@/assets/images/evolv_25.webp";
 import Button from "@/components/Button/Button";
 import Badge from "@/components/Badge/Badge";
-import Speakers from "@/components/Speakers/speakers";
-import EventSchedule from "@/components/EventSchedule/EventSchedule";
+import { EventSchedule, ComingSoon, Speakers } from "@/components/Events";
+
 
 const Events = () => {
   return (
@@ -26,8 +26,8 @@ const Events = () => {
         </Hero>
 
         <Speakers />
-        
         <EventSchedule />
+        <ComingSoon />
       </main>
     </div>
   );

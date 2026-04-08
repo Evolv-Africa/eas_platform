@@ -1,5 +1,4 @@
 import { useState } from "react";
-import clsx from "clsx";
 import Button from "@/components/Button/Button";
 import Badge from "@/components/Badge/Badge";
 import blogImg1 from "../../assets/Images/blog-1.png";
@@ -57,7 +56,7 @@ function BlogCard({ post }) {
         {/* Animated text swap */}
         <div className="relative h-[120px] overflow-hidden">
           <p
-            className={clsx(
+            className={(
               "absolute inset-0 font-poppins text-sm leading-6 text-semantic-text-secondary transition-all duration-300",
               hovered
                 ? "opacity-0 -translate-y-2"
@@ -68,7 +67,7 @@ function BlogCard({ post }) {
           </p>
 
           <p
-            className={clsx(
+            className={(
               "absolute inset-0 font-poppins text-sm leading-6 text-semantic-text-secondary transition-all duration-300",
               hovered
                 ? "opacity-100 translate-y-0"
@@ -93,7 +92,7 @@ function BlogCard({ post }) {
 
 export default function Blogs({ className = "" }) {
   return (
-    <section className={clsx("px-5 py-10 md:py-20", className)}>
+    <section className={("px-5 py-10 md:py-20", className)}>
       <div className="mx-auto max-w-320 text-center flex flex-col items-center">
         
         <div className="mb-6">

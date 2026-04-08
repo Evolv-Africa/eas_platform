@@ -40,7 +40,7 @@ function Card({ card }) {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className={clsx(
+      className={(
         "rounded-xl p-6 min-h-[180px] flex flex-col transition-all duration-300 cursor-pointer",
         "bg-[#e7e7e7]",
         card.justify,
@@ -48,7 +48,7 @@ function Card({ card }) {
       )}
     >
       <h3
-        className={clsx(
+        className={(
           "font-neue-machina font-bold text-lg transition-colors",
           hovered ? "text-white" : "text-semantic-text-primary"
         )}
@@ -57,7 +57,7 @@ function Card({ card }) {
       </h3>
 
       <p
-        className={clsx(
+        className={(
           "font-poppins text-sm leading-6 transition-colors",
           hovered ? "text-white" : "text-semantic-text-secondary"
         )}
@@ -70,7 +70,7 @@ function Card({ card }) {
 
 export default function WhatWeDo({ className = "" }) {
   return (
-    <section className={clsx("px-5 py-10 md:py-20", className)}>
+    <section className={("px-5 py-10 md:py-20", className)}>
       <div className="mx-auto max-w-320 text-center flex flex-col items-center">
         
         {/* Header */}
