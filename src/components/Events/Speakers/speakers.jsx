@@ -73,7 +73,6 @@ function SpeakerCard({ speaker }) {
         isolation: "isolate",
       }}
     >
-      {/* 1. Image Wrapper (Scale effect) */}
       <div
         style={{
           width: "100%",
@@ -98,7 +97,7 @@ function SpeakerCard({ speaker }) {
       <div
         style={{
           position: "absolute",
-          inset: 0, // Shorthand for top, left, right, bottom: 0
+          inset: 0, 
           backgroundColor: speaker.overlayColor,
           display: "flex",
           flexDirection: "column",
@@ -251,7 +250,6 @@ export default function Speakers({ className = "" }) {
           </div>
         </div>
 
-        {/* Cards */}
         <div
           style={{
             display: "flex",
