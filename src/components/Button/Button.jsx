@@ -1,13 +1,10 @@
-import clsx from "clsx";
-
 export default function Button({
   children,
   variant = "primary",
   size = "md",
   ...props
 }) {
-  const base =
-    "rounded-lg font-medium transition";
+  const base = "rounded-lg font-medium transition";
 
   const variants = {
     primary: "bg-blue-600 text-white hover:bg-blue-700",
@@ -22,7 +19,7 @@ export default function Button({
 
   return (
     <button
-      className={clsx(base, variants[variant], sizes[size])}
+      className={`${base} ${variants[variant]} ${sizes[size]}`}
       {...props}
     >
       {children}
