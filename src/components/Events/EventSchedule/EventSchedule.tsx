@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { scheduleData, days } from "./constants";
 
-const CalendarIcon = () => (
+const CalendarIcon: React.FC = () => (
   <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
     <rect x="1" y="2" width="14" height="13" rx="2" stroke="currentColor" strokeWidth="1.2" />
     <line x1="1" y1="5.5" x2="15" y2="5.5" stroke="currentColor" strokeWidth="1.2" />
@@ -10,22 +10,22 @@ const CalendarIcon = () => (
   </svg>
 );
 
-const LocationIcon = () => (
+const LocationIcon: React.FC = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="opacity-60">
     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
     <circle cx="12" cy="9" r="2.5" stroke="currentColor" strokeWidth="1.6" />
   </svg>
 );
 
-const PersonIcon = () => (
+const PersonIcon: React.FC = () => (
   <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="opacity-50">
     <circle cx="8" cy="6" r="3" stroke="currentColor" strokeWidth="1.2" />
     <path d="M3 14c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="currentColor" strokeWidth="1.2" />
   </svg>
 );
 
-const EventSchedule = () => {
-  const [activeDay, setActiveDay] = useState(1);
+const EventSchedule: React.FC = () => {
+  const [activeDay, setActiveDay] = useState<number>(1);
 
   return (
     <div className="relative px-5 py-10 md:py-20 overflow-hidden">

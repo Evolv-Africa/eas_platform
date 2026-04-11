@@ -8,7 +8,23 @@ import speaker4 from "@/assets/Images/speaker-3.png";
 import speaker5 from "@/assets/Images/speaker-2.png";
 import speaker6 from "@/assets/Images/speaker-3.png";
 
-const speakers = [
+interface Speaker {
+  img: string;
+  role: string;
+  name: string;
+  funFact: string;
+  overlayColor: string;
+}
+
+interface SpeakerCardProps {
+  speaker: Speaker;
+}
+
+interface SpeakersProps {
+  className?: string;
+}
+
+const speakers: Speaker[] = [
   {
     img: speaker1,
     role: "Co Founder",
@@ -48,15 +64,15 @@ const speakers = [
     img: speaker6,
     role: "Panelist",
     name: "Emeka Eze",
-    funFact: "I built my first startup at 19 🚀",
+    funFact: "I built my first startup at 19",
     overlayColor: "rgba(30, 120, 40, 0.6)",
   },
 ];
 
 const VISIBLE = 4;
 
-function SpeakerCard({ speaker }) {
-  const [hovered, setHovered] = useState(false);
+const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker }) => {
+  const [hovered, setHovered] = useState<boolean>(false);
 
   return (
     <div
@@ -97,7 +113,7 @@ function SpeakerCard({ speaker }) {
       <div
         style={{
           position: "absolute",
-          inset: 0, 
+          inset: 0,
           backgroundColor: speaker.overlayColor,
           display: "flex",
           flexDirection: "column",
@@ -154,40 +170,25 @@ function SpeakerCard({ speaker }) {
       </div>
     </div>
   );
-}
-      
-export default function Speakers({ className = "" }) {
-  const [startIndex, setStartIndex] = useState(0);
+};
 
-  const handlePrev = () => {
+const Speakers: React.FC<SpeakersProps> = ({ className = "" }) => {
+  const [startIndex, setStartIndex] = useState<number>(0);
+
+  const handlePrev = (): void => {
     setStartIndex((prev) => Math.max(0, prev - 1));
   };
 
-  const handleNext = () => {
-    setStartIndex((prev) =>
-      Math.min(speakers.length - VISIBLE, prev + 1)
-    );
+  const handleNext = (): void => {
+    setStartIndex((prev) => Math.min(speakers.length - VISIBLE, prev + 1));
   };
 
-  const visibleSpeakers = speakers.slice(
-    startIndex,
-    startIndex + VISIBLE
-  );
+  const visibleSpeakers = speakers.slice(startIndex, startIndex + VISIBLE);
 
   return (
-    <section
-      className={className}
-      style={{
-        padding: "60px 20px",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "72rem",
-          margin: "0 auto",
-        }}
-      >
-        {/* Header */}
+    <section className={className} style={{ padding: "60px 20px" }}>
+      <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
+
         <div
           style={{
             display: "flex",
@@ -200,7 +201,6 @@ export default function Speakers({ className = "" }) {
         >
           <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
             <Badge>The Voices of Impact</Badge>
-
             <h2
               style={{
                 fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
@@ -213,7 +213,6 @@ export default function Speakers({ className = "" }) {
             </h2>
           </div>
 
-          {/* Arrows */}
           <div style={{ display: "flex", gap: "16px" }}>
             <button
               onClick={handlePrev}
@@ -236,12 +235,8 @@ export default function Speakers({ className = "" }) {
               style={{
                 background: "none",
                 border: "none",
-                cursor:
-                  startIndex >= speakers.length - VISIBLE
-                    ? "not-allowed"
-                    : "pointer",
-                opacity:
-                  startIndex >= speakers.length - VISIBLE ? 0.4 : 1,
+                cursor: startIndex >= speakers.length - VISIBLE ? "not-allowed" : "pointer",
+                opacity: startIndex >= speakers.length - VISIBLE ? 0.4 : 1,
                 fontSize: "40px",
               }}
             >
@@ -250,18 +245,15 @@ export default function Speakers({ className = "" }) {
           </div>
         </div>
 
-        <div
-          style={{
-            display: "flex",
-            gap: "16px",
-            overflowX: "auto",
-          }}
-        >
+        <div style={{ display: "flex", gap: "16px", overflowX: "auto" }}>
           {visibleSpeakers.map((speaker) => (
             <SpeakerCard key={speaker.name} speaker={speaker} />
           ))}
         </div>
+
       </div>
     </section>
   );
-}
+};
+
+export default Speakers;

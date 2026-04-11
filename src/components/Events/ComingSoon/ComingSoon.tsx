@@ -1,7 +1,16 @@
 import Button from "@/components/Button/Button";
 import comingSoonImage from "@/assets/Images/coming-1.png";
 
-const comingSoonData = [
+interface ComingSoonEvent {
+  id: number;
+  date: string;
+  title: string;
+  description: string;
+  location: string;
+  image: string;
+}
+
+const comingSoonData: ComingSoonEvent[] = [
   {
     id: 1,
     date: "24th May 2025",
@@ -28,7 +37,7 @@ const comingSoonData = [
   },
 ];
 
-const LocationIcon = () => (
+const LocationIcon: React.FC = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="opacity-60 flex-shrink-0">
     <path
       d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
@@ -38,7 +47,7 @@ const LocationIcon = () => (
   </svg>
 );
 
-const ComingSoon = () => {
+const ComingSoon: React.FC = () => {
   return (
     <div className="px-5 py-10 md:py-20">
       <div className="mx-auto max-w-320 space-y-8 md:space-y-14">
