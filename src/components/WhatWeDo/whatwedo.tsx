@@ -1,8 +1,19 @@
 import { useState } from "react";
-import Button from "@/components/Button/Button";
+import { Button } from "../core";
 import Badge from "@/components/Badge/Badge";
 
-const cards = [
+interface CardData {
+  title: string;
+  description: string;
+  justify: string;
+  hoverBg: string;
+}
+
+interface CardProps {
+  card: CardData;
+}
+
+const cards: CardData[] = [
   {
     title: "Flagship Events",
     description: "High-impact summits and meetups designed to inspire and empower.",
@@ -29,8 +40,8 @@ const cards = [
   },
 ];
 
-function Card({ card }) {
-  const [hovered, setHovered] = useState(false);
+const Card: React.FC<CardProps> = ({ card }) => {
+  const [hovered, setHovered] = useState<boolean>(false);
 
   return (
     <div
@@ -46,13 +57,17 @@ function Card({ card }) {
       </p>
     </div>
   );
+};
+
+interface WhatWeDoProps {
+  className?: string;
 }
 
-export default function WhatWeDo({ className = "" }) {
+const WhatWeDo: React.FC<WhatWeDoProps> = ({ className = "" }) => {
   return (
     <section className={`px-5 py-16 md:py-28 ${className}`}>
       <div className="mx-auto max-w-320 text-center flex flex-col items-center">
-        
+
         <div className="mb-6">
           <Badge>What We Do</Badge>
         </div>
@@ -69,7 +84,7 @@ export default function WhatWeDo({ className = "" }) {
           leadership and opportunity across the continent.
         </p>
 
-        <Button variant="primary" size="md">
+        <Button variant="primary" size="medium" style={{ padding: "24px 28px"}}>
           Partner with us
         </Button>
       </div>
@@ -86,4 +101,6 @@ export default function WhatWeDo({ className = "" }) {
       </div>
     </section>
   );
-}
+};
+
+export default WhatWeDo;

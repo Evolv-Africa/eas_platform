@@ -1,11 +1,26 @@
 import { useState } from "react";
-import Button from "@/components/Button/Button";
+import { Button } from "../core";
 import Badge from "@/components/Badge/Badge";
 import blogImg1 from "../../assets/Images/blog-1.png";
 import blogImg2 from "../../assets/Images/blog-2.png";
 import blogImg3 from "../../assets/Images/blog-3.png";
 
-const posts = [
+interface BlogPost {
+  img: string;
+  title: string;
+  body: string;
+  hoverBody: string;
+}
+
+interface BlogCardProps {
+  post: BlogPost;
+}
+
+interface BlogsProps {
+  className?: string;
+}
+
+const posts: BlogPost[] = [
   {
     img: blogImg1,
     title: "Say Hello to Evolv Africa",
@@ -29,8 +44,8 @@ const posts = [
   },
 ];
 
-function BlogCard({ post }) {
-  const [hovered, setHovered] = useState(false);
+const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
+  const [hovered, setHovered] = useState<boolean>(false);
 
   return (
     <div
@@ -38,7 +53,6 @@ function BlogCard({ post }) {
       onMouseLeave={() => setHovered(false)}
       className="flex flex-col rounded-xl overflow-hidden border border-gray-200 bg-white min-h-[420px] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
     >
-      {/* Image */}
       <div className="h-48 overflow-hidden">
         <img
           src={post.img}
@@ -47,24 +61,20 @@ function BlogCard({ post }) {
         />
       </div>
 
-      {/* Content */}
       <div className="p-5 flex flex-col gap-3 flex-1">
         <h3 className="font-neue-machina font-bold text-lg text-semantic-text-primary">
           {post.title}
         </h3>
 
-        {/* Animated text swap */}
         <div className="relative h-[120px] overflow-hidden">
           <p className={`absolute inset-0 font-poppins text-sm leading-6 text-semantic-text-secondary transition-all duration-300 ${hovered ? "opacity-0 -translate-y-2" : "opacity-100 translate-y-0"}`}>
             {post.body}
           </p>
-
           <p className={`absolute inset-0 font-poppins text-sm leading-6 text-semantic-text-secondary transition-all duration-300 ${hovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
             {post.hoverBody}
           </p>
         </div>
 
-        {/* CTA */}
         <a
           href="#"
           className="mt-auto text-sm font-semibold text-blue-600 hover:text-blue-700 underline self-end"
@@ -74,13 +84,13 @@ function BlogCard({ post }) {
       </div>
     </div>
   );
-}
+};
 
-export default function Blogs({ className = "" }) {
+const Blogs: React.FC<BlogsProps> = ({ className = "" }) => {
   return (
     <section className={`px-5 py-10 md:py-20 ${className}`}>
       <div className="mx-auto max-w-320 text-center flex flex-col items-center">
-        
+
         <div className="mb-6">
           <Badge>Our Blogs</Badge>
         </div>
@@ -94,10 +104,11 @@ export default function Blogs({ className = "" }) {
           from the Evolv Africa Summit community.
         </p>
 
-       <Button variant="primary" size="md">Visit the Blog</Button>
+        <Button variant="primary" size="medium" style={{ padding: "24px 28px" }}>
+          Visit the Blog
+        </Button>
       </div>
 
-      {/* Cards */}
       <div className="mx-auto max-w-320 mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((post) => (
           <BlogCard key={post.title} post={post} />
@@ -105,4 +116,6 @@ export default function Blogs({ className = "" }) {
       </div>
     </section>
   );
-}
+};
+
+export default Blogs;
