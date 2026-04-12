@@ -4,8 +4,7 @@ import Button from "@/components/Button/Button";
 import Badge from "@/components/Badge/Badge";
 import { EventSchedule, ComingSoon, Speakers } from "@/components/Events";
 
-
-const Events = () => {
+const Events: React.FC = () => {
   return (
     <div>
       <main>
@@ -14,11 +13,14 @@ const Events = () => {
           description="This event description goes into this box. This events description goes into this box."
           image={eventImage}
         >
-          <div className="flex items-center justify-center gap-4 my-6 mx-2.5">
-            <Button variant="primary" size="md"
-            style={{ padding: "13px 50px", fontSize: "15px" }} >
-            Get Tickets
-          </Button>
+          <div className="flex items-center justify-center gap-4 mt-6 mb-20 mx-2.5">
+            <Button
+              variant="primary"
+              size="md"
+              style={{ padding: "13px 50px", fontSize: "15px" }}
+            >
+              Get Tickets
+            </Button>
             <Badge className="font-poppins text-sm font-medium px-8 py-3 rounded-md">
               Sign Up to Email List
             </Badge>
