@@ -1,12 +1,20 @@
+import { FC } from "react";
+// import WhoWeAre from "@/components/WhoWeAre/whoweare";
+import WhatWeDo from "@/components/WhatWeDo/whatwedo";
 import { Hero, OurImpact, OurNetwork } from "@/components/home";
+import Blogs from "@/components/Blogs/blogs";
+import WhoWeAre from "@/components/WhoWeAre/whoweare";
 
-const Home = () => {
+const Home: FC = () => {
   return (
-    <div className="space-y-20">
+    <>
       <Hero />
+      <WhoWeAre />
+      <WhatWeDo />
       <OurImpact />
       <OurNetwork />
-    </div>
+      <Blogs />
+    </>
   );
 };
 

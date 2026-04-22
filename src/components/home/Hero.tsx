@@ -10,7 +10,12 @@ import { VerticalSlider } from "../animations";
 import Marquee from "../animations/marquee/Marquee";
 import { useMediaQuery } from "@/hooks";
 
-const Hero: FC = () => {
+const Hero: FC<{ title?: string; description?: string; image?: string; children?: React.ReactNode }> = ({
+  title = "Empowering Africa's next generation of",
+  description = "Evolve Africa is a community-driven platform connecting professionals, innovators, and organizations to shape the future of leadership across the continent.",
+  image = HeroImage,
+  children,
+}) => {
   const heroRef = useRef<HTMLElement | null>(null);
   const words = ["builders", "leaders", "innovators", "creators", "founders"];
   const { isMobile } = useMediaQuery();
@@ -73,21 +78,23 @@ const Hero: FC = () => {
               className="absolute inset-0 z-10 flex items-center justify-center px-6"
             >
               <div className="mx-auto max-w-286.5 text-center">
-                <motion.h2
-                  style={{ color: headingColor }}
-                  className="font-neue-machina text-4xl leading-[1.03] font-extrabold md:text-7xl md:leading-20"
-                >
-                  Empowering Africa&apos;s next generation of{" "}
-                  <VerticalSlider items={words} loop />
+                  <motion.h2
+                    style={{ color: headingColor }}
+                    className="font-neue-machina text-4xl leading-[1.03] font-extrabold md:text-7xl md:leading-20"
+                  >
+                    {title === "Empowering Africa's next generation of" ? (
+                      <>Empowering Africa&apos;s next generation of <VerticalSlider items={words} loop /></>
+                    ) : (
+                      title
+                    )}
                 </motion.h2>
                 <motion.p
                   style={{ color: paragraphColor }}
                   className="mx-auto mt-5 max-w-169.5 font-poppins text-base md:text-[20px] md:leading-7"
                 >
-                  Evolve Africa is a community-driven platform connecting
-                  professionals, innovators, and organizations to shape the
-                  future of leadership across the continent.
+                  {description}
                 </motion.p>
+                {children}
               </div>
             </motion.div>
 
@@ -101,7 +108,7 @@ const Hero: FC = () => {
               className="absolute bottom-4 left-1/2 overflow-hidden rounded-xl"
             >
               <motion.img
-                src={HeroImage}
+                src={image || HeroImage}
                 alt="Evolv Africa 25"
                 style={{ scale: imageScale }}
                 className="h-full w-full object-cover"
@@ -126,16 +133,20 @@ const Hero: FC = () => {
           pauseOnHover={false}
           repetitionArray={["primary", "duplicate", "triple", "quadruple"]}
         >
-          {[GoogleLogo, UpworkLogo, MicrosoftLogo, ShopifyLogo, TokoLogo].map(
-            (icon) => (
-              <img
-                src={icon}
-                alt={icon}
-                key={icon}
-                className="h-5 w-auto grayscale"
-              />
-            ),
-          )}
+          {[
+            { src: GoogleLogo, name: "Google" },
+            { src: UpworkLogo, name: "Upwork" },
+            { src: MicrosoftLogo, name: "Microsoft" },
+            { src: ShopifyLogo, name: "Shopify" },
+            { src: TokoLogo, name: "Tokopedia" },
+          ].map(({ src, name }) => (
+            <img
+              key={name}
+              src={src}
+              alt={name}
+              className="h-5 w-auto grayscale"
+            />
+          ))}
         </Marquee>
         <p className="w-fit mx-auto text-gray-600 text-base md:text-xl leading-7">
           Formerly LinkedIn Local Nigeria
