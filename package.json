@@ -15,12 +15,15 @@
   },
   "dependencies": {
     "@sanity/client": "^7.20.0",
+    "@sanity/vision": "^5.22.0",
     "@tailwindcss/vite": "^4.2.1",
     "axios": "^1.13.5",
     "motion": "^12.34.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.1",
+    "sanity": "^5.22.0",
+    "styled-components": "^6.4.1",
     "tailwindcss": "^4.2.1"
   },
   "devDependencies": {

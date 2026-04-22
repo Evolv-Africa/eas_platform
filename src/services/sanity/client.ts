@@ -14,6 +14,12 @@ export const sanityConfig = {
 
 export const sanityClient = createClient(sanityConfig);
 
+export const sanityWriteClient = createClient({
+  ...sanityConfig,
+  useCdn: false,
+  token: import.meta.env.VITE_SANITY_API_WRITE_TOKEN,
+});
+
 export const fetchSanityQuery = <T>(
   query: string,
   params: Record<string, unknown> = {},
