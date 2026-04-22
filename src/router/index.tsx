@@ -5,9 +5,22 @@ import { createBrowserRouter } from "react-router-dom";
 
 const Home = lazy(() => import("@/pages/home/Home"));
 const AboutUs = lazy(() => import("@/pages/aboutUs/AboutUs"));
+const CampusRegistration = lazy(
+  () => import("@/pages/campusRegistration/CampusRegistration"),
+);
+const StudioPage = lazy(() => import("@/studio/StudioPage"));
 const Events = lazy(() => import("@/pages/events/Events"));
 
 export const router = createBrowserRouter([
+  {
+    // Sanity Studio — rendered outside AppLayout so it gets a clean full-screen canvas
+    path: "/studio/*",
+    element: (
+      <Suspense fallback={<PageLoader />}>
+        <StudioPage />
+      </Suspense>
+    ),
+  },
   {
     path: "/",
     errorElement: <PageNotFound type="404" />,
@@ -26,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: "about-us",
         element: <AboutUs />,
+      },
+      {
+        path: "campus-registration",
+        element: <CampusRegistration />,
       },
       {
         path: "events",
