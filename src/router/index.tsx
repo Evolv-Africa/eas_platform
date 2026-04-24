@@ -5,9 +5,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 const Home = lazy(() => import("@/pages/home/Home"));
 const AboutUs = lazy(() => import("@/pages/aboutUs/AboutUs"));
-const Events = lazy(() => import("@/pages/events/Events"));
 const BlogsPage = lazy(() => import("@/pages/blogsPage/BlogsPage"));
-
 
 export const router = createBrowserRouter([
   {
@@ -21,26 +19,10 @@ export const router = createBrowserRouter([
       </ErrorBoundary>
     ),
     children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: "about-us",
-        element: <AboutUs />,
-      },
-      {
-        path: "events",
-        element: <Events />,
-      },
-      {
-        path: "blogs",
-        element: <BlogsPage />,
-      },
+      { index: true, element: <Home /> },
+      { path: "about-us", element: <AboutUs /> },
+      { path: "blogs", element: <BlogsPage /> },
     ],
   },
-  {
-    path: "*",
-    element: <PageNotFound type="404" />,
-  },
+  { path: "*", element: <PageNotFound type="404" /> },
 ]);
