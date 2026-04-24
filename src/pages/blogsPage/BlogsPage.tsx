@@ -5,7 +5,7 @@ import { Pagination } from "@/components/blogsPage/Pagination";
 import { blogPosts } from "@/constants/blogdata";
 import type { BlogPost } from "@/types";
 
-const POSTS_PER_PAGE = 9;
+const POSTS_PER_PAGE = 12;
 
 const BlogsPage: FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,7 +26,7 @@ const BlogsPage: FC = () => {
   };
 
   return (
-    <div className="bg-[#f7f9fc] min-h-screen">
+    <div className="min-h-screen">
       <section className="bg-white border-b border-gray-100 px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-320">
           <h1 className="font-neue-machina text-4xl font-extrabold tracking-tight text-blue-900 md:text-5xl lg:text-[3.5rem]">
@@ -47,7 +47,7 @@ const BlogsPage: FC = () => {
             Recent Posts
           </h2>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {paginatedPosts.map((post: BlogPost) => (
               <BlogCard key={post.id} post={post} />
             ))}

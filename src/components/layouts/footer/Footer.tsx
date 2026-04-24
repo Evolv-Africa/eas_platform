@@ -18,7 +18,7 @@ type SocialLink = {
 const companyLinks: FooterLink[] = [
   { label: "Partnerships", href: "#partnerships" },
   { label: "About us", href: "/about-us" },
-  { label: "Blogs", href: "#blogs" },
+  { label: "Blogs", href: "/blogs" },
 ];
 
 const helpLinks: FooterLink[] = [

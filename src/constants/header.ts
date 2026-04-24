@@ -14,7 +14,7 @@ export const NavMenu: NavItem[] = [
   {
     id: 3,
     label: "Blog",
-    path: "/blog",
+    path: "/blogs",
   },
   {
     id: 4,
