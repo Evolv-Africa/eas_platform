@@ -6,3 +6,5 @@ export * from "./errorBoundary/ErrorBoundary";
 export * from "./pageLoader/PageLoader";
 export * from "./typography";
 export * from "./button/Button";
+export * from "./badge/Badge";
+export * from "./input/Input";

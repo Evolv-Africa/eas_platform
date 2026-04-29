@@ -1,12 +1,11 @@
 import { useState } from "react";
-import Badge from "@/components/Badge/Badge";
-
 import speaker1 from "@/assets/Images/speaker-2.png";
 import speaker2 from "@/assets/Images/speaker-3.png";
 import speaker3 from "@/assets/Images/speaker-2.png";
 import speaker4 from "@/assets/Images/speaker-3.png";
 import speaker5 from "@/assets/Images/speaker-2.png";
 import speaker6 from "@/assets/Images/speaker-3.png";
+import { Badge } from "@/components/core";
 
 interface Speaker {
   img: string;
@@ -188,7 +187,6 @@ const Speakers: React.FC<SpeakersProps> = ({ className = "" }) => {
   return (
     <section className={className} style={{ padding: "60px 20px" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-
         <div
           style={{
             display: "flex",
@@ -199,7 +197,9 @@ const Speakers: React.FC<SpeakersProps> = ({ className = "" }) => {
             gap: "16px",
           }}
         >
-          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "12px" }}
+          >
             <Badge>The Voices of Impact</Badge>
             <h2
               style={{
@@ -235,7 +235,10 @@ const Speakers: React.FC<SpeakersProps> = ({ className = "" }) => {
               style={{
                 background: "none",
                 border: "none",
-                cursor: startIndex >= speakers.length - VISIBLE ? "not-allowed" : "pointer",
+                cursor:
+                  startIndex >= speakers.length - VISIBLE
+                    ? "not-allowed"
+                    : "pointer",
                 opacity: startIndex >= speakers.length - VISIBLE ? 0.4 : 1,
                 fontSize: "40px",
               }}
@@ -250,7 +253,6 @@ const Speakers: React.FC<SpeakersProps> = ({ className = "" }) => {
             <SpeakerCard key={speaker.name} speaker={speaker} />
           ))}
         </div>
-
       </div>
     </section>
   );

@@ -1,14 +1,16 @@
 import Button from "@/components/Button/Button";
-import Badge from "@/components/Badge/Badge";
+import { Badge } from "@/components/core";
 import storyImg1 from "../../assets/Images/story-3.png";
 import storyImg2 from "../../assets/Images/story-1.png";
 import storyImg3 from "../../assets/Images/story-2.png";
+import { FC } from "react";
 
-export default function WhoWeAre({ className = "" }) {
+const WhoWeAre: FC = ({ className = "" }: Readonly<{ className?: string }>) => {
   return (
-    <div className={`relative px-5 py-10 md:py-20 overflow-hidden ${className}`}>
+    <div
+      className={`relative px-5 py-10 md:py-20 overflow-hidden ${className}`}
+    >
       <div className="mx-auto max-w-320 flex flex-col lg:flex-row items-center gap-12">
-
         {/* LEFT: Text */}
         <div className="w-full lg:w-1/2 flex flex-col gap-6 items-start">
           <Badge>Who We Are</Badge>
@@ -21,7 +23,9 @@ export default function WhoWeAre({ className = "" }) {
             Today, we've grown into a pan-African platform fostering
             collaboration, innovation, and leadership development.
           </p>
-          <Button variant="primary" size="md">Learn about us</Button>
+          <Button variant="primary" size="md">
+            Learn about us
+          </Button>
         </div>
 
         {/* RIGHT: Images */}
@@ -48,7 +52,6 @@ export default function WhoWeAre({ className = "" }) {
             />
           </div>
         </div>
-
       </div>
 
       {/* Wave */}
@@ -68,7 +71,8 @@ export default function WhoWeAre({ className = "" }) {
           />
         </svg>
       </div>
-
     </div>
   );
-}
+};
+
+export default WhoWeAre;

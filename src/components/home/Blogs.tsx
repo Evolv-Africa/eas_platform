@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { FC } from "react";
 import Button from "@/components/Button/Button";
-import Badge from "@/components/Badge/Badge";
+import { Badge } from "@/components/core";
 import blogImg1 from "../../assets/Images/blog-1.png";
 import blogImg2 from "../../assets/Images/blog-2.png";
 import blogImg3 from "../../assets/Images/blog-3.png";
+import { BlogCard } from "../common";
 
 const posts = [
   {
@@ -29,58 +30,10 @@ const posts = [
   },
 ];
 
-function BlogCard({ post }) {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="flex flex-col rounded-xl overflow-hidden border border-gray-200 bg-white min-h-[420px] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-    >
-      {/* Image */}
-      <div className="h-48 overflow-hidden">
-        <img
-          src={post.img}
-          alt={post.title}
-          className="w-full h-full object-cover"
-        />
-      </div>
-
-      {/* Content */}
-      <div className="p-5 flex flex-col gap-3 flex-1">
-        <h3 className="font-neue-machina font-bold text-lg text-semantic-text-primary">
-          {post.title}
-        </h3>
-
-        {/* Animated text swap */}
-        <div className="relative h-[120px] overflow-hidden">
-          <p className={`absolute inset-0 font-poppins text-sm leading-6 text-semantic-text-secondary transition-all duration-300 ${hovered ? "opacity-0 -translate-y-2" : "opacity-100 translate-y-0"}`}>
-            {post.body}
-          </p>
-
-          <p className={`absolute inset-0 font-poppins text-sm leading-6 text-semantic-text-secondary transition-all duration-300 ${hovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
-            {post.hoverBody}
-          </p>
-        </div>
-
-        {/* CTA */}
-        <a
-          href="#"
-          className="mt-auto text-sm font-semibold text-blue-600 hover:text-blue-700 underline self-end"
-        >
-          Read More
-        </a>
-      </div>
-    </div>
-  );
-}
-
-export default function Blogs({ className = "" }) {
+const Blogs: FC<{ className?: string }> = ({ className = "" }) => {
   return (
     <section className={`px-5 py-10 md:py-20 ${className}`}>
       <div className="mx-auto max-w-320 text-center flex flex-col items-center">
-        
         <div className="mb-6">
           <Badge>Our Blogs</Badge>
         </div>
@@ -90,11 +43,13 @@ export default function Blogs({ className = "" }) {
         </h2>
 
         <p className="font-poppins text-base md:text-xl leading-7 text-semantic-text-secondary max-w-[620px] mb-7">
-          Stay updated with news, thought leadership, and inspiring stories
-          from the Evolv Africa Summit community.
+          Stay updated with news, thought leadership, and inspiring stories from
+          the Evolv Africa Summit community.
         </p>
 
-       <Button variant="primary" size="md">Visit the Blog</Button>
+        <Button variant="primary" size="md">
+          Visit the Blog
+        </Button>
       </div>
 
       {/* Cards */}
@@ -105,4 +60,6 @@ export default function Blogs({ className = "" }) {
       </div>
     </section>
   );
-}
+};
+
+export default Blogs;

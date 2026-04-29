@@ -1,35 +1,48 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import Button from "@/components/Button/Button";
-import Badge from "@/components/Badge/Badge";
+import { Badge } from "@/components/core";
 
 const cards = [
   {
     title: "Flagship Events",
-    description: "High-impact summits and meetups designed to inspire and empower.",
+    description:
+      "High-impact summits and meetups designed to inspire and empower.",
     justify: "justify-between",
     hoverBg: "hover:bg-green-500",
   },
   {
     title: "Community Building",
-    description: "We create spaces for meaningful professional connections across industries.",
+    description:
+      "We create spaces for meaningful professional connections across industries.",
     justify: "justify-end",
     hoverBg: "hover:bg-blue-500",
   },
   {
     title: "Partnerships",
-    description: "Collaborating with organizations to drive innovation and opportunity.",
+    description:
+      "Collaborating with organizations to drive innovation and opportunity.",
     justify: "justify-end",
     hoverBg: "hover:bg-blue-500",
   },
   {
     title: "Professional Development",
-    description: "Creating platforms that accelerate career growth and meaningful collaboration.",
+    description:
+      "Creating platforms that accelerate career growth and meaningful collaboration.",
     justify: "justify-between",
     hoverBg: "hover:bg-green-500",
   },
 ];
 
-function Card({ card }) {
+interface CardProps {
+  card: {
+    title: string;
+    description: string;
+    justify: string;
+    hoverBg: string;
+  };
+}
+
+const Card: FC<CardProps> = ({ card }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -38,21 +51,24 @@ function Card({ card }) {
       onMouseLeave={() => setHovered(false)}
       className={`rounded-xl p-10 min-h-[220px] flex flex-col transition-all duration-300 cursor-pointer bg-[#e7e7e7] ${card.justify} ${card.hoverBg}`}
     >
-      <h3 className={`font-neue-machina font-bold text-lg transition-colors ${hovered ? "text-white" : "text-semantic-text-primary"}`}>
+      <h3
+        className={`font-neue-machina font-bold text-lg transition-colors ${hovered ? "text-white" : "text-semantic-text-primary"}`}
+      >
         {card.title}
       </h3>
-      <p className={`font-poppins text-sm leading-6 transition-colors ${hovered ? "text-white" : "text-semantic-text-secondary"}`}>
+      <p
+        className={`font-poppins text-sm leading-6 transition-colors ${hovered ? "text-white" : "text-semantic-text-secondary"}`}
+      >
         {card.description}
       </p>
     </div>
   );
-}
+};
 
-export default function WhatWeDo({ className = "" }) {
+const WhatWeDo: FC = ({ className = "" }: Readonly<{ className?: string }>) => {
   return (
     <section className={`px-5 py-16 md:py-28 ${className}`}>
       <div className="mx-auto max-w-320 text-center flex flex-col items-center">
-        
         <div className="mb-6">
           <Badge>What We Do</Badge>
         </div>
@@ -86,4 +102,5 @@ export default function WhatWeDo({ className = "" }) {
       </div>
     </section>
   );
-}
+};
+export default WhatWeDo;

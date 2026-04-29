@@ -1,9 +1,12 @@
 import { FC } from "react";
-// import WhoWeAre from "@/components/WhoWeAre/whoweare";
-import WhatWeDo from "@/components/WhatWeDo/whatwedo";
-import { Hero, OurImpact, OurNetwork } from "@/components/home";
-import Blogs from "@/components/Blogs/blogs";
-import WhoWeAre from "@/components/WhoWeAre/whoweare";
+import {
+  Hero,
+  OurImpact,
+  OurNetwork,
+  WhatWeDo,
+  WhoWeAre,
+  Blogs,
+} from "@/components/home";
 
 const Home: FC = () => {
   return (
