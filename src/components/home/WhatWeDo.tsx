@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Button } from "../core";
-import Badge from "@/components/Badge/Badge";
+import { Badge, Button } from "@/components/core";
 
 interface CardData {
   title: string;
@@ -16,25 +15,29 @@ interface CardProps {
 const cards: CardData[] = [
   {
     title: "Flagship Events",
-    description: "High-impact summits and meetups designed to inspire and empower.",
+    description:
+      "High-impact summits and meetups designed to inspire and empower.",
     justify: "justify-between",
     hoverBg: "hover:bg-green-500",
   },
   {
     title: "Community Building",
-    description: "We create spaces for meaningful professional connections across industries.",
+    description:
+      "We create spaces for meaningful professional connections across industries.",
     justify: "justify-end",
     hoverBg: "hover:bg-blue-500",
   },
   {
     title: "Partnerships",
-    description: "Collaborating with organizations to drive innovation and opportunity.",
+    description:
+      "Collaborating with organizations to drive innovation and opportunity.",
     justify: "justify-end",
     hoverBg: "hover:bg-blue-500",
   },
   {
     title: "Professional Development",
-    description: "Creating platforms that accelerate career growth and meaningful collaboration.",
+    description:
+      "Creating platforms that accelerate career growth and meaningful collaboration.",
     justify: "justify-between",
     hoverBg: "hover:bg-green-500",
   },
@@ -49,10 +52,14 @@ const Card: React.FC<CardProps> = ({ card }) => {
       onMouseLeave={() => setHovered(false)}
       className={`rounded-xl p-10 min-h-[220px] flex flex-col transition-all duration-300 cursor-pointer bg-[#e7e7e7] ${card.justify} ${card.hoverBg}`}
     >
-      <h3 className={`font-neue-machina font-bold text-lg transition-colors ${hovered ? "text-white" : "text-semantic-text-primary"}`}>
+      <h3
+        className={`font-neue-machina font-bold text-lg transition-colors ${hovered ? "text-white" : "text-semantic-text-primary"}`}
+      >
         {card.title}
       </h3>
-      <p className={`font-poppins text-sm leading-6 transition-colors ${hovered ? "text-white" : "text-semantic-text-secondary"}`}>
+      <p
+        className={`font-poppins text-sm leading-6 transition-colors ${hovered ? "text-white" : "text-semantic-text-secondary"}`}
+      >
         {card.description}
       </p>
     </div>
@@ -67,7 +74,6 @@ const WhatWeDo: React.FC<WhatWeDoProps> = ({ className = "" }) => {
   return (
     <section className={`px-5 py-16 md:py-28 ${className}`}>
       <div className="mx-auto max-w-320 text-center flex flex-col items-center">
-
         <div className="mb-6">
           <Badge>What We Do</Badge>
         </div>
@@ -84,7 +90,11 @@ const WhatWeDo: React.FC<WhatWeDoProps> = ({ className = "" }) => {
           leadership and opportunity across the continent.
         </p>
 
-        <Button variant="primary" size="medium" style={{ padding: "24px 28px"}}>
+        <Button
+          variant="primary"
+          size="medium"
+          style={{ padding: "24px 28px" }}
+        >
           Partner with us
         </Button>
       </div>

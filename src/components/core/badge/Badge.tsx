@@ -4,7 +4,7 @@ interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   children: React.ReactNode;
 }
 
-const Badge: React.FC<BadgeProps> = ({ children, ...props }) => {
+export const Badge: React.FC<BadgeProps> = ({ children, ...props }) => {
   return (
     <span
       className="w-fit rounded-full px-10 py-2 text-sm font-medium inline-block"
@@ -18,5 +18,3 @@ const Badge: React.FC<BadgeProps> = ({ children, ...props }) => {
     </span>
   );
 };
-
-export default Badge;

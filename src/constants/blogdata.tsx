@@ -8,252 +8,288 @@ export const blogPosts: BlogPost[] = [
   {
     id: "1",
     title: "Say Hello to Evolv Africa",
-    excerpt: "What started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the next chapter of a powerful community that began as LinkedIn Local Nigeria, and it's only the beginning.",
+    excerpt:
+      "What started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the next chapter of a powerful community that began as LinkedIn Local Nigeria, and it's only the beginning.",
     coverImage: blog1,
     slug: "say-hello-to-evolv-africa",
   },
   {
     id: "2",
     title: "Empowering the Next Generation",
-    excerpt: "The future belongs to those who prepare for it today. We explore how young African professionals are reshaping industries and creating opportunities that didn't exist before.",
+    excerpt:
+      "The future belongs to those who prepare for it today. We explore how young African professionals are reshaping industries and creating opportunities that didn't exist before.",
     coverImage: blog2,
     slug: "empowering-the-next-generation",
   },
   {
     id: "3",
     title: "Say Hello to Evolv Africa",
-    excerpt: "When started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the new chapter of a passion community.",
+    excerpt:
+      "When started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the new chapter of a passion community.",
     coverImage: blog3,
     slug: "say-hello-to-evolv-africa-2",
   },
   {
     id: "4",
     title: "Building Impactful Communities",
-    excerpt: "Community isn't built overnight. It's a series of intentional decisions, consistent actions, and genuine care for the people you serve. Here's what we've learned.",
+    excerpt:
+      "Community isn't built overnight. It's a series of intentional decisions, consistent actions, and genuine care for the people you serve. Here's what we've learned.",
     coverImage: coming1,
     slug: "building-impactful-communities",
   },
   {
     id: "5",
     title: "Why Post-Networking Still Matters in a Digital Age",
-    excerpt: "As digital connections multiply, the value of face-to-face networking has never been higher. We unpack why in-person relationships continue to drive real-world outcomes.",
+    excerpt:
+      "As digital connections multiply, the value of face-to-face networking has never been higher. We unpack why in-person relationships continue to drive real-world outcomes.",
     coverImage: blog1,
     slug: "why-post-networking-still-matters",
   },
   {
     id: "6",
     title: "Say Hello to Evolv Africa",
-    excerpt: "When started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the new chapter of a passion community.",
+    excerpt:
+      "When started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the new chapter of a passion community.",
     coverImage: blog2,
     slug: "say-hello-to-evolv-africa-3",
   },
   {
     id: "7",
     title: "Building a career that Evolves With You",
-    excerpt: "Your career should grow with you, not constrain you. Discover how top African professionals are designing careers that align with their values, skills, and life goals.",
+    excerpt:
+      "Your career should grow with you, not constrain you. Discover how top African professionals are designing careers that align with their values, skills, and life goals.",
     coverImage: blog3,
     slug: "building-a-career-that-evolves-with-you",
   },
   {
     id: "8",
     title: "Young Professionals are Ready for the Stage",
-    excerpt: "A new generation of African professionals is stepping into leadership roles earlier than ever. What's driving this shift, and how can organizations support their ascent?",
+    excerpt:
+      "A new generation of African professionals is stepping into leadership roles earlier than ever. What's driving this shift, and how can organizations support their ascent?",
     coverImage: coming1,
     slug: "young-professionals-ready-for-the-stage",
   },
   {
     id: "9",
     title: "Building Impactful Communities",
-    excerpt: "Community isn't built overnight. It's a series of intentional decisions, consistent actions, and genuine care for the people you serve. Here's what we've learned.",
+    excerpt:
+      "Community isn't built overnight. It's a series of intentional decisions, consistent actions, and genuine care for the people you serve. Here's what we've learned.",
     coverImage: blog1,
     slug: "building-impactful-communities-2",
   },
   {
     id: "10",
     title: "Say Hello to Evolv Africa",
-    excerpt: "When started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the new chapter.",
+    excerpt:
+      "When started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the new chapter.",
     coverImage: blog2,
     slug: "say-hello-to-evolv-africa-4",
   },
   {
     id: "11",
     title: "Why Young Professionals are Ready",
-    excerpt: "A new generation of African professionals is stepping into leadership roles earlier than ever. What's driving this shift and how can organizations support their growth?",
+    excerpt:
+      "A new generation of African professionals is stepping into leadership roles earlier than ever. What's driving this shift and how can organizations support their growth?",
     coverImage: blog3,
     slug: "why-young-professionals-are-ready",
   },
   {
     id: "12",
     title: "Building a career that Evolves With You",
-    excerpt: "Your career should grow with you, not constrain you. Discover how top African professionals are designing careers that align with their values and life goals.",
+    excerpt:
+      "Your career should grow with you, not constrain you. Discover how top African professionals are designing careers that align with their values and life goals.",
     coverImage: coming1,
     slug: "building-a-career-that-evolves-2",
   },
   {
     id: "13",
     title: "Empowering the Next Generation",
-    excerpt: "The future belongs to those who prepare for it today. We explore how young African professionals are reshaping industries and creating opportunities that didn't exist before.",
+    excerpt:
+      "The future belongs to those who prepare for it today. We explore how young African professionals are reshaping industries and creating opportunities that didn't exist before.",
     coverImage: blog2,
     slug: "empowering-the-next-generation",
   },
   {
     id: "14",
     title: "Say Hello to Evolv Africa",
-    excerpt: "When started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the new chapter of a passion community.",
+    excerpt:
+      "When started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the new chapter of a passion community.",
     coverImage: blog3,
     slug: "say-hello-to-evolv-africa-2",
   },
   {
     id: "15",
     title: "Building Impactful Communities",
-    excerpt: "Community isn't built overnight. It's a series of intentional decisions, consistent actions, and genuine care for the people you serve. Here's what we've learned.",
+    excerpt:
+      "Community isn't built overnight. It's a series of intentional decisions, consistent actions, and genuine care for the people you serve. Here's what we've learned.",
     coverImage: coming1,
     slug: "building-impactful-communities",
   },
   {
     id: "16",
     title: "Why Post-Networking Still Matters in a Digital Age",
-    excerpt: "As digital connections multiply, the value of face-to-face networking has never been higher. We unpack why in-person relationships continue to drive real-world outcomes.",
+    excerpt:
+      "As digital connections multiply, the value of face-to-face networking has never been higher. We unpack why in-person relationships continue to drive real-world outcomes.",
     coverImage: blog1,
     slug: "why-post-networking-still-matters",
   },
   {
     id: "17",
     title: "Say Hello to Evolv Africa",
-    excerpt: "When started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the new chapter of a passion community.",
+    excerpt:
+      "When started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the new chapter of a passion community.",
     coverImage: blog2,
     slug: "say-hello-to-evolv-africa-3",
   },
   {
     id: "18",
     title: "Building a career that Evolves With You",
-    excerpt: "Your career should grow with you, not constrain you. Discover how top African professionals are designing careers that align with their values, skills, and life goals.",
+    excerpt:
+      "Your career should grow with you, not constrain you. Discover how top African professionals are designing careers that align with their values, skills, and life goals.",
     coverImage: blog3,
     slug: "building-a-career-that-evolves-with-you",
   },
   {
     id: "19",
     title: "Young Professionals are Ready for the Stage",
-    excerpt: "A new generation of African professionals is stepping into leadership roles earlier than ever. What's driving this shift, and how can organizations support their ascent?",
+    excerpt:
+      "A new generation of African professionals is stepping into leadership roles earlier than ever. What's driving this shift, and how can organizations support their ascent?",
     coverImage: coming1,
     slug: "young-professionals-ready-for-the-stage",
   },
   {
     id: "20",
     title: "Building Impactful Communities",
-    excerpt: "Community isn't built overnight. It's a series of intentional decisions, consistent actions, and genuine care for the people you serve. Here's what we've learned.",
+    excerpt:
+      "Community isn't built overnight. It's a series of intentional decisions, consistent actions, and genuine care for the people you serve. Here's what we've learned.",
     coverImage: blog1,
     slug: "building-impactful-communities-2",
   },
   {
     id: "21",
     title: "Say Hello to Evolv Africa",
-    excerpt: "When started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the new chapter.",
+    excerpt:
+      "When started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the new chapter.",
     coverImage: blog2,
     slug: "say-hello-to-evolv-africa-4",
   },
   {
     id: "22",
     title: "Why Young Professionals are Ready",
-    excerpt: "A new generation of African professionals is stepping into leadership roles earlier than ever. What's driving this shift and how can organizations support their growth?",
+    excerpt:
+      "A new generation of African professionals is stepping into leadership roles earlier than ever. What's driving this shift and how can organizations support their growth?",
     coverImage: blog3,
     slug: "why-young-professionals-are-ready",
   },
   {
     id: "23",
     title: "Building a career that Evolves With You",
-    excerpt: "Your career should grow with you, not constrain you. Discover how top African professionals are designing careers that align with their values and life goals.",
+    excerpt:
+      "Your career should grow with you, not constrain you. Discover how top African professionals are designing careers that align with their values and life goals.",
     coverImage: coming1,
     slug: "building-a-career-that-evolves-2",
   },
   {
     id: "24",
     title: "Say Hello to Evolv Africa",
-    excerpt: "What started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the next chapter of a powerful community that began as LinkedIn Local Nigeria, and it's only the beginning.",
+    excerpt:
+      "What started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the next chapter of a powerful community that began as LinkedIn Local Nigeria, and it's only the beginning.",
     coverImage: blog1,
     slug: "say-hello-to-evolv-africa",
   },
   {
     id: "25",
     title: "Empowering the Next Generation",
-    excerpt: "The future belongs to those who prepare for it today. We explore how young African professionals are reshaping industries and creating opportunities that didn't exist before.",
+    excerpt:
+      "The future belongs to those who prepare for it today. We explore how young African professionals are reshaping industries and creating opportunities that didn't exist before.",
     coverImage: blog2,
     slug: "empowering-the-next-generation",
   },
   {
     id: "26",
     title: "Say Hello to Evolv Africa",
-    excerpt: "When started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the new chapter of a passion community.",
+    excerpt:
+      "When started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the new chapter of a passion community.",
     coverImage: blog3,
     slug: "say-hello-to-evolv-africa-2",
   },
   {
     id: "27",
     title: "Empowering the Next Generation",
-    excerpt: "The future belongs to those who prepare for it today. We explore how young African professionals are reshaping industries and creating opportunities that didn't exist before.",
+    excerpt:
+      "The future belongs to those who prepare for it today. We explore how young African professionals are reshaping industries and creating opportunities that didn't exist before.",
     coverImage: blog2,
     slug: "empowering-the-next-generation",
   },
   {
     id: "28",
     title: "Say Hello to Evolv Africa",
-    excerpt: "When started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the new chapter of a passion community.",
+    excerpt:
+      "When started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the new chapter of a passion community.",
     coverImage: blog3,
     slug: "say-hello-to-evolv-africa-2",
   },
   {
     id: "29",
     title: "Building Impactful Communities",
-    excerpt: "Community isn't built overnight. It's a series of intentional decisions, consistent actions, and genuine care for the people you serve. Here's what we've learned.",
+    excerpt:
+      "Community isn't built overnight. It's a series of intentional decisions, consistent actions, and genuine care for the people you serve. Here's what we've learned.",
     coverImage: coming1,
     slug: "building-impactful-communities",
   },
   {
     id: "30",
     title: "Why Post-Networking Still Matters in a Digital Age",
-    excerpt: "As digital connections multiply, the value of face-to-face networking has never been higher. We unpack why in-person relationships continue to drive real-world outcomes.",
+    excerpt:
+      "As digital connections multiply, the value of face-to-face networking has never been higher. We unpack why in-person relationships continue to drive real-world outcomes.",
     coverImage: blog1,
     slug: "why-post-networking-still-matters",
   },
   {
     id: "31",
     title: "Say Hello to Evolv Africa",
-    excerpt: "When started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the new chapter of a passion community.",
+    excerpt:
+      "When started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the new chapter of a passion community.",
     coverImage: blog2,
     slug: "say-hello-to-evolv-africa-3",
   },
   {
     id: "32",
     title: "Building a career that Evolves With You",
-    excerpt: "Your career should grow with you, not constrain you. Discover how top African professionals are designing careers that align with their values, skills, and life goals.",
+    excerpt:
+      "Your career should grow with you, not constrain you. Discover how top African professionals are designing careers that align with their values, skills, and life goals.",
     coverImage: blog3,
     slug: "building-a-career-that-evolves-with-you",
   },
   {
     id: "33",
     title: "Young Professionals are Ready for the Stage",
-    excerpt: "A new generation of African professionals is stepping into leadership roles earlier than ever. What's driving this shift, and how can organizations support their ascent?",
+    excerpt:
+      "A new generation of African professionals is stepping into leadership roles earlier than ever. What's driving this shift, and how can organizations support their ascent?",
     coverImage: coming1,
     slug: "young-professionals-ready-for-the-stage",
   },
   {
     id: "34",
     title: "Building Impactful Communities",
-    excerpt: "Community isn't built overnight. It's a series of intentional decisions, consistent actions, and genuine care for the people you serve. Here's what we've learned.",
+    excerpt:
+      "Community isn't built overnight. It's a series of intentional decisions, consistent actions, and genuine care for the people you serve. Here's what we've learned.",
     coverImage: blog1,
     slug: "building-impactful-communities-2",
   },
   {
     id: "35",
     title: "Say Hello to Evolv Africa",
-    excerpt: "When started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the new chapter.",
+    excerpt:
+      "When started as a simple idea to bring professionals together offline has grown into something much bigger. Evolv Africa represents the new chapter.",
     coverImage: blog2,
     slug: "say-hello-to-evolv-africa-4",
   },
   {
     id: "36",
     title: "Why Young Professionals are Ready",
-    excerpt: "A new generation of African professionals is stepping into leadership roles earlier than ever. What's driving this shift and how can organizations support their growth?",
+    excerpt:
+      "A new generation of African professionals is stepping into leadership roles earlier than ever. What's driving this shift and how can organizations support their growth?",
     coverImage: blog3,
     slug: "why-young-professionals-are-ready",
   },
