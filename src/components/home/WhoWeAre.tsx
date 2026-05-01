@@ -1,8 +1,7 @@
-import { Button } from "../core";
-import Badge from "@/components/Badge/Badge";
-import storyImg1 from "../../assets/Images/story-3.png";
-import storyImg2 from "../../assets/Images/story-1.png";
-import storyImg3 from "../../assets/Images/story-2.png";
+import { Badge, Button } from "@/components/core";
+import storyImg1 from "@/assets/images/story-3.png";
+import storyImg2 from "@/assets/images/story-1.png";
+import storyImg3 from "@/assets/images/story-2.png";
 
 interface WhoWeAreProps {
   className?: string;
@@ -10,9 +9,10 @@ interface WhoWeAreProps {
 
 const WhoWeAre: React.FC<WhoWeAreProps> = ({ className = "" }) => {
   return (
-    <div className={`relative px-5 py-10 md:py-20 overflow-hidden ${className}`}>
+    <div
+      className={`relative px-5 py-10 md:py-20 overflow-hidden ${className}`}
+    >
       <div className="mx-auto max-w-320 flex flex-col lg:flex-row items-center gap-12">
-
         <div className="w-full lg:w-1/2 flex flex-col gap-6 items-start">
           <Badge>Who We Are</Badge>
           <h2 className="font-neue-machina font-extrabold text-3xl md:text-5xl leading-tight text-semantic-text-primary">
@@ -24,7 +24,11 @@ const WhoWeAre: React.FC<WhoWeAreProps> = ({ className = "" }) => {
             Today, we've grown into a pan-African platform fostering
             collaboration, innovation, and leadership development.
           </p>
-          <Button variant="primary" size="medium" style={{ padding: "24px 28px"}}>
+          <Button
+            variant="primary"
+            size="medium"
+            style={{ padding: "24px 28px" }}
+          >
             Learn about us
           </Button>
         </div>
@@ -50,7 +54,6 @@ const WhoWeAre: React.FC<WhoWeAreProps> = ({ className = "" }) => {
             />
           </div>
         </div>
-
       </div>
 
       {/* Wave */}
@@ -70,7 +73,6 @@ const WhoWeAre: React.FC<WhoWeAreProps> = ({ className = "" }) => {
           />
         </svg>
       </div>
-
     </div>
   );
 };
