@@ -5,6 +5,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 const Home = lazy(() => import("@/pages/home/Home"));
 const AboutUs = lazy(() => import("@/pages/aboutUs/AboutUs"));
+const TeamPage = lazy(() => import("@/pages/team/Team"));
 const BlogsPage = lazy(() => import("@/pages/blogsPage/BlogsPage"));
 const BlogPostPage = lazy(() => import("@/pages/blogsPage/BlogPostPage"));
 
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "about-us", element: <AboutUs /> },
+      { path: "team", element: <TeamPage /> },
       { path: "blogs", element: <BlogsPage /> },
       { path: "blogs/:slug", element: <BlogPostPage /> },
     ],
