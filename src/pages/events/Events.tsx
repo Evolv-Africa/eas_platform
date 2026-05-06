@@ -1,7 +1,6 @@
 import { Hero } from "@/components/home";
 import eventImage from "@/assets/images/evolv_25.webp";
-import Button from "@/components/Button/Button";
-import Badge from "@/components/Badge/Badge";
+import { Button, Badge } from "@/components/core";
 import { EventSchedule, ComingSoon, Speakers } from "@/components/Events";
 
 const Events: React.FC = () => {
@@ -16,7 +15,7 @@ const Events: React.FC = () => {
           <div className="flex items-center justify-center gap-4 mt-6 mb-20 mx-2.5">
             <Button
               variant="primary"
-              size="md"
+              size="medium"
               style={{ padding: "13px 50px", fontSize: "15px" }}
             >
               Get Tickets
