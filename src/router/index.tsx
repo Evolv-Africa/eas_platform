@@ -1,5 +1,6 @@
 import { ErrorBoundary, PageLoader, PageNotFound } from "@/components/core";
 import { AppLayout } from "@/components/layouts";
+import StudioPage from "@/studio/StudioPage";
 import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -10,6 +11,15 @@ const BlogsPage = lazy(() => import("@/pages/blogsPage/BlogsPage"));
 const BlogPostPage = lazy(() => import("@/pages/blogsPage/BlogPostPage"));
 
 export const router = createBrowserRouter([
+  {
+    // Sanity Studio — rendered outside AppLayout so it gets a clean full-screen canvas
+    path: "/studio/*",
+    element: (
+      <Suspense fallback={<PageLoader />}>
+        <StudioPage />
+      </Suspense>
+    ),
+  },
   {
     path: "/",
     errorElement: <PageNotFound type="404" />,
