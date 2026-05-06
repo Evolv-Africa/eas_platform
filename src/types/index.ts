@@ -6,8 +6,5 @@ export type BlogPost = {
   slug: string;
 };
 
-export type NavItem = {
-  id: number;
-  label: string;
-  path: string;
-};
+export * from "./header";
+export * from "./sanity";
