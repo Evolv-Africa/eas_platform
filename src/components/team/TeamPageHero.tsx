@@ -16,7 +16,7 @@ const TeamPageHero: FC = () => {
             <div className="h-[2px] bg-[#00081d] flex-1 max-w-[120px] md:max-w-[200px] mt-2"></div>
           </div>
 
-          <p className="font-poppins text-gray-500 mt-6 max-w-sm text-sm md:text-base leading-relaxed">
+          <p className="font-poppins text-gray-600 mt-6 max-w-sm text-sm md:text-xl leading-7">
             A community doesn't build itself. These are the people working
             behind the scenes to create spaces where ideas grow and connections
             matter.

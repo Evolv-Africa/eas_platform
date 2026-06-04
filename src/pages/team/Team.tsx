@@ -1,11 +1,13 @@
-import { TeamPageHero } from "@/components/team";
+import { HowWeWork, TeamPageHero } from "@/components/team";
+import OurPeople from "@/components/team/OurPeople";
 import { FC } from "react";
 
 const Team: FC = () => {
   return (
     <>
       <TeamPageHero />
-      <div></div>
+      <HowWeWork />
+      <OurPeople />
     </>
   );
 };
