@@ -1,7 +1,7 @@
 import { Badge, Button, BlogCard } from "@/components/core";
-import blogImg1 from "@/assets/Images/blog-1.png";
-import blogImg2 from "@/assets/Images/blog-2.png";
-import blogImg3 from "@/assets/Images/blog-3.png";
+import blogImg1 from "@/assets/images/blog-1.png";
+import blogImg2 from "@/assets/images/blog-2.png";
+import blogImg3 from "@/assets/images/blog-3.png";
 
 const posts = [
   {

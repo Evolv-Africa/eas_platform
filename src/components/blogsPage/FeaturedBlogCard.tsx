@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { Link } from "react-router-dom";
 import type { BlogPost } from "@/types";
-import blogHeroImage from "@/assets/Images/blog-hero-image.png";
+import blogHeroImage from "@/assets/images/blog-hero-image.png";
 
 type FeaturedBlogCardProps = {
   post: BlogPost;

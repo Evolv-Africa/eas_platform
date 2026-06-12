@@ -1,4 +1,4 @@
-import comingSoonImage from "@/assets/Images/coming-1.png";
+import comingSoonImage from "@/assets/images/coming-1.png";
 import { Button } from "@/components/core";
 
 interface ComingSoonEvent {

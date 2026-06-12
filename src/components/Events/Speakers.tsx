@@ -1,6 +1,6 @@
 import { useState } from "react";
-import speaker1 from "@/assets/Images/speaker-2.png";
-import speaker2 from "@/assets/Images/speaker-3.png";
+import speaker1 from "@/assets/images/speaker-2.png";
+import speaker2 from "@/assets/images/speaker-3.png";
 import { Badge } from "@/components/core";
 
 interface Speaker {
