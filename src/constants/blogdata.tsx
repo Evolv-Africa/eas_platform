@@ -1,8 +1,8 @@
 import type { BlogPost } from "@/types";
-import blog1 from "@/assets/Images/blog-1.png";
-import blog2 from "@/assets/Images/blog-2.png";
-import blog3 from "@/assets/Images/blog-3.png";
-import coming1 from "@/assets/Images/coming-1.png";
+import blog1 from "@/assets/images/blog-1.png";
+import blog2 from "@/assets/images/blog-2.png";
+import blog3 from "@/assets/images/blog-3.png";
+import coming1 from "@/assets/images/coming-1.png";
 
 export const blogPosts: BlogPost[] = [
   {

@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import { Link, useParams } from "react-router-dom";
-import blogHeroImage from "../../assets/Images/blog-hero-image.png";
+import blogHeroImage from "../../assets/images/blog-hero-image.png";
 import { blogPosts } from "@/constants/blogdata";
 
 type Section = {
