@@ -2,17 +2,18 @@ import { Person } from "@/types";
 import { AnimatePresence, motion } from "motion/react";
 import { FC } from "react";
 
-const PeopleImage: FC<{
+type PeopleImageProps = {
   activePerson: Person;
-}> = ({ activePerson }) => {
+};
+
+const PeopleImage: FC<PeopleImageProps> = ({ activePerson }) => {
   return (
-    <div className="relative w-full aspect-4/5 rounded-3xl overflow-hidden bg-[#0A3D91] shadow-xl">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-40 pointer-events-none">
+    <div className="relative aspect-4/5 w-full overflow-hidden rounded-3xl bg-[#0A3D91] shadow-xl">
+      <div className="pointer-events-none absolute inset-0 opacity-40">
         <svg
           viewBox="0 0 200 200"
           xmlns="http://www.w3.org/2000/svg"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] fill-none stroke-[#002663]"
+          className="absolute top-1/2 left-1/2 h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2 fill-none stroke-[#002663]"
           strokeWidth="15"
         >
           <circle cx="100" cy="100" r="40" />
@@ -23,7 +24,7 @@ const PeopleImage: FC<{
         <svg
           viewBox="0 0 200 200"
           xmlns="http://www.w3.org/2000/svg"
-          className="absolute top-[-30%] left-[-20%] w-[120%] h-[120%] fill-none stroke-[#002663]"
+          className="absolute top-[-30%] left-[-20%] h-[120%] w-[120%] fill-none stroke-[#002663]"
           strokeWidth="15"
         >
           <circle cx="100" cy="100" r="50" />
@@ -31,18 +32,17 @@ const PeopleImage: FC<{
         </svg>
       </div>
 
-      {/* Active Image with Transition */}
       <AnimatePresence mode="wait">
         {activePerson && (
           <motion.img
             key={activePerson.id}
             src={activePerson.image}
             alt={activePerson.name}
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.05 }}
+            exit={{ opacity: 0, scale: 1.02 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="absolute bottom-0 left-0 w-full h-full object-cover object-bottom"
+            className="absolute bottom-0 left-0 z-10 h-full w-full object-contain object-bottom"
           />
         )}
       </AnimatePresence>
