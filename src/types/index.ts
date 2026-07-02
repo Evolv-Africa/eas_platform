@@ -8,4 +8,5 @@ export type BlogPost = {
 
 export * from "./header";
 export * from "./sanity";
+export * from "./speakers";
 export * from "./team";
