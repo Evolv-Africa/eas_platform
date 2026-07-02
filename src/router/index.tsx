@@ -6,7 +6,8 @@ import { createBrowserRouter } from "react-router-dom";
 
 const Home = lazy(() => import("@/pages/home/Home"));
 const AboutUs = lazy(() => import("@/pages/aboutUs/AboutUs"));
-const TeamPage = lazy(() => import("@/pages/team/Team"));
+const Events = lazy(() => import("@/pages/events/Events"));
+const Team = lazy(() => import("@/pages/team/Team"));
 const BlogsPage = lazy(() => import("@/pages/blogsPage/BlogsPage"));
 const BlogPostPage = lazy(() => import("@/pages/blogsPage/BlogPostPage"));
 
@@ -31,22 +32,31 @@ export const router = createBrowserRouter([
       </ErrorBoundary>
     ),
     children: [
-      { index: true, element: <Home /> },
-      { path: "about-us", element: <AboutUs /> },
-      { path: "team", element: <TeamPage /> },
-      { path: "blogs", element: <BlogsPage /> },
-      { path: "blogs/:slug", element: <BlogPostPage /> },
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "about-us",
+        element: <AboutUs />,
+      },
+      {
+        path: "events",
+        element: <Events />,
+      },
+      {
+        path: "team",
+        element: <Team />,
+      },
+      {
+        path: "blogs",
+        element: <BlogsPage />,
+      },
+      {
+        path: "blogs/:slug",
+        element: <BlogPostPage />,
+      },
     ],
-  },
-  {
-    path: "/blogs/:slug",
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<PageLoader />}>
-          <BlogPostPage />
-        </Suspense>
-      </ErrorBoundary>
-    ),
   },
   { path: "*", element: <PageNotFound type="404" /> },
 ]);
