@@ -1,1 +1,1 @@
-export type IconNames = 'ArrowDown2' | 'ArrowLeft2' | 'ArrowRight2' | 'ArrowUp2' | 'AtSign' | 'CaretLeft' | 'Facebook' | 'Github' | 'Home' | 'Instagram' | 'Logo' | 'WarningOctagonFill' | 'X';
+export type IconNames = 'AppleMusic' | 'ArrowDown2' | 'ArrowLeft2' | 'ArrowRight2' | 'ArrowUp2' | 'AtSign' | 'Behance' | 'CaretLeft' | 'Facebook' | 'Github' | 'Home' | 'Instagram' | 'Linkedin' | 'Logo' | 'TwitterSquare' | 'WarningOctagonFill' | 'X';
