@@ -5,11 +5,12 @@ import { Outlet } from "react-router-dom";
 
 export const AppLayout: FC = () => {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col relative">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[150px] top-header-gradient blur-[354px] rounded-full pointer-events-none z-0" />
       <Navbar />
-       <main className="flex-1 pt-[88px]">
-          <Outlet />
-       </main>
+      <main className="flex-1 pt-[88px]">
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );

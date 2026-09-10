@@ -15,7 +15,7 @@ const WhoWeAre: React.FC<WhoWeAreProps> = ({ className = "" }) => {
       <div className="mx-auto max-w-320 flex flex-col lg:flex-row items-center gap-12">
         <div className="w-full lg:w-1/2 flex flex-col gap-6 items-start">
           <Badge>Who We Are</Badge>
-          <h2 className="font-neue-machina font-extrabold text-3xl md:text-5xl leading-tight text-semantic-text-primary">
+          <h2 className="font-neue-machina font-extrabold text-3xl md:text-5xl lg:text-[64px] leading-tight text-semantic-text-primary">
             Our Story
           </h2>
           <p className="font-poppins text-base md:text-xl leading-7 text-semantic-text-secondary">

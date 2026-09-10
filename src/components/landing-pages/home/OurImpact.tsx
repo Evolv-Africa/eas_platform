@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { Button } from "../core";
 import { OurImpactData } from "./constants";
-import { ExpandingCard } from "../animations";
+import { Button } from "@/components/core";
+import { ExpandingCard } from "@/components/animations";
 
 const OurImpact: FC = () => {
   return (

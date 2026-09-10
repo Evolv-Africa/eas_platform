@@ -1,7 +1,9 @@
 import { Icon } from "@/components/core";
-import { IconNames } from "@/components/core/icon/types";
 import type { FC } from "react";
 import { Link } from "react-router-dom";
+import { FaGithub, FaXTwitter } from "react-icons/fa6";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import type { IconType } from "react-icons";
 
 type FooterLink = {
   label: string;
@@ -12,7 +14,7 @@ type FooterLink = {
 type SocialLink = {
   label: string;
   href: string;
-  icon: IconNames;
+  icon: IconType;
 };
 
 const companyLinks: FooterLink[] = [
@@ -32,23 +34,23 @@ const helpLinks: FooterLink[] = [
 ];
 
 const socialLinks: SocialLink[] = [
-  { label: "X", href: "https://x.com", icon: "X" },
+  { label: "X", href: "https://x.com", icon: FaXTwitter },
   {
     label: "Facebook",
     href: "https://facebook.com",
-    icon: "Facebook",
+    icon: FaFacebookF,
   },
   {
     label: "Instagram",
     href: "https://instagram.com",
-    icon: "Instagram",
+    icon: FaInstagram,
   },
-  { label: "GitHub", href: "https://github.com", icon: "Github" },
+  { label: "GitHub", href: "https://github.com", icon: FaGithub },
 ];
 
 const FooterNavLink: FC<{ item: FooterLink }> = ({ item }) => {
   const className =
-    "text-sm text-gray-600 transition-colors duration-200 hover:text-white font-poppins";
+    "text-sm text-[#AEAEAE] transition-colors duration-200 hover:text-white font-poppins";
 
   if (item.isExternal || !item.href.startsWith("/")) {
     return (
@@ -72,7 +74,7 @@ const FooterNavLink: FC<{ item: FooterLink }> = ({ item }) => {
 };
 
 const SocialButton: FC<{ item: SocialLink }> = ({ item }) => {
-  const { icon } = item;
+  const { icon: Icon } = item;
 
   return (
     <a
@@ -80,9 +82,9 @@ const SocialButton: FC<{ item: SocialLink }> = ({ item }) => {
       target="_blank"
       rel="noreferrer"
       aria-label={item.label}
-      className="flex h-11 w-11 items-center justify-center rounded-full border border-blue-400/25 bg-white/8 text-blue-300 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-300/70 hover:bg-white/12 hover:text-white"
+      className="flex h-11 w-11 items-center justify-center rounded-full bg-[#001242] text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#3757CB] cursor-pointer"
     >
-      <Icon name={icon} className="h-4.5 w-4.5" />
+      <Icon size={18} />
     </a>
   );
 };

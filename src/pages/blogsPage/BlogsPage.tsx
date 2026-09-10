@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
-import { BlogCard } from "@/components/blogsPage/BlogCard";
-import { FeaturedBlogCard } from "@/components/blogsPage/FeaturedBlogCard";
-import { Pagination } from "@/components/blogsPage/Pagination";
+import { BlogCard } from "@/components/landing-pages/blogsPage/BlogCard";
+import { FeaturedBlogCard } from "@/components/landing-pages/blogsPage/FeaturedBlogCard";
+import { Pagination } from "@/components/landing-pages/blogsPage/Pagination";
 import { blogPosts } from "@/constants/blogdata";
 import type { BlogPost } from "@/types";
 

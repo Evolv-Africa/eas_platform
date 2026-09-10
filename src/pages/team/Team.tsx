@@ -1,4 +1,4 @@
-import { HowWeWork, OurPeople, TeamPageHero } from "@/components/team";
+import { HowWeWork, OurPeople, TeamPageHero } from "@/components/landing-pages/team";
 import { FC } from "react";
 
 const Team: FC = () => {

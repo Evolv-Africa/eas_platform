@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { Avatar } from "../core";
 import { Testimonial } from "./constants";
+import { Avatar } from "@/components/core";
 
 const TestimonialCard: FC<{ testimonial: Testimonial }> = ({ testimonial }) => (
   <div className="rounded-xl bg-white p-6 space-y-4 w-full">
