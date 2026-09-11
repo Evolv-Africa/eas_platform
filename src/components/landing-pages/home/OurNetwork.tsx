@@ -1,9 +1,9 @@
 import { FC } from "react";
-import Marquee from "../animations/marquee/Marquee";
-import { Button } from "../core";
 import TestimonialCard from "./TestimonialCard";
 import { leftTestimonials, rightTestimonials } from "./constants";
-import { MouseRevealText } from "../animations";
+import { Button } from "@/components/core";
+import Marquee from "@/components/animations/marquee/Marquee";
+import { MouseRevealText } from "@/components/animations";
 
 const OurNetwork: FC = () => {
   return (

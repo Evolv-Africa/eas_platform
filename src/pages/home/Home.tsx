@@ -1,12 +1,11 @@
 import { FC } from "react";
 import {
-  Blogs,
-  Hero,
+  Hero, Blogs,
   OurImpact,
   OurNetwork,
   WhatWeDo,
   WhoWeAre,
-} from "@/components/home";
+} from "@/components/landing-pages/home";
 
 const Home: FC = () => {
   return (

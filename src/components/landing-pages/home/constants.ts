@@ -42,6 +42,36 @@ export const OurImpactData: CardData[] = [
       "Curated experiences designed to foster collaboration, learning, and high-impact networking.",
   },
 ];
+export interface JourneyCardData extends CardData {
+  tag: string;
+}
+
+export const AboutJourneyData: JourneyCardData[] = [
+  {
+    id: 1,
+    count: "01",
+    title: "Where It All Began",
+    description:
+      "The story began with LinkedIn Local Nigeria — a community-driven initiative created to bring online professional connections into real-world conversations.\n\nInstead of just networking through screens, the goal was simple: create spaces where people could meet face-to-face, exchange ideas, and build genuine professional relationships. What started as small gatherings quickly became something much bigger.",
+    tag: "Origin",
+  },
+  {
+    id: 2,
+    count: "02",
+    title: "A Bigger Possibility",
+    description:
+      "As the community grew, it became clear that people were looking for more than networking. They wanted collaboration, learning, mentorship, and opportunities to grow together.\n\nThe vision expanded from hosting meetups to creating a platform that supports emerging professionals, innovators, and leaders across industries — people who are building careers, companies, and ideas that shape the future of Africa.",
+    tag: "Vision",
+  },
+  {
+    id: 3,
+    count: "03",
+    title: "From LLN to Evolve Africa",
+    description:
+      "What began as LinkedIn Local Nigeria has now evolved into Evolv Africa Summit — a broader platform designed to bring together bold thinkers, emerging leaders, and organizations working to move the continent forward.\n\nThe evolution reflects the community itself: growing, ambitious, and ready for bigger conversations, stronger collaborations, and greater impact.",
+    tag: "Evolution",
+  },
+];
 
 export const leftTestimonials: Testimonial[] = [
   {

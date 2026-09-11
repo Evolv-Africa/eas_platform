@@ -6,9 +6,9 @@ import TokoLogo from "@/assets/images/tokopedia.png";
 import UpworkLogo from "@/assets/images/upwork.png";
 import { motion, useScroll, useTransform } from "motion/react";
 import { FC, useRef } from "react";
-import { VerticalSlider } from "../animations";
-import Marquee from "../animations/marquee/Marquee";
 import { useMediaQuery } from "@/hooks";
+import { VerticalSlider } from "@/components/animations";
+import Marquee from "@/components/animations/marquee/Marquee";
 
 const Hero: FC<{ title?: string; description?: string; image?: string; children?: React.ReactNode }> = ({
   title = "Empowering Africa's next generation of",

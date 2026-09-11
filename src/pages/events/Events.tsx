@@ -1,7 +1,7 @@
-import { Hero } from "@/components/home";
+import { Hero } from "@/components/landing-pages/home";
 import eventImage from "@/assets/images/evolv_25.webp";
 import { Button, Badge } from "@/components/core";
-import { EventSchedule, ComingSoon, Speakers } from "@/components/Events";
+import { EventSchedule, ComingSoon, Speakers } from "@/components/landing-pages/Events";
 
 const Events: React.FC = () => {
   return (

@@ -6,15 +6,13 @@ interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 
 export const Badge: React.FC<BadgeProps> = ({ children, ...props }) => {
   return (
+    <span className="w-fit p-0.25 generic-border-gradient rounded-full">
     <span
-      className="w-fit rounded-full px-10 py-2 text-sm font-medium inline-block"
-      style={{
-        border: "1.5px solid #1D44B8",
-        color: "#1D44B8",
-      }}
+      className="w-fit rounded-full px-10 py-2 text-sm font-medium inline-block bg-white text-[#003CA0]"
       {...props}
     >
       {children}
+    </span>
     </span>
   );
 };

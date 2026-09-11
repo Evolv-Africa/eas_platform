@@ -54,7 +54,7 @@ export const Heading: React.FC<HeadingProps> = ({
     Component,
     {
       className: [
-        "font-geist",
+        "font-poppins",
         VARIANT_MAP[variant],
         WEIGHT_MAP[weight],
         TONE_MAP[tone],
