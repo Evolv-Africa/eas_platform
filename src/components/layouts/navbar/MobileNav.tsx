@@ -4,6 +4,7 @@ import { type FC, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import type { Variants } from "motion/react";
 import { Link, useLocation } from "react-router-dom";
+import { HiOutlineMenuAlt3, HiOutlineX } from "react-icons/hi";
 
 const HamburgerButton: FC<{ isOpen: boolean; toggle: () => void }> = ({
   isOpen,
@@ -11,25 +12,15 @@ const HamburgerButton: FC<{ isOpen: boolean; toggle: () => void }> = ({
 }) => (
   <button
     onClick={toggle}
-    className="relative z-60 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
+    className="relative z-60 flex h-10 w-10 items-center justify-center lg:hidden focus:outline-none"
     aria-label={isOpen ? "Close menu" : "Open menu"}
     aria-expanded={isOpen}
   >
-    <motion.span
-      className={`block h-0.5 w-6 rounded-full ${isOpen ? "bg-white" : "bg-[#00081D]"} lg:bg-white`}
-      animate={isOpen ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
-    />
-    <motion.span
-      className={`block h-0.5 w-6 rounded-full ${isOpen ? "bg-white" : "bg-[#00081D]"} lg:bg-white`}
-      animate={isOpen ? { opacity: 0, x: -8 } : { opacity: 1, x: 0 }}
-      transition={{ duration: 0.2, ease: "easeInOut" }}
-    />
-    <motion.span
-      className={`block h-0.5 w-6 rounded-full ${isOpen ? "bg-white" : "bg-[#00081D]"} lg:bg-white`}
-      animate={isOpen ? { rotate: -45, y: -4 } : { rotate: 0, y: 0 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
-    />
+    {isOpen ? (
+      <HiOutlineX className="w-7 h-7 text-white" />
+    ) : (
+      <HiOutlineMenuAlt3 className="w-7 h-7 text-[#00081D]" />
+    )}
   </button>
 );
 
