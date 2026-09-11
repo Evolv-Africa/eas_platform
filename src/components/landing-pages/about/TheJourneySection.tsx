@@ -5,7 +5,7 @@ import { ExpandingCard } from "@/components/animations";
 const TheJourneySection = () => {
     return (
         <div
-            className={`relative px-5 md:py-32 lg:py-50`}
+            className={`relative px-5 py-12 md:py-32 lg:py-50`}
         >
             <div className="mx-auto max-w-320 flex flex-col lg:flex-row items-start gap-12">
                 <div className="w-full lg:w-1/2 flex flex-col gap-6 items-start lg:sticky lg:top-28">

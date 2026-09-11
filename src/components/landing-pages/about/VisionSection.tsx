@@ -6,7 +6,7 @@ import wavyBackground from "@/assets/Images/about-journey-bg.svg"
 const TheVisionSection = () => {
     return (
         <div
-            className={`relative px-5 md:py-20 bg-semantic-bg-surface`}
+            className={`relative bg-semantic-bg-surface px-5 py-12 md:py-20`}
         >
             <div className="mx-auto max-w-320 flex flex-col lg:flex-row items-start gap-12">
                 <div className="w-full lg:w-1/2 flex flex-col gap-6 items-start lg:sticky lg:top-28">
@@ -27,7 +27,7 @@ const TheVisionSection = () => {
                         </div>
                     </div>
                 </div>
-                <div className="relative lg:w-1/2 min-h-117 overflow-hidden rounded-3xl bg-blue-900">
+                <div className="relative hidden min-h-117 overflow-hidden rounded-3xl bg-blue-900 lg:block lg:w-1/2">
                     <img
                         src={blogHeroImage}
                         alt={"Vision"}
@@ -39,12 +39,12 @@ const TheVisionSection = () => {
                 </div>
             </div>
 
-            <div className="mx-auto max-w-320 mt-16 lg:mt-24">
+            <div className="mx-auto mt-8 max-w-320 lg:mt-24">
                 <div className="relative">
                     <div
                         className="impact-notch relative rounded-3xl bg-[#00081D] px-4 py-12 md:px-6 md:py-10 lg:pr-[42%]"
                     >
-                        <img src={wavyBackground} alt="" className="absolute inset-0 w-full object-cover object-center"
+                        <img src={wavyBackground} alt="" className="absolute inset-0 h-full md:w-full object-cover object-center"
                             onError={(e) => {
                                 e.currentTarget.style.display = "none";
                             }}
@@ -101,14 +101,6 @@ const TheVisionSection = () => {
                     </div>
                 </div>
 
-                <div className="lg:hidden w-full h-64 rounded-2xl overflow-hidden shadow-xl mt-6">
-                    <img
-                        src={blogHeroImage}
-                        alt="Evolv Africa Summit event"
-                        className="w-full h-full object-cover object-center"
-                        onError={(e) => { e.currentTarget.style.display = "none"; }}
-                    />
-                </div>
             </div>
         </div >
     )

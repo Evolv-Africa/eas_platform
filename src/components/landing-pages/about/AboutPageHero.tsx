@@ -5,7 +5,16 @@ const AboutPageHeroSection = () => {
     return (
         <div className="w-full px-5 py-10 md:py-20 lg:py-32">
             <div className="mx-auto flex max-w-320 w-full flex-col gap-8">
-                <div className="w-full lg:w-1/2">
+                <div className="flex flex-col gap-4 lg:hidden">
+                    <h1 className="font-neue-machina text-4xl font-extrabold leading-[1.05] tracking-tight text-[#00081d] sm:text-5xl">
+                        We are building the future of Africa Collaboration.
+                    </h1>
+                    <p className="font-poppins text-base leading-7 text-gray-600">
+                        Evolv Africa, Formerly Known as LinkedIn Local Nigeria. A community built on the belief that meaningful conversations can change trajectories.
+                    </p>
+                </div>
+
+                <div className="hidden w-full lg:block lg:w-1/2">
                     <h1 className="font-neue-machina text-4xl font-extrabold leading-[1.05] tracking-tight text-[#00081d] sm:text-5xl md:text-6xl lg:text-7xl">
                         We Are Building
                     </h1>
@@ -28,7 +37,7 @@ const AboutPageHeroSection = () => {
                     />
                 </div>
                 </div>
-                <div className="w-full flex items-end justify-between">
+                <div className="hidden w-full items-end justify-between lg:flex">
                     <p className="mt-6 w-full font-poppins font-regular text-[20px] leading-7 text-gray-600 md:max-w-md md:text-xl md:leading-8 max-w-105">
                         Evolv Africa, Formerly Known as LinkedIn Local Nigeria. A community built on the belief that meaningful conversations can change trajectories.
                     </p>

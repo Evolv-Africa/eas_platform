@@ -181,14 +181,18 @@ input[button] {
   --notch-h: 235px;
   /* height of the cut, from the bottom edge */
 
-  clip-path: polygon(round 20px,
-      /* Adds a 20px radius to every single point below */
-      0 0,
-      100% 0,
-      100% calc(100% - var(--notch-h)),
-      calc(100% - var(--notch-w)) calc(100% - var(--notch-h)),
-      calc(100% - var(--notch-w)) 100%,
-      0 100%);
+}
+
+@media (min-width: 1024px) {
+  .impact-notch {
+    clip-path: polygon(round 20px,
+        0 0,
+        100% 0,
+        100% calc(100% - var(--notch-h)),
+        calc(100% - var(--notch-w)) calc(100% - var(--notch-h)),
+        calc(100% - var(--notch-w)) 100%,
+        0 100%);
+  }
 }
 
 /* Gallery tile — notch cut from the bottom-right corner */
