@@ -61,7 +61,7 @@ export const Text: React.FC<TextProps> = ({
     as,
     {
       className: [
-        "font-geist",
+        "font-poppins",
         VARIANT_MAP[variant],
         WEIGHT_MAP[weight],
         TONE_MAP[tone],
