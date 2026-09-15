@@ -11,9 +11,9 @@ export const BlogCard: FC<BlogCardProps> = ({ post }) => {
     <article className="group flex flex-col overflow-hidden rounded-2xl bg-white border border-gray-100 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
       <div className="h-48 overflow-hidden bg-blue-900">
         <img
-          src={post.coverImage}
+          src={post.img ?? post.coverImage}
           alt={post.title}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-50"
           onError={(e) => {
             e.currentTarget.style.display = "none";
           }}

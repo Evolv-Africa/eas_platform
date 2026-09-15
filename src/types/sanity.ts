@@ -54,6 +54,7 @@ export interface SanityBlogPost extends SanityDocument {
   slug?: string;
   category: string;
   seoMetadata?: SanitySeoMetadata;
+  img?: string;
   body: Array<Record<string, unknown>>;
 }
 

@@ -61,6 +61,7 @@ const blogPostProjection = `{
   "slug": slug.current,
   category,
   seoMetadata,
+  "img": img.asset->url,
   "body": coalesce(body[], [])
 }`;
 
