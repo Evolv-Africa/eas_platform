@@ -1,10 +1,9 @@
 import TheJourneySection from "@/components/landing-pages/about/TheJourneySection";
 import TheVisionSection from "@/components/landing-pages/about/VisionSection";
 import ImageGallerySection from "@/components/landing-pages/about/ImageGallerySection";
-import { FC } from "react";
-import AboutPageHeroSection from "@/components/landing-pages/about/aboutPageHero";
+import AboutPageHeroSection from "@/components/landing-pages/about/AboutPageHero";
 
-const AboutUs: FC = () => {
+const AboutUs = () => {
   return (
     <>
       <AboutPageHeroSection />

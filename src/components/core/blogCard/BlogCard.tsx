@@ -2,8 +2,10 @@ import { BlogPost } from "@/types/blogs";
 import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 
-export const BlogCard: FC<BlogPost> = ({ body, hoverBody, img, title }) => {
+export const BlogCard: FC<BlogPost> = ({ body, hoverBody, img, title, excerpt }) => {
   const [hovered, setHovered] = useState<boolean>(false);
+  const description = typeof body === "string" ? body : excerpt ?? "Latest article";
+  const hoverDescription = typeof hoverBody === "string" ? hoverBody : description;
 
   return (
     <div
@@ -24,12 +26,12 @@ export const BlogCard: FC<BlogPost> = ({ body, hoverBody, img, title }) => {
           <p
             className={`absolute inset-0 font-poppins text-sm leading-6 text-semantic-text-secondary transition-all duration-300 ${hovered ? "opacity-0 -translate-y-2" : "opacity-100 translate-y-0"}`}
           >
-            {body}
+            {description}
           </p>
           <p
             className={`absolute inset-0 font-poppins text-sm leading-6 text-semantic-text-secondary transition-all duration-300 ${hovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}
           >
-            {hoverBody}
+            {hoverDescription}
           </p>
         </div>
 

@@ -1,9 +1,20 @@
-import type { SanityBlogPost } from "./sanity";
-
-export interface BlogPost extends SanityBlogPost {
+export interface BlogPost {
   id?: string;
-  excerpt?: string;
+  _id?: string;
+  _createdAt?: string;
+  _updatedAt?: string;
+  title: string;
+  slug?: string;
+  category?: string;
+  seoMetadata?: {
+    metaTitle?: string;
+    metaDescription?: string;
+  };
+  img?: string;
   coverImage?: string;
+  excerpt?: string;
+  body?: string | Array<Record<string, unknown>>;
+  hoverBody?: string;
 }
 
 export interface BlogCardProps {
