@@ -8,22 +8,16 @@ const posts = [
     img: blogImg1,
     title: "Say Hello to Evolv Africa",
     body: "Evolv Africa Summit brings together professionals, innovators, and changemakers to collaborate, learn, and grow.",
-    hoverBody:
-      "Evolv Africa Summit brings together professionals, innovators, and changemakers to collaborate, learn, and grow. We create spaces for meaningful professional connections across industries.",
   },
   {
     img: blogImg2,
     title: "Empowering the Next Generation",
     body: "The summit nurtures emerging leaders and innovators across Africa.",
-    hoverBody:
-      "The summit nurtures emerging leaders and innovators across Africa. By connecting young professionals with mentors, peers, and thought leaders, we help turn bold ideas into actionable impact.",
   },
   {
     img: blogImg3,
     title: "Building Impactful Communities",
     body: "Evolv Africa Summit fosters collaboration and knowledge sharing across sectors.",
-    hoverBody:
-      "Evolv Africa Summit fosters collaboration and knowledge sharing across sectors. Members gain access to networks, resources, and insights that empower them to make a real difference.",
   },
 ];
 

@@ -14,7 +14,6 @@ export interface BlogPost {
   coverImage?: string;
   excerpt?: string;
   body?: string | Array<Record<string, unknown>>;
-  hoverBody?: string;
 }
 
 export interface BlogCardProps {
