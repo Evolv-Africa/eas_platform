@@ -21,7 +21,7 @@ const Blogs: FC<{ className?: string }> = ({ className = "" }) => {
         } else {
           setPosts([]);
         }
-      } catch (error) {
+      } catch {
         // console.error("Failed to load blog posts from Sanity:", error);
         if (isMounted) setPosts([]);
       }
