@@ -3,7 +3,6 @@ import { Badge, Button, BlogCard } from "@/components/core";
 import { getBlogPosts } from "@/services/sanity/queries";
 import type { BlogPost } from "@/types";
 import { mapSanityPostToCard } from "@/pages/blogsPage/BlogsPage";
-import { HiOutlineDocumentText } from "react-icons/hi2";
 
 
 const DISPLAY_COUNT = 3;
@@ -23,7 +22,7 @@ const Blogs: FC<{ className?: string }> = ({ className = "" }) => {
           setPosts([]);
         }
       } catch (error) {
-        console.error("Failed to load blog posts from Sanity:", error);
+        // console.error("Failed to load blog posts from Sanity:", error);
         if (isMounted) setPosts([]);
       }
     };

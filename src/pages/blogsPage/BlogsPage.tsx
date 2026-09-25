@@ -57,7 +57,7 @@ const BlogsPage: FC = () => {
 
         setPosts([]);
       } catch (error) {
-        console.error("Failed to load blog posts from Sanity:", error);
+        // console.error("Failed to load blog posts from Sanity:", error);
 
         if (isMounted) {
           setPosts([]);
