@@ -8,7 +8,7 @@ import type { BlogPost, SanityBlogPost } from "@/types";
 
 const POSTS_PER_PAGE = 12;
 
-const buildExcerptFromBody = (body: Array<Record<string, unknown>> | undefined) => {
+export const buildExcerptFromBody = (body: Array<Record<string, unknown>> | undefined) => {
   if (!Array.isArray(body)) return "Insights from this story.";
 
   const text = body
@@ -25,7 +25,7 @@ const buildExcerptFromBody = (body: Array<Record<string, unknown>> | undefined) 
   return text || "Insights from this story.";
 };
 
-const mapSanityPostToCard = (post: SanityBlogPost): BlogPost => ({
+export const mapSanityPostToCard = (post: SanityBlogPost): BlogPost => ({
   id: post._id,
   title: post.title,
   excerpt: buildExcerptFromBody(post.body),

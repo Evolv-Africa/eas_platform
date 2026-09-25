@@ -16,11 +16,12 @@ const Events: React.FC = () => {
             <Button
               variant="primary"
               size="medium"
-              style={{ padding: "13px 50px", fontSize: "15px" }}
+              className="py-3! px-8 text-[15px] h-12"
             >
               Get Tickets
             </Button>
-            <Badge className="font-poppins text-sm font-medium px-8 py-3 rounded-md">
+
+            <Badge parentClassName="rounded-md!" className="font-poppins text-sm font-medium px-8 py-3 rounded-md cursor-pointer">
               Sign Up to Email List
             </Badge>
           </div>
