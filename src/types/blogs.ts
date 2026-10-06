@@ -1,8 +1,19 @@
 export interface BlogPost {
-  img: string;
+  id?: string;
+  _id?: string;
+  _createdAt?: string;
+  _updatedAt?: string;
   title: string;
-  body: string;
-  hoverBody: string;
+  slug?: string;
+  category?: string;
+  seoMetadata?: {
+    metaTitle?: string;
+    metaDescription?: string;
+  };
+  img?: string;
+  coverImage?: string;
+  excerpt?: string;
+  body?: string | Array<Record<string, unknown>>;
 }
 
 export interface BlogCardProps {

@@ -17,6 +17,15 @@ export const blogPostSchema = defineType({
       options: {source: 'title'},
     },
     {
+      name: 'img',
+      title: 'Blog Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: 'category',
       title: 'Primary Category',
       type: 'string',

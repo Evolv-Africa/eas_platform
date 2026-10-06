@@ -12,9 +12,9 @@ export const FeaturedBlogCard: FC<FeaturedBlogCardProps> = ({ post }) => {
     <article className="group grid gap-8 overflow-hidden rounded-3xl bg-white border border-gray-100 shadow-sm md:grid-cols-[1.2fr_1fr] transition-all duration-300 hover:shadow-md">
       <div className="relative min-h-64 overflow-hidden rounded-3xl bg-blue-900 md:rounded-r-none">
         <img
-          src={blogHeroImage}
+          src={post.img ?? post.coverImage ?? blogHeroImage}
           alt={post.title}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-40"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-50"
           onError={(e) => {
             e.currentTarget.style.display = "none";
           }}
@@ -23,10 +23,10 @@ export const FeaturedBlogCard: FC<FeaturedBlogCardProps> = ({ post }) => {
 
       <div className="flex flex-col justify-center p-6 md:p-8 lg:p-10">
         <span
-          className="mb-4 w-fit rounded-full px-3 py-1 text-xs font-semibold font-poppins"
+          className="mb-4 w-fit rounded-full px-3 py-1 text-xs font-semibold font-poppins capitalize"
           style={{ backgroundColor: "#EAF2FF", color: "#003CA0" }}
         >
-          Community
+          {(post.category?.split("-").join(" ")) || "Community"}
         </span>
 
         <h2 className="font-neue-machina text-2xl font-extrabold leading-tight text-blue-900 md:text-3xl">
