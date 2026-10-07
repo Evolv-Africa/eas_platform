@@ -6,6 +6,7 @@ import type {
   SanityFaq,
   SanitySpeaker,
   SanityTeamMember,
+  SanitySponsor,
 } from "@/types";
 
 const speakerProjection = `{
@@ -19,6 +20,13 @@ const speakerProjection = `{
   "socials": coalesce(socials[], []),
   "imageUrl": image.asset->url
 }`;
+const sponsorProjection = `{
+  _id,
+  name,
+  website,
+  "imageUrl": image.asset->url
+}`;
+
 
 const eventProjection = `{
   _id,
@@ -31,7 +39,29 @@ const eventProjection = `{
     quote,
     "imageUrl": mediaItem.asset->url
   }, []),
-  "sponsorsAndPartners": coalesce(sponsorsAndPartners[], [])
+  "speakers": coalesce(speakers[]{
+    firstName,
+    lastName,
+    email,
+    bio,
+    "socials": coalesce(socials[], []),
+    "imageUrl": image.asset->url
+  }, []),
+  "sponsorsAndPartners": coalesce(sponsorsAndPartners[]{
+    name,
+    website,
+    "imageUrl": image.asset->url
+  }, []),
+  "schedule": coalesce(schedule[]{
+    date,
+    dayTitle,
+    "items": coalesce(items[]{
+      time,
+      title,
+      description,
+      location
+    }, [])
+  }, [])
 }`;
 
 const faqProjection = `{
@@ -66,6 +96,7 @@ const blogPostProjection = `{
 }`;
 
 export const speakerListQuery = `*[_type == "speaker"] | order(firstName asc, lastName asc) ${speakerProjection}`;
+export const sponsorListQuery = `*[_type == "sponsor"] | order(name asc) ${sponsorProjection}`;
 
 export const eventListQuery = `*[_type == "event"] | order(_createdAt desc) ${eventProjection}`;
 
@@ -79,6 +110,9 @@ export const blogPostBySlugQuery = `*[_type == "blogPost" && slug.current == $sl
 
 export const getSpeakers = () =>
   fetchSanityQuery<SanitySpeaker[]>(speakerListQuery);
+
+export const getSponsors = () =>
+  fetchSanityQuery<SanitySponsor[]>(sponsorListQuery);
 
 export const getEvents = () => fetchSanityQuery<SanityEvent[]>(eventListQuery);
 
@@ -95,12 +129,13 @@ export const getBlogPostBySlug = (slug: string) =>
 
 export const getSanityContentCollections =
   async (): Promise<SanityContentCollections> => {
-    const [speakers, events, faqs, teamMembers, blogPosts] = await Promise.all([
+    const [speakers, events, faqs, teamMembers, blogPosts, sponsorsAndPartners] = await Promise.all([
       getSpeakers(),
       getEvents(),
       getFaqs(),
       getTeamMembers(),
       getBlogPosts(),
+      getSponsors(),
     ]);
 
     return {
@@ -109,5 +144,6 @@ export const getSanityContentCollections =
       faqs,
       teamMembers,
       blogPosts,
+      sponsorsAndPartners,
     };
   };

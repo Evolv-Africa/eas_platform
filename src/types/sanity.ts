@@ -26,10 +26,37 @@ export interface SanityEventMediaItem {
 export interface SanityEvent extends SanityDocument {
   title: string;
   eventType?: string;
+  imageUrl?: string;
   impactStorytelling: Array<Record<string, unknown>>;
   mediaAndTestimonials: SanityEventMediaItem[];
-  sponsorsAndPartners: string[];
+  speakers: SanitySpeaker[];
+  sponsorsAndPartners: SanitySponsor[];
+  schedule?: SanityScheduleDay[];
+  eventDate?: string;
+  isFeatured?: boolean;
 }
+
+export interface SanityScheduleItem {
+  _key: string;
+  time: string;
+  title: string;
+  description?: string;
+  location?: string;
+}
+
+export interface SanityScheduleDay {
+  _key: string;
+  date: string;
+  dayTitle?: string;
+  items: SanityScheduleItem[];
+}
+
+export interface SanitySponsor extends SanityDocument {
+  name: string;
+  website?: string;
+  imageUrl?: string;
+}
+
 
 export interface SanityFaq extends SanityDocument {
   question: string;
@@ -63,5 +90,6 @@ export interface SanityContentCollections {
   events: SanityEvent[];
   faqs: SanityFaq[];
   teamMembers: SanityTeamMember[];
+  sponsorsAndPartners: SanitySponsor[];
   blogPosts: SanityBlogPost[];
 }
