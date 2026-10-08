@@ -2,6 +2,7 @@ import { Hero } from "@/components/landing-pages/home";
 import eventImage from "@/assets/images/evolv_25.webp";
 import { Button, Badge } from "@/components/core";
 import { EventSchedule, ComingSoon, Speakers } from "@/components/landing-pages/Events";
+import OlutonaSection from "@/components/landing-pages/Events/OlutonaSection";
 
 const Events: React.FC = () => {
   return (
@@ -12,7 +13,7 @@ const Events: React.FC = () => {
           description="This event description goes into this box. This events description goes into this box."
           image={eventImage}
         >
-          <div className="flex items-center justify-center gap-4 mt-6 mb-20 mx-2.5">
+          <div className="flex flex-wrap items-center justify-center gap-4 mt-6 mb-20 mx-2.5">
             <Button
               variant="primary"
               size="medium"
@@ -29,6 +30,7 @@ const Events: React.FC = () => {
 
         <Speakers />
         <EventSchedule />
+        <OlutonaSection />
         <ComingSoon />
       </main>
     </div>
