@@ -1,221 +1,139 @@
+import { useEffect, useState } from "react";
 import type { FC } from "react";
 import { Link, useParams } from "react-router-dom";
-import blogHeroImage from "../../assets/images/blog-hero-image.png";
-import { blogPosts } from "@/constants/blogdata";
+import blogHeroImage from "@/assets/images/blog-hero-image.png";
+import { getBlogPostBySlug } from "@/services/sanity/queries";
+import type { BlogPost, SanityBlogPost } from "@/types";
 
-type Section = {
-  heading: string;
-  body: string[];
-};
-
-const mockContent: Record<string, { sections: Section[] }> = {
-  default: {
-    sections: [
-      {
-        heading: "Introduction",
-        body: [
-          "Communities often start with something simple - a shared curiosity, a conversation, or the desire to connect with people who see the world a little differently.",
-          "Evolv Africa began in much the same way.",
-          "What started as LinkedIn Local Nigeria, a gathering space for professionals who wanted to move beyond online interactions and meet in real life, has grown into something much bigger than we ever imagined.",
-          "And now, we're entering a new chapter.",
-        ],
-      },
-      {
-        heading: "Where It All Started",
-        body: [
-          "Several years ago, professionals across Nigeria began participating in LinkedIn Local meetups - events designed to bring LinkedIn connections offline and into real conversations.",
-          "The idea was simple.",
-          "Instead of just liking posts and exchanging comments online, people could meet face-to-face, share stories, build friendships, and form meaningful professional relationships.",
-          "What happened next was powerful.",
-          "People showed up.",
-          "Not just once, but again and again.",
-          "Entrepreneurs met collaborators.\nYoung professionals found mentors.\nIdeas turned into projects.",
-          "A community had begun to form.",
-          "From LinkedIn Local Nigeria to Something Bigger",
-          "Over time, the community started to grow beyond the original format.",
-          "The conversations became bigger.\nThe opportunities became more diverse.\nThe vision expanded.",
-          "LinkedIn Local Nigeria had created something meaningful, but the community was ready for a broader identity - one that reflected the evolving ambitions of the people within it.",
-          "That's where Evolv Africa was born.",
-          'Why "Evolv Africa"',
-          "The name reflects a simple belief.",
-          "Growth is constant.",
-          "Professionals evolve.\nIndustries evolve.\nCommunities evolve.",
-          "Evolv Africa represents a platform where people across different industries and backgrounds can come together to connect, learn, collaborate, and grow.",
-          "It's about building a space where ideas move freely and opportunities emerge naturally.",
-        ],
-      },
-      {
-        heading: "A Community Built on Connection",
-        body: [
-          "At its core, Evolv Africa is still about the same thing that sparked the original gatherings:",
-          "People.",
-          "People who are curious.\nPeople who are building.\nPeople who believe that collaboration is stronger than competition.",
-          "Through events, conversations, partnerships, and shared experiences, the community continues to grow in ways that are both exciting and unpredictable.",
-        ],
-      },
-      {
-        heading: "Looking Ahead",
-        body: [
-          "The future of Evolv Africa is not just about hosting events or creating professional spaces.",
-          "It's about building a network where:",
-          "Ideas are exchanged openly.\nPartnerships form naturally.\nAnd individuals find the support they need to grow.",
-          "As the community expands across industries and across the continent, the mission remains simple:",
-          "Create spaces where people can connect meaningfully and build the future together.",
-        ],
-      },
-      {
-        heading: "Join the Journey",
-        body: [
-          "If you believe in the power of community, collaboration, and growth, you're already part of the story.",
-          "And the best part?",
-          "We're just getting started.",
-        ],
-      },
-    ],
-  },
-};
-function getContent(slug: string) {
-  return mockContent[slug] ?? mockContent["default"];
-}
+const mapSanityPostToBlog = (post: SanityBlogPost): BlogPost => ({
+  id: post._id,
+  _id: post._id,
+  _createdAt: post._createdAt,
+  _updatedAt: post._updatedAt,
+  title: post.title,
+  slug: post.slug ?? post.title.toLowerCase().replace(/\s+/g, "-"),
+  category: post.category || "Community",
+  seoMetadata: post.seoMetadata,
+  img: post.img,
+  coverImage: post.img,
+  body: post.body,
+});
 
 export const BlogPostPage: FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const post = blogPosts.find((p) => p.slug === slug) ?? blogPosts[0];
-  const content = getContent(post.slug);
+  const [post, setPost] = useState<BlogPost | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  return (
-    <div style={{ fontFamily: "'Poppins', sans-serif", backgroundColor: "#fff" }}>
+  useEffect(() => {
+    if (!slug) {
+      setLoading(false);
+      setPost(null);
+      return;
+    }
 
-      <div
-        style={{
-          maxWidth: "920px",
-          margin: "0 auto",
-          padding: "56px 32px 32px",
-          textAlign: "center",
-        }}
-      >
+    let isMounted = true;
+
+    const loadPost = async () => {
+      try {
+        const result = await getBlogPostBySlug(slug);
+
+        if (!isMounted) return;
+
+        setPost(result ? mapSanityPostToBlog(result) : null);
+      } catch (error) {
+        console.error("Failed to load blog post:", error);
+        if (isMounted) setPost(null);
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    };
+
+    loadPost();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-white px-6 text-center text-blue-900">
+        <div>
+          <p className="font-neue-machina text-2xl font-bold">Loading article...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!post) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center bg-white px-6 text-center">
+        <h1 className="font-neue-machina text-3xl font-bold text-blue-900">Blog not found</h1>
+        <p className="mt-3 max-w-md text-gray-600">
+          The article you are looking for does not exist or has not been published yet.
+        </p>
         <Link
           to="/blogs"
-          style={{
-            display: "inline-block",
-            backgroundColor: "#EAF2FF",
-            color: "#003CA0",
-            fontSize: "13px",
-            fontWeight: 600,
-            padding: "6px 16px",
-            borderRadius: "999px",
-            textDecoration: "none",
-            marginBottom: "24px",
-          }}
+          className="mt-6 inline-flex items-center rounded-full bg-blue-100 px-5 py-2 text-sm font-semibold text-blue-900"
         >
-          Community
+          Back to blogs
+        </Link>
+      </div>
+    );
+  }
+  const paragraphs =
+    (post.body ?? [])
+      .filter((block) => (block as { _type?: string })?._type === "block")
+      .map((block) => {
+        const children = (block as { children?: Array<{ text?: string }> })?.children ?? [];
+        return children.map((child) => child.text ?? "").join(" ").trim();
+      })
+      .filter(Boolean);
+
+  return (
+    <div className="bg-white font-poppins">
+      <div className="mx-auto max-w-230 px-8 pb-8 pt-14 text-center">
+        <Link
+          to="/blogs"
+          className="mb-6 inline-block rounded-full bg-[#EAF2FF] px-4 py-2 text-[13px] font-semibold text-[#003CA0] no-underline capitalize"
+        >
+          {post.category?.split("-").join(" ")}
         </Link>
 
-        <h1
-          style={{
-            fontFamily: "'Neue Machina', sans-serif",
-            fontSize: "clamp(34px, 5vw, 56px)",
-            fontWeight: 800,
-            lineHeight: 1.15,
-            color: "#111827",
-            margin: "0 0 20px",
-          }}
-        >
+        <h1 className="font-neue-machina text-[clamp(34px,5vw,56px)] font-extrabold leading-[1.15] text-gray-900">
           {post.title}
         </h1>
 
-        <p
-          style={{
-            fontSize: "17px",
-            lineHeight: 1.8,
-            color: "#6b7280",
-            maxWidth: "720px",
-            margin: "0 auto",
-          }}
-        >
-          {post.excerpt}
+        <p className="mx-auto mt-5 max-w-180 text-[17px] leading-8 text-[#6b7280]">
+          {post.seoMetadata?.metaDescription}
         </p>
       </div>
 
-      <div
-        style={{
-          maxWidth: "1300px",
-          margin: "40px auto 60px",
-          padding: "0 32px",
-        }}
-      >
-        <div
-          style={{
-            position: "relative",
-            height: "400px",
-            borderRadius: "20px",
-            overflow: "hidden",
-          }}
-        >
+      <div className="mx-auto my-10 max-w-325 px-8">
+        <div className="relative h-100 overflow-hidden rounded-[20px]">
           <img
-            src={blogHeroImage}
+            src={post.img ?? blogHeroImage}
             alt={post.title}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              display: "block",
-            }}
-            onError={(e) => {
-              e.currentTarget.style.display = "none";
+            className="block h-full w-full object-cover"
+            onError={(event) => {
+              event.currentTarget.style.display = "none";
             }}
           />
 
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              backgroundColor: "#0c1f4a",
-              opacity: 0.40,
-            }}
-          />
+          <div className="absolute inset-0 bg-[#0c1f4a] opacity-40" />
         </div>
       </div>
 
-      <article
-        style={{
-          maxWidth: "760px",
-          margin: "0 auto",
-          padding: "0 32px 40px",
-        }}
-      >
-        {content.sections.map((section: Section, i: number) => (
-          <section key={i} style={{ marginBottom: "44px" }}>
-            <h2
-              style={{
-                fontFamily: "'Neue Machina', sans-serif",
-                fontSize: "22px",
-                fontWeight: 800,
-                color: "#111827",
-                marginBottom: "20px",
-              }}
-            >
-              {section.heading}
-            </h2>
-
-            {section.body.map((para: string, j: number) => (
-              <p
-                key={j}
-                style={{
-                  fontSize: "16px",
-                  lineHeight: 1.9,
-                  color: "#374151",
-                  marginBottom: "16px",
-                  whiteSpace: "pre-line",
-                }}
-              >
-                {para}
-              </p>
-            ))}
-          </section>
+      <article className="mx-auto max-w-190 px-8 pb-10">
+        {paragraphs.map((paragraph, index) => (
+          <p
+            key={`${paragraph.slice(0, 18)}-${index}`}
+            className="mb-4 whitespace-pre-line text-[16px] leading-[1.9] text-[#374151]"
+          >
+            {paragraph}
+          </p>
         ))}
       </article>
-
     </div>
   );
 };

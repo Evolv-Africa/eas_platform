@@ -78,15 +78,15 @@ const Hero: FC<{ title?: string; description?: string; image?: string; children?
               className="absolute inset-0 z-10 flex items-center justify-center px-6"
             >
               <div className="mx-auto max-w-286.5 text-center">
-                  <motion.h2
-                    style={{ color: headingColor }}
-                    className="font-neue-machina text-4xl leading-[1.03] font-extrabold md:text-7xl md:leading-20"
-                  >
-                    {title === "Empowering Africa's next generation of" ? (
-                      <>Empowering Africa&apos;s next generation of <VerticalSlider items={words} loop /></>
-                    ) : (
-                      title
-                    )}
+                <motion.h2
+                  style={{ color: headingColor }}
+                  className="font-neue-machina text-4xl leading-[1.03] font-extrabold md:text-7xl md:leading-20"
+                >
+                  {title === "Empowering Africa's next generation of" ? (
+                    <>Empowering Africa&apos;s next generation of <VerticalSlider items={words} loop /></>
+                  ) : (
+                    title
+                  )}
                 </motion.h2>
                 <motion.p
                   style={{ color: paragraphColor }}
@@ -122,7 +122,7 @@ const Hero: FC<{ title?: string; description?: string; image?: string; children?
         </section>
       </div>
       <div className="py-10 space-y-5">
-        <p className="w-full max-w-185.5 mx-auto text-semantic-text-secondary font-medium text-base md:text-xl leading-7">
+        <p className="w-full max-w-185.5 mx-auto text-semantic-text-secondary font-medium text-base md:text-xl leading-7 text-center">
           Trusted by forward-thinking organizations and communities across
           Africa.
         </p>

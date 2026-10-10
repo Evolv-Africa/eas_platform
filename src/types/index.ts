@@ -1,9 +1,19 @@
 export type BlogPost = {
-  id: string;
+  id?: string;
+  _id?: string;
+  _createdAt?: string;
+  _updatedAt?: string;
   title: string;
-  excerpt: string;
-  coverImage: string;
-  slug: string;
+  slug?: string;
+  category?: string;
+  seoMetadata?: {
+    metaTitle?: string;
+    metaDescription?: string;
+  };
+  img?: string;
+  body?: Array<Record<string, unknown>>;
+  excerpt?: string;
+  coverImage?: string;
 };
 
 export * from "./header";

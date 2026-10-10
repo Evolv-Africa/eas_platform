@@ -1,9 +1,12 @@
-import {speakerSchema} from './speaker'
-import {eventsSchema} from './events'
-import {faqSchema} from './faq'
-import {teamMemberSchema} from './team'
-import {blogPostSchema} from './blog'
-import {campusRegistrationSchema} from './campusRegistration'
+import { speakerSchema } from './speaker'
+import { scheduleItem } from './scheduleDay'
+import { eventsSchema } from './events'
+import { faqSchema } from './faq'
+import { teamMemberSchema } from './team'
+import { blogPostSchema } from './blog'
+import { campusRegistrationSchema } from './campusRegistration'
+import { sponsorSchema } from './sponsor'
+import { scheduleDay } from './scheduleDay'
 
 export const schemaTypes = [
   speakerSchema,
@@ -12,4 +15,7 @@ export const schemaTypes = [
   teamMemberSchema,
   blogPostSchema,
   campusRegistrationSchema,
+  sponsorSchema,
+  scheduleItem,
+  scheduleDay
 ]
