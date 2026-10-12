@@ -23,6 +23,16 @@ export interface SanityEventMediaItem {
   quote?: string;
 }
 
+export interface SanityRegistrationField {
+  _key?: string;
+  label: string;
+  name: string;
+  type?: "text" | "email" | "tel" | "number" | "textarea" | "select";
+  options?: string[];
+  placeholder?: string;
+  required?: boolean;
+}
+
 export interface SanityEvent extends SanityDocument {
   title: string;
   eventType?: string;
@@ -34,6 +44,9 @@ export interface SanityEvent extends SanityDocument {
   schedule?: SanityScheduleDay[];
   eventDate?: string;
   isFeatured?: boolean;
+  location?: string;
+  registrationUrl?: string;
+  registrationFields?: SanityRegistrationField[];
 }
 
 export interface SanityScheduleItem {

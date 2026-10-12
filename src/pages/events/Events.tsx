@@ -1,26 +1,74 @@
+import { FC, useEffect, useState } from "react";
 import { Hero } from "@/components/landing-pages/home";
 import eventImage from "@/assets/images/evolv_25.webp";
-import { Button, Badge } from "@/components/core";
-import { EventSchedule, ComingSoon, Speakers } from "@/components/landing-pages/Events";
-import OlutonaSection from "@/components/landing-pages/Events/OlutonaSection";
+import { Badge, PageLoader } from "@/components/core";
+import { EventSchedule, ComingSoon, Speakers, RegisterButton } from "@/components/landing-pages/Events";
+import { getEvents } from "@/services/sanity/queries";
+import { getPortableTextExcerpt, splitFeaturedEvents } from "@/utils/eventSelectors";
+import type { SanityEvent } from "@/types";
 
-const Events: React.FC = () => {
+const Events: FC = () => {
+  const [events, setEvents] = useState<SanityEvent[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadEvents = async () => {
+      try {
+        const sanityEvents = await getEvents();
+
+        if (!isMounted) {
+          return;
+        }
+
+        if (sanityEvents && sanityEvents.length > 0) {
+          setEvents(sanityEvents);
+        } else {
+          setEvents([]);
+        }
+        setLoading(false);
+      } catch {
+        // console.error("Failed to load events from Sanity:", error);
+        if (isMounted) {
+          setEvents([]);
+        }
+        setLoading(false);
+      }
+    };
+
+    loadEvents();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const { featured, upcoming } = splitFeaturedEvents(events);
+  const featuredDescription = getPortableTextExcerpt(featured?.impactStorytelling);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <PageLoader />
+      </div>
+    );
+  }
+
   return (
     <div>
       <main>
         <Hero
-          title="University Campus Tour (Lagos Edition)"
-          description="This event description goes into this box. This events description goes into this box."
-          image={eventImage}
+          title={featured?.title || "University Campus Tour (Lagos Edition)"}
+          description={
+            featuredDescription ||
+            "This event description goes into this box. This events description goes into this box."
+          }
+          image={featured?.imageUrl || eventImage}
+          sponsors={featured?.sponsorsAndPartners || []}
         >
-          <div className="flex flex-wrap items-center justify-center gap-4 mt-6 mb-20 mx-2.5">
-            <Button
-              variant="primary"
-              size="medium"
-              className="py-3! px-8 text-[15px] h-12"
-            >
-              Get Tickets
-            </Button>
+          <div className="flex items-center justify-center gap-4 mt-6 mb-20 mx-2.5">
+            <RegisterButton event={featured} />
 
             <Badge parentClassName="rounded-md!" className="font-poppins text-sm font-medium px-8 py-3 rounded-md cursor-pointer">
               Sign Up to Email List
@@ -28,10 +76,9 @@ const Events: React.FC = () => {
           </div>
         </Hero>
 
-        <Speakers />
-        <EventSchedule />
-        <OlutonaSection />
-        <ComingSoon />
+        {featured?.speakers && <Speakers sanitySpeakers={featured?.speakers} />}
+        {featured?.schedule && <EventSchedule schedule={featured?.schedule} />}
+        {upcoming && upcoming.length > 0 && <ComingSoon events={upcoming} />}
       </main>
     </div>
   );

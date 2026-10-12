@@ -1,14 +1,29 @@
 import comingSoonImage from "@/assets/images/coming-1.png";
 import { Button } from "@/components/core";
+import type { SanityEvent } from "@/types";
+import { formatEventDate, getPortableTextExcerpt } from "@/utils/eventSelectors";
+
+interface ComingSoonProps {
+  events?: SanityEvent[];
+}
 
 interface ComingSoonEvent {
-  id: number;
+  id: number | string;
   date: string;
   title: string;
   description: string;
   location: string;
   image: string;
 }
+
+const mapSanityEvent = (event: SanityEvent): ComingSoonEvent => ({
+  id: event._id,
+  date: formatEventDate(event.eventDate),
+  title: event.title,
+  description: getPortableTextExcerpt(event.impactStorytelling),
+  location: event.schedule?.[0]?.items?.[0]?.location || "To be announced",
+  image: event.imageUrl || comingSoonImage,
+});
 
 const comingSoonData: ComingSoonEvent[] = [
   {
@@ -59,7 +74,10 @@ const LocationIcon: React.FC = () => (
   </svg>
 );
 
-const ComingSoon: React.FC = () => {
+const ComingSoon: React.FC<ComingSoonProps> = ({ events }) => {
+  const items: ComingSoonEvent[] =
+    events && events.length > 0 ? events.map(mapSanityEvent) : comingSoonData;
+
   return (
     <div className="px-5 py-10 md:py-20">
       <div className="mx-auto max-w-320 space-y-8 md:space-y-14">
@@ -85,7 +103,7 @@ const ComingSoon: React.FC = () => {
         </div>
 
         <div className="flex flex-col gap-10 md:gap-14">
-          {comingSoonData.map((event) => (
+          {items.map((event) => (
             <div
               key={event.id}
               className="flex flex-col sm:flex-row gap-5 md:gap-10"
@@ -105,7 +123,7 @@ const ComingSoon: React.FC = () => {
                 <p className="font-neue-machina font-extrabold text-xl md:text-[28px] text-semantic-text-primary leading-snug">
                   {event.title}
                 </p>
-                <p className="font-poppins text-sm md:text-base text-semantic-text-primary leading-6">
+                <p className="font-poppins text-sm md:text-base text-semantic-text-primary leading-6 line-clamp-2">
                   {event.description}
                 </p>
                 <div className="flex flex-col gap-1">
@@ -117,7 +135,7 @@ const ComingSoon: React.FC = () => {
                     {event.location}
                   </span>
                 </div>
-                <div className="mt-2">
+                {/* <div className="mt-2">
                   <Button
                     variant="primary"
                     size="small"
@@ -125,7 +143,7 @@ const ComingSoon: React.FC = () => {
                   >
                     Register
                   </Button>
-                </div>
+                </div> */}
               </div>
             </div>
           ))}

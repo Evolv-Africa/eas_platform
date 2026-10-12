@@ -5,6 +5,7 @@ import { Badge } from "@/components/core";
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 
 
+import type { SanitySpeaker } from "@/types";
 
 interface Speaker {
   img: string;
@@ -20,9 +21,10 @@ interface SpeakerCardProps {
 
 interface SpeakersProps {
   className?: string;
+  sanitySpeakers?: SanitySpeaker[];
 }
 
-const speakers: Speaker[] = [
+const defaultSpeakers: Speaker[] = [
   {
     img: speaker1,
     role: "Co Founder",
@@ -66,6 +68,17 @@ const speakers: Speaker[] = [
     overlayColor: "rgba(30, 120, 40, 0.6)",
   },
 ];
+
+const OVERLAY_COLORS = ["rgba(0, 60, 160, 0.6)", "rgba(30, 120, 40, 0.6)"];
+const FALLBACK_IMAGES = [speaker1, speaker2];
+
+const mapSanitySpeaker = (speaker: SanitySpeaker, index: number): Speaker => ({
+  img: speaker.imageUrl || FALLBACK_IMAGES[index % FALLBACK_IMAGES.length],
+  role: "Speaker",
+  name: `${speaker.firstName ?? ""} ${speaker.lastName ?? ""}`.trim(),
+  funFact: speaker.bio ?? "",
+  overlayColor: OVERLAY_COLORS[index % OVERLAY_COLORS.length],
+});
 
 const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker }) => {
   const [hovered, setHovered] = useState<boolean>(false);
@@ -126,8 +139,12 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker }) => {
   );
 };
 
-const Speakers: React.FC<SpeakersProps> = ({ className = "" }) => {
+const Speakers: React.FC<SpeakersProps> = ({ className = "", sanitySpeakers }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const speakers: Speaker[] =
+    sanitySpeakers && sanitySpeakers.length > 0
+      ? sanitySpeakers.map(mapSanitySpeaker)
+      : defaultSpeakers;
 
   const handlePrev = (): void => {
     if (scrollRef.current) {

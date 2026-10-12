@@ -1,5 +1,45 @@
-import { days, scheduleData } from "@/constants";
+import { days as defaultDays, scheduleData as defaultScheduleData } from "@/constants";
+import type { ScheduleEvent } from "@/constants/eventSchedule";
+import { getOrdinalSuffix } from "@/utils/eventSelectors";
+import type { SanityScheduleDay } from "@/types";
 import { useState } from "react";
+
+interface EventScheduleProps {
+  schedule?: SanityScheduleDay[];
+}
+
+const MONTHS = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+
+const buildScheduleFromSanity = (schedule: SanityScheduleDay[]) => {
+  const days = schedule.map((entry, index) => {
+    const [year, month, dayOfMonth] = (entry.date ?? "").slice(0, 10).split("-").map(Number);
+    const hasDate = Boolean(year && month && dayOfMonth);
+    return {
+      day: index + 1,
+      label: entry.dayTitle || `Day ${index + 1}`,
+      date: hasDate ? String(dayOfMonth) : "",
+      suffix: hasDate ? getOrdinalSuffix(dayOfMonth) : "",
+      month: hasDate ? MONTHS[month - 1] : "",
+    };
+  });
+
+  const scheduleData: Record<number, ScheduleEvent[]> = {};
+  schedule.forEach((entry, index) => {
+    scheduleData[index + 1] = (entry.items ?? []).map((item) => ({
+      id: item._key,
+      time: item.time,
+      title: item.title,
+      location: item.location ?? "",
+      host: "",
+      description: item.description ?? "",
+    }));
+  });
+
+  return { days, scheduleData };
+};
 
 const CalendarIcon: React.FC = () => (
   <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
@@ -77,8 +117,13 @@ const PersonIcon: React.FC = () => (
   </svg>
 );
 
-const EventSchedule: React.FC = () => {
+const EventSchedule: React.FC<EventScheduleProps> = ({ schedule }) => {
   const [activeDay, setActiveDay] = useState<number>(1);
+
+  const { days, scheduleData } =
+    schedule && schedule.length > 0
+      ? buildScheduleFromSanity(schedule)
+      : { days: defaultDays, scheduleData: defaultScheduleData };
 
   return (
     <div className="relative px-5 py-10 md:py-20 overflow-hidden">
@@ -120,7 +165,7 @@ const EventSchedule: React.FC = () => {
           </div>
 
           <div className="relative flex-1 flex flex-col gap-4 pb-16">
-            {scheduleData[activeDay].map((event) => (
+            {(scheduleData[activeDay] ?? []).map((event) => (
               <div
                 key={event.id}
                 className="relative z-10 bg-[#f7f7f7] rounded-xl px-4 sm:px-6 py-5 space-y-3"
@@ -136,10 +181,12 @@ const EventSchedule: React.FC = () => {
                     <LocationIcon />
                     {event.location}
                   </span>
-                  <span className="flex items-center gap-1.5 text-[13px] text-semantic-text-secondary font-poppins">
-                    <PersonIcon />
-                    {event.host}
-                  </span>
+                  {event.host && (
+                    <span className="flex items-center gap-1.5 text-[13px] text-semantic-text-secondary font-poppins">
+                      <PersonIcon />
+                      {event.host}
+                    </span>
+                  )}
                 </div>
                 <p className="text-[13px] text-semantic-text-secondary font-poppins leading-relaxed">
                   {event.description}
