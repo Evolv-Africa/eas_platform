@@ -7,6 +7,7 @@ import { blogPostSchema } from './blog'
 import { campusRegistrationSchema } from './campusRegistration'
 import { sponsorSchema } from './sponsor'
 import { scheduleDay } from './scheduleDay'
+import { registrationField } from './registrationField'
 
 export const schemaTypes = [
   speakerSchema,
@@ -17,5 +18,6 @@ export const schemaTypes = [
   campusRegistrationSchema,
   sponsorSchema,
   scheduleItem,
-  scheduleDay
+  scheduleDay,
+  registrationField
 ]

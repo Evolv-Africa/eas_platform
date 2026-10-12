@@ -21,6 +21,12 @@ export const eventsSchema = defineType({
       type: 'string',
     },
     {
+      name: 'location',
+      title: 'Location',
+      type: 'string',
+      description: 'General location for the event',
+    },
+    {
       name: 'isFeatured',
       title: 'Featured Event',
       type: 'boolean',
@@ -84,7 +90,21 @@ export const eventsSchema = defineType({
       type: 'array',
       of: [{ type: 'scheduleDay' }],
       description: 'Array of days with schedule items for this event',
-    }
-
+    },
+    {
+      name: 'registrationUrl',
+      title: 'Registration URL',
+      type: 'url',
+      description:
+        'Either a third-party ticket link (e.g. Tix) OR a deployed Google Apps Script web app URL. If "Registration Form Fields" below are added, this is treated as the Apps Script endpoint and a form modal is shown.',
+      validation: (Rule) => Rule.uri({ scheme: ['http', 'https'] }),
+    },
+    {
+      name: 'registrationFields',
+      title: 'Registration Form Fields',
+      type: 'array',
+      of: [{ type: 'registrationField' }],
+      description: 'Leave empty to send visitors straight to the Registration URL.',
+    },
   ],
 })

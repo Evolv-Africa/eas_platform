@@ -11,7 +11,7 @@ import { SanityEvent } from '@/types';
  */
 export function splitFeaturedEvents(events: SanityEvent[]) {
   if (!events || events.length === 0) {
-    return { featured: undefined, upcoming: [] } as const;
+    return { featured: undefined, upcoming: [] as SanityEvent[] };
   }
 
   // Clone and sort by eventDate (ascending)
@@ -40,5 +40,43 @@ export function splitFeaturedEvents(events: SanityEvent[]) {
 
   const upcoming = sorted.filter((e) => e._id !== featured?._id);
 
-  return { featured, upcoming } as const;
+  return { featured, upcoming };
 }
+
+export const getOrdinalSuffix = (day: number): string => {
+  if (day >= 11 && day <= 13) return 'th';
+  switch (day % 10) {
+    case 1:
+      return 'st';
+    case 2:
+      return 'nd';
+    case 3:
+      return 'rd';
+    default:
+      return 'th';
+  }
+};
+
+/** Formats an ISO date as e.g. "24th May 2025". Returns an empty string for invalid input. */
+export const formatEventDate = (iso?: string): string => {
+  if (!iso) return '';
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return '';
+  const day = date.getDate();
+  const month = date.toLocaleString('en-US', { month: 'long' });
+  return `${day}${getOrdinalSuffix(day)} ${month} ${date.getFullYear()}`;
+};
+
+/** Plain-text excerpt from a Sanity portable text body. */
+export const getPortableTextExcerpt = (
+  body: Array<Record<string, unknown>> | undefined
+): string => {
+  if (!Array.isArray(body)) return '';
+  return body
+    .map((block) => {
+      const children = (block as { children?: Array<{ text?: string }> })?.children ?? [];
+      return children.map((child) => child.text ?? '').join(' ').trim();
+    })
+    .filter(Boolean)
+    .join(' ');
+};

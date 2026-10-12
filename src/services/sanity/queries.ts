@@ -34,12 +34,27 @@ const eventProjection = `{
   _updatedAt,
   title,
   eventType,
+  eventDate,
+  isFeatured,
+  location,
+  registrationUrl,
+  "registrationFields": coalesce(registrationFields[]{
+    _key,
+    label,
+    name,
+    type,
+    "options": coalesce(options, []),
+    placeholder,
+    required
+  }, []),
+  "imageUrl": image.asset->url,
   "impactStorytelling": coalesce(impactStorytelling[], []),
   "mediaAndTestimonials": coalesce(mediaAndTestimonials[]{
     quote,
     "imageUrl": mediaItem.asset->url
   }, []),
-  "speakers": coalesce(speakers[]{
+  "speakers": coalesce(speakers[]->{
+    _id,
     firstName,
     lastName,
     email,
@@ -47,21 +62,23 @@ const eventProjection = `{
     "socials": coalesce(socials[], []),
     "imageUrl": image.asset->url
   }, []),
-  "sponsorsAndPartners": coalesce(sponsorsAndPartners[]{
+  "sponsorsAndPartners": coalesce(sponsorsAndPartners[]->{
+    _id,
     name,
     website,
     "imageUrl": image.asset->url
   }, []),
-  "schedule": coalesce(schedule[]{
-    date,
-    dayTitle,
-    "items": coalesce(items[]{
-      time,
-      title,
-      description,
-      location
+    "schedule": coalesce(schedule[]{
+      date,
+      dayTitle,
+      "items": coalesce(items[]{
+        time,
+        title,
+        description,
+        location
+      }, [])
     }, [])
-  }, [])
+
 }`;
 
 const faqProjection = `{

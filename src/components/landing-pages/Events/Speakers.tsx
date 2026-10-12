@@ -2,6 +2,7 @@ import { useState } from "react";
 import speaker1 from "@/assets/images/speaker-2.png";
 import speaker2 from "@/assets/images/speaker-3.png";
 import { Badge } from "@/components/core";
+import type { SanitySpeaker } from "@/types";
 
 interface Speaker {
   img: string;
@@ -17,9 +18,10 @@ interface SpeakerCardProps {
 
 interface SpeakersProps {
   className?: string;
+  sanitySpeakers?: SanitySpeaker[];
 }
 
-const speakers: Speaker[] = [
+const defaultSpeakers: Speaker[] = [
   {
     img: speaker1,
     role: "Co Founder",
@@ -65,6 +67,17 @@ const speakers: Speaker[] = [
 ];
 
 const VISIBLE = 4;
+
+const OVERLAY_COLORS = ["rgba(0, 60, 160, 0.6)", "rgba(30, 120, 40, 0.6)"];
+const FALLBACK_IMAGES = [speaker1, speaker2];
+
+const mapSanitySpeaker = (speaker: SanitySpeaker, index: number): Speaker => ({
+  img: speaker.imageUrl || FALLBACK_IMAGES[index % FALLBACK_IMAGES.length],
+  role: "Speaker",
+  name: `${speaker.firstName ?? ""} ${speaker.lastName ?? ""}`.trim(),
+  funFact: speaker.bio ?? "",
+  overlayColor: OVERLAY_COLORS[index % OVERLAY_COLORS.length],
+});
 
 const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker }) => {
   const [hovered, setHovered] = useState<boolean>(false);
@@ -167,15 +180,19 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker }) => {
   );
 };
 
-const Speakers: React.FC<SpeakersProps> = ({ className = "" }) => {
+const Speakers: React.FC<SpeakersProps> = ({ className = "", sanitySpeakers }) => {
   const [startIndex, setStartIndex] = useState<number>(0);
+  const speakers: Speaker[] =
+    sanitySpeakers && sanitySpeakers.length > 0
+      ? sanitySpeakers.map(mapSanitySpeaker)
+      : defaultSpeakers;
 
   const handlePrev = (): void => {
     setStartIndex((prev) => Math.max(0, prev - 1));
   };
 
   const handleNext = (): void => {
-    setStartIndex((prev) => Math.min(speakers.length - VISIBLE, prev + 1));
+    setStartIndex((prev) => Math.max(0, Math.min(speakers.length - VISIBLE, prev + 1)));
   };
 
   const visibleSpeakers = speakers.slice(startIndex, startIndex + VISIBLE);
