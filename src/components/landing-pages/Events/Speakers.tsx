@@ -69,8 +69,6 @@ const defaultSpeakers: Speaker[] = [
   },
 ];
 
-const VISIBLE = 4;
-
 const OVERLAY_COLORS = ["rgba(0, 60, 160, 0.6)", "rgba(30, 120, 40, 0.6)"];
 const FALLBACK_IMAGES = [speaker1, speaker2];
 
@@ -143,7 +141,6 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker }) => {
 
 const Speakers: React.FC<SpeakersProps> = ({ className = "", sanitySpeakers }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [startIndex, setStartIndex] = useState<number>(0);
   const speakers: Speaker[] =
     sanitySpeakers && sanitySpeakers.length > 0
       ? sanitySpeakers.map(mapSanitySpeaker)
@@ -159,7 +156,6 @@ const Speakers: React.FC<SpeakersProps> = ({ className = "", sanitySpeakers }) =
     if (scrollRef.current) {
       scrollRef.current.scrollBy({ left: 320, behavior: "smooth" });
     }
-    setStartIndex((prev) => Math.max(0, Math.min(speakers.length - VISIBLE, prev + 1)));
   };
 
   return (
