@@ -3,6 +3,7 @@ import { Icon } from "../icon/Icon";
 
 export const PageNotFound = ({ type }: { type: "404" | "500" }) => {
   const navigate = useNavigate();
+  const isServerError = type === "500";
   return (
     <div
       data-testid="page-not-found"
@@ -28,14 +29,14 @@ export const PageNotFound = ({ type }: { type: "404" | "500" }) => {
         {/* Main Message */}
         <div className="mb-8">
           <h2 className="text-2xl font-semibold text-text-primary-1 mb-4">
-            Page Not Found
+            {isServerError ? "Something went wrong" : "Page Not Found"}
           </h2>
         </div>
 
         {/* Action Buttons */}
         <div className="space-y-4">
           <button
-            onClick={() => navigate(-1)}
+            onClick={() => (isServerError ? navigate("/") : navigate(-1))}
             data-testid="go-back"
             className="w-full cursor-pointer bg-orange-500 text-white-1 py-3 px-6 rounded-lg font-medium
              hover:bg-orange-500/80 transition-colors duration-200 flex items-center justify-center gap-2 text-white"
@@ -44,7 +45,7 @@ export const PageNotFound = ({ type }: { type: "404" | "500" }) => {
               name="CaretLeft"
               className="w-5 h-5 bg-white p-1 rounded-full text-black"
             />
-            Go Back to Previous Page
+            {isServerError ? "Back to home" : "Go Back to Previous Page"}
           </button>
         </div>
 

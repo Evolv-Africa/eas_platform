@@ -1,4 +1,4 @@
-import { ErrorBoundary, PageLoader, PageNotFound } from "@/components/core";
+import { PageLoader, PageNotFound } from "@/components/core";
 import { AppLayout } from "@/components/layouts";
 import StudioPage from "@/studio/StudioPage";
 import { lazy, Suspense } from "react";
@@ -23,13 +23,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/",
-    errorElement: <PageNotFound type="404" />,
+    errorElement: <PageNotFound type="500" />,
     element: (
-      <ErrorBoundary>
-        <Suspense fallback={<PageLoader />}>
-          <AppLayout />
-        </Suspense>
-      </ErrorBoundary>
+      <Suspense fallback={<PageLoader />}>
+        <AppLayout />
+      </Suspense>
     ),
     children: [
       {
