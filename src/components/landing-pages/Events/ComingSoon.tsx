@@ -1,5 +1,4 @@
 import comingSoonImage from "@/assets/images/coming-1.png";
-import { Button } from "@/components/core";
 import type { SanityEvent } from "@/types";
 import { formatEventDate, getPortableTextExcerpt } from "@/utils/eventSelectors";
 
@@ -21,39 +20,9 @@ const mapSanityEvent = (event: SanityEvent): ComingSoonEvent => ({
   date: formatEventDate(event.eventDate),
   title: event.title,
   description: getPortableTextExcerpt(event.impactStorytelling),
-  location: event.schedule?.[0]?.items?.[0]?.location || "To be announced",
+  location: event.location || "To be announced",
   image: event.imageUrl || comingSoonImage,
 });
-
-const comingSoonData: ComingSoonEvent[] = [
-  {
-    id: 1,
-    date: "24th May 2025",
-    title: "University Campus Tour (Lagos Edition)",
-    description:
-      "This events description goes into this box. This events description goes into this box.",
-    location: "Lagos, Nigeria",
-    image: comingSoonImage,
-  },
-  {
-    id: 2,
-    date: "24th May 2025",
-    title: "University Campus Tour (Lagos Edition)",
-    description:
-      "This events description goes into this box. This events description goes into this box.",
-    location: "Lagos, Nigeria",
-    image: comingSoonImage,
-  },
-  {
-    id: 3,
-    date: "24th May 2025",
-    title: "University Campus Tour (Lagos Edition)",
-    description:
-      "This events description goes into this box. This events description goes into this box.",
-    location: "Lagos, Nigeria",
-    image: comingSoonImage,
-  },
-];
 
 const LocationIcon: React.FC = () => (
   <svg
@@ -75,8 +44,8 @@ const LocationIcon: React.FC = () => (
 );
 
 const ComingSoon: React.FC<ComingSoonProps> = ({ events }) => {
-  const items: ComingSoonEvent[] =
-    events && events.length > 0 ? events.map(mapSanityEvent) : comingSoonData;
+  const items: ComingSoonEvent[] = (events ?? []).map(mapSanityEvent);
+  if (items.length === 0) return null;
 
   return (
     <div className="px-5 py-10 md:py-20">
@@ -87,18 +56,8 @@ const ComingSoon: React.FC<ComingSoonProps> = ({ events }) => {
               Coming Soon
             </p>
             <p className="font-poppins text-sm md:text-base text-semantic-text-secondary leading-6">
-              We have more events lined up just for you. Join our mailing list
-              to get updates on what's coming up next.
+              Other events that are still ahead.
             </p>
-          </div>
-          <div className="shrink-0 mt-2">
-            <Button
-              variant="primary"
-              size="medium"
-              style={{ padding: "13px 28px", fontSize: "14px" }}
-            >
-              Notify Me
-            </Button>
           </div>
         </div>
 
@@ -135,15 +94,6 @@ const ComingSoon: React.FC<ComingSoonProps> = ({ events }) => {
                     {event.location}
                   </span>
                 </div>
-                {/* <div className="mt-2">
-                  <Button
-                    variant="primary"
-                    size="small"
-                    style={{ padding: "10px 28px", fontSize: "13px" }}
-                  >
-                    Register
-                  </Button>
-                </div> */}
               </div>
             </div>
           ))}

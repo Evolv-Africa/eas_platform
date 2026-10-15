@@ -20,6 +20,25 @@ export const teamMemberSchema = defineType({
       name: 'bio',
       title: 'Biography',
       type: 'text',
+      description: 'Shown as the answer in this person’s row.',
+    },
+    {
+      name: 'ideologyQuestion',
+      title: 'Ideology Question',
+      type: 'string',
+      description: 'The short question above the biography. Defaults to “What is an Ideology you live by?”',
+    },
+    {
+      name: 'image',
+      title: 'Photo',
+      type: 'image',
+      options: { hotspot: true },
+    },
+    {
+      name: 'sortOrder',
+      title: 'Row Order',
+      type: 'number',
+      description: 'Lower numbers appear first in the team list.',
     },
     {
       name: 'socials',
@@ -48,8 +67,18 @@ export const teamMemberSchema = defineType({
       ],
     },
     {
+      name: 'musicSong',
+      title: 'Music Mood Song',
+      type: 'string',
+    },
+    {
+      name: 'musicArtist',
+      title: 'Music Mood Artist',
+      type: 'string',
+    },
+    {
       name: 'musicMood',
-      title: 'Music Mood',
+      title: 'Music Mood Link',
       type: 'url',
     },
   ],

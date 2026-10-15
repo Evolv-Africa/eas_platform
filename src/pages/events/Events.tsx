@@ -1,10 +1,9 @@
 import { FC, useEffect, useState } from "react";
-import { Hero } from "@/components/landing-pages/home";
 import eventImage from "@/assets/images/evolv_25.webp";
-import { Badge, PageLoader } from "@/components/core";
-import { EventSchedule, ComingSoon, Speakers, RegisterButton } from "@/components/landing-pages/Events";
+import { PageLoader } from "@/components/core";
+import { EventHero, EventSchedule, ComingSoon, Speakers, RegisterButton } from "@/components/landing-pages/Events";
 import { getEvents } from "@/services/sanity/queries";
-import { getPortableTextExcerpt, splitFeaturedEvents } from "@/utils/eventSelectors";
+import { formatEventDate, getPortableTextParagraphs, splitFeaturedEvents } from "@/utils/eventSelectors";
 import type { SanityEvent } from "@/types";
 
 const Events: FC = () => {
@@ -45,7 +44,7 @@ const Events: FC = () => {
   }, []);
 
   const { featured, upcoming } = splitFeaturedEvents(events);
-  const featuredDescription = getPortableTextExcerpt(featured?.impactStorytelling);
+  const story = getPortableTextParagraphs(featured?.impactStorytelling);
 
   if (loading) {
     return (
@@ -58,23 +57,26 @@ const Events: FC = () => {
   return (
     <div>
       <main>
-        <Hero
-          title={featured?.title || "University Campus Tour (Lagos Edition)"}
-          description={
-            featuredDescription ||
-            "This event description goes into this box. This events description goes into this box."
-          }
-          image={featured?.imageUrl || eventImage}
-          sponsors={featured?.sponsorsAndPartners || []}
-        >
-          <div className="flex items-center justify-center gap-4 mt-6 mb-20 mx-2.5">
+        {featured ? (
+          <EventHero
+            title={featured.title}
+            dateLabel={formatEventDate(featured.eventDate)}
+            location={featured.location}
+            eventType={featured.eventType}
+            paragraphs={story}
+            image={featured.imageUrl || eventImage}
+            media={featured.mediaAndTestimonials ?? []}
+            sponsors={featured.sponsorsAndPartners || []}
+          >
             <RegisterButton event={featured} />
-
-            <Badge parentClassName="rounded-md!" className="font-poppins text-sm font-medium px-8 py-3 rounded-md cursor-pointer">
-              Sign Up to Email List
-            </Badge>
-          </div>
-        </Hero>
+          </EventHero>
+        ) : (
+          <section className="mx-auto w-full max-w-320 px-5 pt-16 md:pt-24">
+            <h1 className="font-neue-machina text-3xl font-extrabold text-[#00081D] md:text-5xl">
+              No upcoming event is published yet
+            </h1>
+          </section>
+        )}
 
         {featured?.speakers && featured.speakers.length > 0 && (
           <Speakers sanitySpeakers={featured.speakers} />

@@ -82,16 +82,22 @@ export const formatEventDate = (iso?: string): string => {
   return `${day}${getOrdinalSuffix(day)} ${month} ${date.getFullYear()}`;
 };
 
-/** Plain-text excerpt from a Sanity portable text body. */
-export const getPortableTextExcerpt = (
-  body: Array<Record<string, unknown>> | undefined
-): string => {
-  if (!Array.isArray(body)) return '';
+function portableTextBlocks(body: Array<Record<string, unknown>> | undefined): string[] {
+  if (!Array.isArray(body)) return [];
   return body
     .map((block) => {
       const children = (block as { children?: Array<{ text?: string }> })?.children ?? [];
       return children.map((child) => child.text ?? '').join(' ').trim();
     })
-    .filter(Boolean)
-    .join(' ');
-};
+    .filter(Boolean);
+}
+
+/** Plain-text excerpt from a Sanity portable text body. */
+export const getPortableTextExcerpt = (
+  body: Array<Record<string, unknown>> | undefined
+): string => portableTextBlocks(body).join(' ');
+
+/** One string per portable-text block, so a story can render as paragraphs. */
+export const getPortableTextParagraphs = (
+  body: Array<Record<string, unknown>> | undefined
+): string[] => portableTextBlocks(body);

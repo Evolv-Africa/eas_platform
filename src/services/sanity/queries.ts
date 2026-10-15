@@ -98,7 +98,12 @@ const teamMemberProjection = `{
   name,
   role,
   bio,
+  ideologyQuestion,
+  sortOrder,
+  "imageUrl": image.asset->url,
   "socials": coalesce(socials[], []),
+  musicSong,
+  musicArtist,
   musicMood
 }`;
 
@@ -124,7 +129,7 @@ export const eventListQuery = `*[_type == "event"] | order(_createdAt desc) ${ev
 
 export const faqListQuery = `*[_type == "faq"] | order(_createdAt asc) ${faqProjection}`;
 
-export const teamMemberListQuery = `*[_type == "teamMember"] | order(name asc) ${teamMemberProjection}`;
+export const teamMemberListQuery = `*[_type == "teamMember"] | order(sortOrder asc, name asc) ${teamMemberProjection}`;
 
 export const blogPostListQuery = `*[_type == "blogPost"] | order(_createdAt desc) ${blogPostProjection}`;
 
