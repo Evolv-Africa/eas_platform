@@ -11,7 +11,7 @@ const UNITS = [
 export const SummitCountdownBar: FC<{ remaining: SummitRemaining }> = ({ remaining }) => {
   return (
     <div
-      className="flex h-10 w-full items-center justify-center gap-3 bg-[#00081D] px-3 text-white sm:gap-6"
+      className="fixed inset-x-0 top-0 z-[60] flex h-10 w-full items-center justify-center gap-3 bg-[#00081D] px-3 text-white sm:gap-6"
       role="timer"
       aria-label={`${remaining.days} days, ${remaining.hours} hours, ${remaining.minutes} minutes, ${remaining.seconds} seconds until 28 November 2026`}
     >
