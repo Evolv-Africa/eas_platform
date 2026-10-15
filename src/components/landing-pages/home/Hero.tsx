@@ -1,9 +1,52 @@
 import HeroImage from "@/assets/images/eas-2026.jpg";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { useMediaQuery } from "@/hooks";
 import type { SanitySponsor } from "@/types";
 import { VerticalSlider } from "@/components/animations";
 import Marquee from "@/components/animations/marquee/Marquee";
+
+const SUMMIT_DATE = new Date(2026, 10, 28);
+
+function daysUntilSummit(now = new Date()) {
+  const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+  const summit = Date.UTC(
+    SUMMIT_DATE.getFullYear(),
+    SUMMIT_DATE.getMonth(),
+    SUMMIT_DATE.getDate(),
+  );
+  return Math.round((summit - today) / 86_400_000);
+}
+
+const DaysToSummit: FC = () => {
+  const [days, setDays] = useState(() => daysUntilSummit());
+
+  useEffect(() => {
+    const id = window.setInterval(() => setDays(daysUntilSummit()), 60_000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  if (days < 0) return null;
+
+  return (
+    <div className="mt-8">
+      <p className="font-poppins text-xs font-medium uppercase tracking-[0.16em] text-[#2F2F2F]">
+        28 November 2026
+      </p>
+      {days === 0 ? (
+        <p className="mt-2 font-neue-machina text-4xl font-extrabold text-[#00081D]">
+          Today
+        </p>
+      ) : (
+        <p className="mt-2 font-neue-machina text-5xl font-extrabold leading-none tabular-nums text-[#00081D] md:text-6xl">
+          {days}
+          <span className="ml-3 align-middle font-poppins text-sm font-medium uppercase tracking-[0.14em] text-[#2F2F2F]">
+            {days === 1 ? "day to go" : "days to go"}
+          </span>
+        </p>
+      )}
+    </div>
+  );
+};
 
 const Hero: FC<{
   description?: string;
@@ -30,6 +73,7 @@ const Hero: FC<{
           <p className="mx-auto mt-5 max-w-[68ch] font-poppins text-base leading-7 text-[#2F2F2F] md:text-xl">
             {description}
           </p>
+          <DaysToSummit />
           {children}
         </div>
 
