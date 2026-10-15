@@ -121,8 +121,6 @@ const Speakers: React.FC<SpeakersProps> = ({ className = "", title = "Meet Our S
     const el = scrollRef.current;
     if (!el) return;
 
-    checkScrollability();
-
     el.addEventListener("scroll", checkScrollability, { passive: true });
     window.addEventListener("resize", checkScrollability);
 
