@@ -52,7 +52,7 @@ export const Navbar: FC = () => {
 
         {/* Desktop CTA */}
         <div className="hidden lg:block">
-          <Button text="Become a member" size="giant" />
+          <Button text="Become a member" size="giant" onClick={() => window.open("https://chat.whatsapp.com/HCB1mO4joqb79M1UcwquN5?s=cl&p=a&mlu=4&ilr=4", "_blank", "noopener,noreferrer")} />
         </div>
 
         {/* Mobile nav */}
