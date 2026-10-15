@@ -44,6 +44,7 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker }) => {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={() => setHovered((open) => !open)}
       style={{
         position: "relative",
         height: "500px",
@@ -68,6 +69,15 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker }) => {
         />
       </div>
 
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white">
+        <span className="mb-1 block text-xs font-semibold uppercase tracking-widest opacity-80">
+          {speaker.role}
+        </span>
+        <h3 className="font-neue-machina text-2xl font-extrabold leading-tight">
+          {speaker.name}
+        </h3>
+      </div>
+
       <div
         className="absolute inset-0 flex flex-col justify-end p-7 text-white transition-opacity duration-400 ease-in-out box-border"
         style={{
@@ -87,9 +97,11 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker }) => {
           <h3 className="text-2xl md:text-[1.8rem] mb-2.5 font-neue-machina font-extrabold leading-tight">
             {speaker.name}
           </h3>
-          <p className="text-sm md:text-[0.95rem] leading-relaxed italic font-normal">
-            "{speaker.funFact}"
-          </p>
+          {speaker.funFact ? (
+            <p className="text-sm md:text-[0.95rem] leading-relaxed italic font-normal">
+              "{speaker.funFact}"
+            </p>
+          ) : null}
         </div>
       </div>
     </div>
@@ -161,7 +173,7 @@ const Speakers: React.FC<SpeakersProps> = ({ className = "", title = "Meet Our S
   }
 
   return (
-    <section id="speakers" className={`py-12 md:py-16 px-5 ${className}`}>
+    <section className={`py-12 md:py-16 px-5 ${className}`}>
       <div className="md:max-w-320 mx-auto">
         <div className="flex justify-between items-end mb-10 flex-wrap gap-4">
           <div className="flex flex-col items-start gap-3">

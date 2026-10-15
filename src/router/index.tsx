@@ -24,11 +24,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     errorElement: <PageNotFound type="500" />,
-    element: (
-      <Suspense fallback={<PageLoader />}>
-        <AppLayout />
-      </Suspense>
-    ),
+    element: <AppLayout />,
     children: [
       {
         index: true,
