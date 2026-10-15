@@ -18,7 +18,8 @@ const speakerProjection = `{
   email,
   bio,
   "socials": coalesce(socials[], []),
-  "imageUrl": image.asset->url
+  "imageUrl": image.asset->url,
+  isMainEventSpeaker
 }`;
 const sponsorProjection = `{
   _id,
@@ -113,6 +114,7 @@ const blogPostProjection = `{
 }`;
 
 export const speakerListQuery = `*[_type == "speaker"] | order(firstName asc, lastName asc) ${speakerProjection}`;
+export const mainEventSpeakerListQuery = `*[_type == "speaker" && isMainEventSpeaker == true] | order(firstName asc, lastName asc) ${speakerProjection}`;
 export const sponsorListQuery = `*[_type == "sponsor"] | order(name asc) ${sponsorProjection}`;
 
 export const eventListQuery = `*[_type == "event"] | order(_createdAt desc) ${eventProjection}`;
@@ -127,6 +129,9 @@ export const blogPostBySlugQuery = `*[_type == "blogPost" && slug.current == $sl
 
 export const getSpeakers = () =>
   fetchSanityQuery<SanitySpeaker[]>(speakerListQuery);
+
+export const getMainEventSpeakers = () =>
+  fetchSanityQuery<SanitySpeaker[]>(mainEventSpeakerListQuery);
 
 export const getSponsors = () =>
   fetchSanityQuery<SanitySponsor[]>(sponsorListQuery);

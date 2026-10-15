@@ -16,6 +16,7 @@ export interface SanitySpeaker extends SanityDocument {
   bio: string;
   socials: SanitySocialLink[];
   imageUrl?: string;
+  isMainEventSpeaker?: boolean;
 }
 
 export interface SanityEventMediaItem {

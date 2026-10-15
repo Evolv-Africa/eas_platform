@@ -60,5 +60,13 @@ export const speakerSchema = defineType({
       title: 'Image',
       type: 'image',
     },
+    {
+      name: 'isMainEventSpeaker',
+      title: 'Main Event Speaker',
+      type: 'boolean',
+      description:
+        'Show this speaker on the home page (main event). This does not stop other events from referencing this speaker.',
+      initialValue: false,
+    },
   ],
 })
