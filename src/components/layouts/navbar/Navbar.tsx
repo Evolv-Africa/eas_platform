@@ -6,12 +6,12 @@ import { Link, useLocation } from "react-router-dom";
 import { MobileNav } from "./MobileNav";
 import { useMediaQuery } from "@/hooks";
 
-export const Navbar: FC = () => {
+export const Navbar: FC<{ offset?: boolean }> = ({ offset = false }) => {
   const { pathname } = useLocation();
   const { isMobile } = useMediaQuery();
 
   return (
-    <div className="w-full fixed top-0 left-0 z-50 lg:bg-transparent bg-white/30 backdrop-blur-md lg:backdrop-blur-none">
+    <div className={`w-full fixed left-0 z-50 lg:bg-transparent bg-white/30 backdrop-blur-md lg:backdrop-blur-none ${offset ? "top-10" : "top-0"}`}>
       <div className="mx-auto max-w-320 flex items-center justify-between px-4">
         <Link to={"/"}>
           {isMobile ? (
