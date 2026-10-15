@@ -104,7 +104,8 @@ export const Footer: FC = () => {
         </p>
 
         <Link
-          to="#"
+          to="https://chat.whatsapp.com/HCB1mO4joqb79M1UcwquN5?s=cl&p=a&mlu=4&ilr=4"
+          target="_blank"
           className="mt-8 inline-flex min-h-12 items-center justify-center rounded-2xl bg-primary px-7 font-neue-machina text-base font-semibold text-white shadow-[0_10px_22px_rgba(29,68,184,0.28)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-600"
         >
           Involve me!

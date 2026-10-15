@@ -53,7 +53,7 @@ const EventHero: FC<EventHeroProps> = ({
         {paragraphs.length > 0 ? (
           <div className="mx-auto mt-10 max-w-[68ch] space-y-4">
             {paragraphs.map((paragraph) => (
-              <p key={paragraph} className="font-poppins text-base leading-7 text-[#2F2F2F] md:text-lg">
+              <p key={paragraph} className="font-poppins text-base leading-7 text-[#2F2F2F] md:text-lg text-center">
                 {paragraph}
               </p>
             ))}

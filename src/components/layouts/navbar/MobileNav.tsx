@@ -133,6 +133,7 @@ export const MobileNav: FC = () => {
                   text="Become a member"
                   size="giant"
                   className="w-full"
+                  onClick={() => window.open("https://chat.whatsapp.com/HCB1mO4joqb79M1UcwquN5?s=cl&p=a&mlu=4&ilr=4", "_blank", "noopener,noreferrer")}
                 />
               </motion.div>
             </motion.nav>

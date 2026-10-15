@@ -11,7 +11,7 @@ import MicrosoftLogo from "@/assets/images/microsoft.png";
 import ShopifyLogo from "@/assets/images/shopify.png";
 import TokoLogo from "@/assets/images/tokopedia.png";
 import UpworkLogo from "@/assets/images/upwork.png";
-import { Speakers } from "@/components/landing-pages/Events";
+import { Countdown, Speakers } from "@/components/landing-pages/Events";
 import { getMainEventSpeakers, getMainEventSponsors } from "@/services/sanity/queries";
 import type { SanitySpeaker, SanitySponsor } from "@/types";
 import { Button } from "@/components/core";
@@ -90,18 +90,11 @@ const Home: FC = () => {
           </Button>
         </div>
       </Hero>
+      <Countdown />
+      {speakers.length > 0 && <Speakers title="The Voices Driving the Decade" desc="Hear from key leaders across tech, finance, and enterprise who are turning ambitious ideas into measurable impact across the continent." sanitySpeakers={speakers} />}
       <WhoWeAre />
       <WhatWeDo />
       <OurImpact />
-      <div id="speakers">
-        {speakers.length > 0 && (
-          <Speakers
-            title="The Voices Driving the Decade"
-            desc="Hear from key leaders across tech, finance, and enterprise who are turning ambitious ideas into measurable impact across the continent."
-            sanitySpeakers={speakers}
-          />
-        )}
-      </div>
       <OurNetwork />
       <Blogs />
     </>
