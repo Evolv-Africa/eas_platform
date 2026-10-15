@@ -106,5 +106,13 @@ export const eventsSchema = defineType({
       of: [{ type: 'registrationField' }],
       description: 'Leave empty to send visitors straight to the Registration URL.',
     },
+    {
+      name: 'allowEventRegistration',
+      title: 'Allow Event Registration',
+      type: 'boolean',
+      description:
+        'Allow visitors to register for this event. This mostly applies to upcoming events.',
+      initialValue: false,
+    },
   ],
 })

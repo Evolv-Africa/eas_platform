@@ -69,6 +69,7 @@ export interface SanitySponsor extends SanityDocument {
   name: string;
   website?: string;
   imageUrl?: string;
+  isMainEventSponsor?: boolean;
 }
 
 

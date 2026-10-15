@@ -1,4 +1,4 @@
-import {defineType} from 'sanity';
+import { defineType } from 'sanity';
 
 export const sponsorSchema = defineType({
   name: 'sponsor',
@@ -21,6 +21,14 @@ export const sponsorSchema = defineType({
       title: 'Website',
       type: 'url',
       validation: (Rule) => Rule.uri({ scheme: ['http', 'https'] }),
+    },
+    {
+      name: 'isMainEventSponsor',
+      title: 'Main Event Sponsor',
+      type: 'boolean',
+      description:
+        'Show this sponsor on the home page (main event). This does not stop other events from referencing this sponsor.',
+      initialValue: false,
     },
   ],
 });
