@@ -153,7 +153,7 @@ const Hero: FC<{
                     key={sponsor._id}
                     src={sponsor.imageUrl || ''}
                     alt={sponsor.name}
-                    className="w-42 grayscale"
+                    className="h-12 w-auto grayscale hover:grayscale-0!"
                   />
                 ))
               ) : null}
@@ -165,7 +165,7 @@ const Hero: FC<{
                   key={sponsor._id}
                   src={sponsor.imageUrl || ''}
                   alt={sponsor.name}
-                  className="w-42 grayscale"
+                  className="h-16 w-auto grayscale hover:grayscale-0"
                 />
               ))}
             </div>
