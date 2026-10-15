@@ -43,7 +43,6 @@ const Home: FC = () => {
 
     getMainEventSponsors()
       .then((result) => {
-        console.log(result)
         if (isMounted) setSponsors(result ?? []);
       })
       .catch(() => {
