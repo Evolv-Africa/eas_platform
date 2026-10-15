@@ -23,4 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
+# Local environment. Copy .env.example and fill it in. Never commit this file.
 .env
+.env.local
+.env.*
+!.env.example
