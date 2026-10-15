@@ -82,7 +82,12 @@ export interface SanityTeamMember extends SanityDocument {
   name: string;
   role?: string;
   bio?: string;
+  ideologyQuestion?: string;
+  imageUrl?: string;
+  sortOrder?: number;
   socials: SanitySocialLink[];
+  musicSong?: string;
+  musicArtist?: string;
   musicMood?: string;
 }
 
