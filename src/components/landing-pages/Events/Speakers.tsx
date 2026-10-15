@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import speaker1 from "@/assets/images/speaker-2.png";
 import speaker2 from "@/assets/images/speaker-3.png";
 import { Badge } from "@/components/core";
@@ -21,53 +21,10 @@ interface SpeakerCardProps {
 
 interface SpeakersProps {
   className?: string;
+  title?: string;
+  desc?: string;
   sanitySpeakers?: SanitySpeaker[];
 }
-
-const defaultSpeakers: Speaker[] = [
-  {
-    img: speaker1,
-    role: "Co Founder",
-    name: "Oladotun Ajayi",
-    funFact: "I can write with my both hands",
-    overlayColor: "rgba(0, 60, 160, 0.6)",
-  },
-  {
-    img: speaker2,
-    role: "CEO",
-    name: "Jane Doe",
-    funFact: "I've visited 30 countries before 30",
-    overlayColor: "rgba(30, 120, 40, 0.6)",
-  },
-  {
-    img: speaker1,
-    role: "Lead Organizer",
-    name: "Amaka Obi",
-    funFact: "I can speak 4 languages fluently",
-    overlayColor: "rgba(0, 60, 160, 0.6)",
-  },
-  {
-    img: speaker2,
-    role: "Head of Community",
-    name: "Chidi Nwosu",
-    funFact: "I started coding at age 10",
-    overlayColor: "rgba(30, 120, 40, 0.6)",
-  },
-  {
-    img: speaker1,
-    role: "Keynote Speaker",
-    name: "Fatima Aliyu",
-    funFact: "I ran a marathon in under 4 hours",
-    overlayColor: "rgba(0, 60, 160, 0.6)",
-  },
-  {
-    img: speaker2,
-    role: "Panelist",
-    name: "Emeka Eze",
-    funFact: "I built my first startup at 19",
-    overlayColor: "rgba(30, 120, 40, 0.6)",
-  },
-];
 
 const OVERLAY_COLORS = ["rgba(0, 60, 160, 0.6)", "rgba(30, 120, 40, 0.6)"];
 const FALLBACK_IMAGES = [speaker1, speaker2];
@@ -139,24 +96,71 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker }) => {
   );
 };
 
-const Speakers: React.FC<SpeakersProps> = ({ className = "", sanitySpeakers }) => {
+const Speakers: React.FC<SpeakersProps> = ({ className = "", title = "Meet Our Speakers", desc = "", sanitySpeakers }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const speakers: Speaker[] =
-    sanitySpeakers && sanitySpeakers.length > 0
-      ? sanitySpeakers.map(mapSanitySpeaker)
-      : defaultSpeakers;
+  const [canScrollPrev, setCanScrollPrev] = useState<boolean>(false);
+  const [canScrollNext, setCanScrollNext] = useState<boolean>(false);
+
+  const speakers: Speaker[] = (sanitySpeakers ?? []).map(mapSanitySpeaker);
+
+  const checkScrollability = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) {
+      setCanScrollPrev(false);
+      setCanScrollNext(false);
+      return;
+    }
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    const maxScrollLeft = scrollWidth - clientWidth;
+
+    setCanScrollPrev(scrollLeft > 2);
+    setCanScrollNext(maxScrollLeft > 2 && scrollLeft < maxScrollLeft - 2);
+  }, []);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    checkScrollability();
+
+    el.addEventListener("scroll", checkScrollability, { passive: true });
+    window.addEventListener("resize", checkScrollability);
+
+    let ro: ResizeObserver | null = null;
+    if (typeof ResizeObserver !== "undefined") {
+      ro = new ResizeObserver(() => {
+        checkScrollability();
+      });
+      ro.observe(el);
+    }
+
+    const timer1 = setTimeout(checkScrollability, 50);
+    const timer2 = setTimeout(checkScrollability, 300);
+
+    return () => {
+      el.removeEventListener("scroll", checkScrollability);
+      window.removeEventListener("resize", checkScrollability);
+      ro?.disconnect();
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
+  }, [checkScrollability, sanitySpeakers]);
 
   const handlePrev = (): void => {
-    if (scrollRef.current) {
+    if (scrollRef.current && canScrollPrev) {
       scrollRef.current.scrollBy({ left: -320, behavior: "smooth" });
     }
   };
 
   const handleNext = (): void => {
-    if (scrollRef.current) {
+    if (scrollRef.current && canScrollNext) {
       scrollRef.current.scrollBy({ left: 320, behavior: "smooth" });
     }
   };
+
+  if (speakers.length === 0) {
+    return null;
+  }
 
   return (
     <section className={`py-12 md:py-16 px-5 ${className}`}>
@@ -165,23 +169,34 @@ const Speakers: React.FC<SpeakersProps> = ({ className = "", sanitySpeakers }) =
           <div className="flex flex-col items-start gap-3">
             <Badge>The Voices of Impact</Badge>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-neue-machina font-extrabold text-semantic-text-primary">
-              Meet Our Speakers
+              {title}
             </h2>
+            {desc && <p className="text-sm font-medium">{desc}</p>}
           </div>
 
           <div className="flex gap-4">
             <button
+              type="button"
               onClick={handlePrev}
+              disabled={!canScrollPrev}
               aria-label="Previous speaker"
-              className="bg-transparent border-none cursor-pointer text-semantic-text-primary hover:opacity-70 transition-opacity"
+              className={`bg-transparent border-none transition-opacity ${canScrollPrev
+                ? "cursor-pointer text-semantic-text-primary hover:opacity-70"
+                : "cursor-not-allowed text-semantic-text-primary opacity-30"
+                }`}
             >
               <GoArrowLeft className="w-8 h-8 md:w-10 md:h-10" />
             </button>
 
             <button
+              type="button"
               onClick={handleNext}
+              disabled={!canScrollNext}
               aria-label="Next speaker"
-              className="bg-transparent border-none cursor-pointer text-semantic-text-primary hover:opacity-70 transition-opacity"
+              className={`bg-transparent border-none transition-opacity ${canScrollNext
+                ? "cursor-pointer text-semantic-text-primary hover:opacity-70"
+                : "cursor-not-allowed text-semantic-text-primary opacity-30"
+                }`}
             >
               <GoArrowRight className="w-8 h-8 md:w-10 md:h-10" />
             </button>
@@ -190,6 +205,7 @@ const Speakers: React.FC<SpeakersProps> = ({ className = "", sanitySpeakers }) =
 
         <div
           ref={scrollRef}
+          onScroll={checkScrollability}
           className="w-full flex gap-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-4"
         >
           {speakers.map((speaker, index) => (

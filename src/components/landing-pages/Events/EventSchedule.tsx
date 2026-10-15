@@ -1,4 +1,3 @@
-import { days as defaultDays, scheduleData as defaultScheduleData } from "@/constants";
 import type { ScheduleEvent } from "@/constants/eventSchedule";
 import { getOrdinalSuffix } from "@/utils/eventSelectors";
 import type { SanityScheduleDay } from "@/types";
@@ -120,10 +119,15 @@ const PersonIcon: React.FC = () => (
 const EventSchedule: React.FC<EventScheduleProps> = ({ schedule }) => {
   const [activeDay, setActiveDay] = useState<number>(1);
 
-  const { days, scheduleData } =
-    schedule && schedule.length > 0
-      ? buildScheduleFromSanity(schedule)
-      : { days: defaultDays, scheduleData: defaultScheduleData };
+  if (!schedule || schedule.length === 0) {
+    return null;
+  }
+
+  const { days, scheduleData } = buildScheduleFromSanity(schedule);
+
+  if (days.length === 0) {
+    return null;
+  }
 
   return (
     <div className="relative px-5 py-10 md:py-20 overflow-hidden">

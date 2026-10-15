@@ -76,8 +76,12 @@ const Events: FC = () => {
           </div>
         </Hero>
 
-        {featured?.speakers && <Speakers sanitySpeakers={featured?.speakers} />}
-        {featured?.schedule && <EventSchedule schedule={featured?.schedule} />}
+        {featured?.speakers && featured.speakers.length > 0 && (
+          <Speakers sanitySpeakers={featured.speakers} />
+        )}
+        {featured?.schedule && featured.schedule.length > 0 && (
+          <EventSchedule schedule={featured.schedule} />
+        )}
         {upcoming && upcoming.length > 0 && <ComingSoon events={upcoming} />}
       </main>
     </div>

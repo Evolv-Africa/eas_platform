@@ -14,8 +14,23 @@ export function splitFeaturedEvents(events: SanityEvent[]) {
     return { featured: undefined, upcoming: [] as SanityEvent[] };
   }
 
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const isUpcoming = (e: SanityEvent) => {
+    if (!e.eventDate) return true;
+    const d = new Date(e.eventDate);
+    return isNaN(d.getTime()) || d.getTime() >= today.getTime();
+  };
+
+  const upcomingEvents = events.filter(isUpcoming);
+
+  if (upcomingEvents.length === 0) {
+    return { featured: undefined, upcoming: [] as SanityEvent[] };
+  }
+
   // Clone and sort by eventDate (ascending)
-  const sorted = [...events].sort((a, b) => {
+  const sorted = [...upcomingEvents].sort((a, b) => {
     const da = new Date(a.eventDate ?? 0).getTime();
     const db = new Date(b.eventDate ?? 0).getTime();
     return da - db;
@@ -25,7 +40,7 @@ export function splitFeaturedEvents(events: SanityEvent[]) {
   let featured: SanityEvent | undefined;
 
   if (featuredCandidates.length === 0) {
-    // No explicit featured – use the earliest event
+    // No explicit featured – use the nearest future event
     featured = sorted[0];
   } else if (featuredCandidates.length === 1) {
     featured = featuredCandidates[0];
