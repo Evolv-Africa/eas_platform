@@ -1,8 +1,7 @@
 import { FC, useEffect, useState } from "react";
-import { Hero } from "@/components/landing-pages/home";
 import eventImage from "@/assets/images/evolv_25.webp";
 import { Badge, PageLoader } from "@/components/core";
-import { EventSchedule, ComingSoon, Speakers, RegisterButton } from "@/components/landing-pages/Events";
+import { EventHero, EventSchedule, ComingSoon, Speakers, RegisterButton } from "@/components/landing-pages/Events";
 import { getEvents } from "@/services/sanity/queries";
 import { getPortableTextExcerpt, splitFeaturedEvents } from "@/utils/eventSelectors";
 import type { SanityEvent } from "@/types";
@@ -58,7 +57,7 @@ const Events: FC = () => {
   return (
     <div>
       <main>
-        <Hero
+        <EventHero
           title={featured?.title || "University Campus Tour (Lagos Edition)"}
           description={
             featuredDescription ||
@@ -67,14 +66,11 @@ const Events: FC = () => {
           image={featured?.imageUrl || eventImage}
           sponsors={featured?.sponsorsAndPartners || []}
         >
-          <div className="flex items-center justify-center gap-4 mt-6 mb-20 mx-2.5">
-            <RegisterButton event={featured} />
-
-            <Badge parentClassName="rounded-md!" className="font-poppins text-sm font-medium px-8 py-3 rounded-md cursor-pointer">
-              Sign Up to Email List
-            </Badge>
-          </div>
-        </Hero>
+          <RegisterButton event={featured} />
+          <Badge parentClassName="rounded-md!" className="font-poppins text-sm font-medium px-8 py-3 rounded-md cursor-pointer">
+            Sign Up to Email List
+          </Badge>
+        </EventHero>
 
         {featured?.speakers && featured.speakers.length > 0 && (
           <Speakers sanitySpeakers={featured.speakers} />
