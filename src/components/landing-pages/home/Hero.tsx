@@ -1,4 +1,4 @@
-import HeroImage from "@/assets/images/evolv_25.webp";
+import HeroImage from "@/assets/images/eas-2026.jpg";
 import { motion, useScroll, useTransform } from "motion/react";
 import { FC, useRef } from "react";
 import { useMediaQuery } from "@/hooks";
@@ -13,8 +13,7 @@ const Hero: FC<{
   children?: React.ReactNode;
   sponsors?: SanitySponsor[];
 }> = ({
-  title = "Empowering Africa's next generation of",
-  description = "Evolve Africa is a community-driven platform connecting professionals, innovators, and organizations to shape the future of leadership across the continent.",
+  description = "Evolv Africa presents the flagship summit for the movers, builders, and changemakers shaping our future. Join us as we transition from conversations to execution.",
   image = HeroImage,
   children,
   sponsors = [],
@@ -28,7 +27,7 @@ const Hero: FC<{
       offset: ["start start", "end end"],
     });
 
-    // Image – starts at bottom half, grows to fill viewport
+    // Image – starts at bottom half, grows to fill viewport (desktop only)
     const heroWidth = useTransform(
       scrollYProgress,
       [0, 0.45],
@@ -50,11 +49,11 @@ const Hero: FC<{
       isMobile ? [0.15, 0.15] : [0.15, 0.58],
     );
 
-    // Text – centred in viewport but pushed up initially so it sits above the image
+    // Text (desktop only)
     const textY = useTransform(
       scrollYProgress,
       [0, 0.45],
-      isMobile ? ["-20vh", "-20vh"] : ["-20vh", "0vh"],
+      ["-20vh", "0vh"],
     );
     const headingColor = useTransform(
       scrollYProgress,
@@ -72,24 +71,31 @@ const Hero: FC<{
         <div className="mx-auto max-w-320 pb-11xl">
           <section
             ref={heroRef}
-            className={`relative ${isMobile ? "h-screen" : "h-[230vh]"}`}
+            // Mobile: height follows content. Desktop: tall section for scroll animation.
+            className={`relative ${isMobile ? "h-auto" : "h-[230vh]"}`}
           >
-            <div className="sticky top-0 h-screen overflow-hidden">
+            <div
+              className={
+                isMobile
+                  ? "flex flex-col gap-8 pt-10 pb-4 items-center" // normal flow, no clipping
+                  : "sticky top-0 h-screen overflow-hidden"
+              }
+            >
               {/* Text */}
               <motion.div
-                style={{ y: textY }}
-                className="absolute inset-0 z-10 flex items-center justify-center px-6"
+                style={isMobile ? undefined : { y: textY }}
+                className={
+                  isMobile
+                    ? "relative z-10 px-2"
+                    : "absolute inset-0 z-10 flex items-center justify-center px-6"
+                }
               >
                 <div className="mx-auto max-w-286.5 text-center">
                   <motion.h2
                     style={{ color: headingColor }}
                     className="font-neue-machina text-4xl leading-[1.03] font-extrabold md:text-7xl md:leading-20"
                   >
-                    {title === "Empowering Africa's next generation of" ? (
-                      <>Empowering Africa&apos;s next generation of <VerticalSlider items={words} loop /></>
-                    ) : (
-                      title
-                    )}
+                    <>From narrative to bold actions. Uniting Africa's next generation of <VerticalSlider items={words} loop /></>
                   </motion.h2>
                   <motion.p
                     style={{ color: paragraphColor }}
@@ -103,12 +109,16 @@ const Hero: FC<{
 
               {/* Image */}
               <motion.div
-                style={{
-                  width: heroWidth,
-                  height: heroHeight,
-                  x: "-50%",
-                }}
-                className="absolute bottom-4 left-1/2 overflow-hidden rounded-xl"
+                style={
+                  isMobile
+                    ? undefined
+                    : { width: heroWidth, height: heroHeight, x: "-50%" }
+                }
+                className={
+                  isMobile
+                    ? "relative w-full h-72 sm:h-96 overflow-hidden rounded-xl"
+                    : "absolute bottom-4 left-1/2 overflow-hidden rounded-xl"
+                }
               >
                 <motion.img
                   src={image || HeroImage}
@@ -129,7 +139,7 @@ const Hero: FC<{
             Trusted by forward-thinking organizations and communities across
             Africa.
           </p>
-          { (isMobile || sponsors.length >= 4) ? (
+          {(isMobile || sponsors.length >= 4) ? (
             <Marquee
               direction="rtl"
               duration={20}
@@ -159,7 +169,7 @@ const Hero: FC<{
                 />
               ))}
             </div>
-          ) }
+          )}
           <p className="w-fit mx-auto text-gray-600 text-base md:text-xl leading-7">
             Formerly LinkedIn Local Nigeria
           </p>

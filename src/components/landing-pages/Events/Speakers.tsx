@@ -161,7 +161,7 @@ const Speakers: React.FC<SpeakersProps> = ({ className = "", title = "Meet Our S
   }
 
   return (
-    <section className={`py-12 md:py-16 px-5 ${className}`}>
+    <section id="speakers" className={`py-12 md:py-16 px-5 ${className}`}>
       <div className="md:max-w-320 mx-auto">
         <div className="flex justify-between items-end mb-10 flex-wrap gap-4">
           <div className="flex flex-col items-start gap-3">
@@ -169,9 +169,8 @@ const Speakers: React.FC<SpeakersProps> = ({ className = "", title = "Meet Our S
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-neue-machina font-extrabold text-semantic-text-primary">
               {title}
             </h2>
-            {desc && <p className="text-sm font-medium">{desc}</p>}
+            {desc && <p className="text-base font-light italic max-w-[80%] text-gray-600">{desc}</p>}
           </div>
-
           <div className="flex gap-4">
             <button
               type="button"
