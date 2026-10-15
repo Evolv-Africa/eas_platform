@@ -69,7 +69,15 @@ const Home: FC = () => {
             variant="outline"
             size="medium"
             className="py-3! px-8 text-[15px] h-12 border-primary! text-primary! hover:border-primary! hover:text-primary! hover:bg-primary/5 transition-colors duration-300 ease-in-out"
-            onClick={() => document.getElementById('speakers')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => {
+              const target = document.getElementById("speakers");
+              if (!target) return;
+              const top =
+                target.getBoundingClientRect().top +
+                (document.scrollingElement?.scrollTop ?? 0) -
+                140;
+              document.scrollingElement?.scrollTo({ top, behavior: "smooth" });
+            }}
           >
             View Speaker Lineup
           </Button>
@@ -78,7 +86,15 @@ const Home: FC = () => {
       <WhoWeAre />
       <WhatWeDo />
       <OurImpact />
-      {speakers.length > 0 && <Speakers title="The Voices Driving the Decade" desc="Hear from key leaders across tech, finance, and enterprise who are turning ambitious ideas into measurable impact across the continent." sanitySpeakers={speakers} />}
+      <div id="speakers">
+        {speakers.length > 0 && (
+          <Speakers
+            title="The Voices Driving the Decade"
+            desc="Hear from key leaders across tech, finance, and enterprise who are turning ambitious ideas into measurable impact across the continent."
+            sanitySpeakers={speakers}
+          />
+        )}
+      </div>
       <OurNetwork />
       <Blogs />
     </>

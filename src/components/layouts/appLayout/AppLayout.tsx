@@ -1,8 +1,9 @@
-import { FC } from "react";
+import { FC, Suspense } from "react";
 import { Footer } from "../footer/Footer";
 import { Navbar } from "../navbar/Navbar";
 import { SummitCountdownBar } from "../navbar/SummitCountdownBar";
 import { useSummitCountdown } from "@/hooks/useSummitCountdown";
+import { PageLoader } from "@/components/core";
 import { Outlet } from "react-router-dom";
 
 export const AppLayout: FC = () => {
@@ -14,7 +15,9 @@ export const AppLayout: FC = () => {
       {remaining ? <SummitCountdownBar remaining={remaining} /> : null}
       <Navbar offset={Boolean(remaining)} />
       <main className={remaining ? "flex-1 pt-32" : "flex-1 pt-22"}>
-        <Outlet />
+        <Suspense fallback={<PageLoader className="min-h-[40vh]" />}>
+          <Outlet />
+        </Suspense>
       </main>
       <Footer />
     </div>
