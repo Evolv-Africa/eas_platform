@@ -15,7 +15,10 @@ const Events: FC = () => {
 
     const loadEvents = async () => {
       try {
-        const sanityEvents = await getEvents();
+        const timeout = new Promise<never>((_, reject) => {
+          window.setTimeout(() => reject(new Error("events timeout")), 12000);
+        });
+        const sanityEvents = await Promise.race([getEvents(), timeout]);
 
         if (!isMounted) {
           return;
@@ -49,7 +52,20 @@ const Events: FC = () => {
   return (
     <div>
       <main>
-        {loading ? null : featured ? (
+        {loading ? (
+          <section className="w-full px-5" aria-busy="true" aria-label="Loading event">
+            <div className="mx-auto max-w-320 pt-16 pb-8 md:pt-24">
+              <div className="mx-auto h-14 w-full max-w-[28rem] animate-pulse rounded-lg bg-gray-200" />
+              <div className="mx-auto mt-4 h-4 w-48 animate-pulse rounded bg-gray-200" />
+              <div className="mt-10 aspect-video w-full animate-pulse rounded-2xl bg-gray-200" />
+              <div className="mx-auto mt-10 max-w-[68ch] space-y-3">
+                <div className="h-4 animate-pulse rounded bg-gray-200" />
+                <div className="h-4 w-11/12 animate-pulse rounded bg-gray-200" />
+                <div className="h-4 w-4/5 animate-pulse rounded bg-gray-200" />
+              </div>
+            </div>
+          </section>
+        ) : featured ? (
           <EventHero
             title={featured.title}
             dateLabel={formatEventDate(featured.eventDate)}
