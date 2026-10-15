@@ -68,7 +68,14 @@ const Home: FC = () => {
           <Button
             variant="outline"
             size="medium"
-            className="py-3! px-8 text-[15px] h-12 border-primary! text-primary! hover:border-primary! hover:text-primary! hover:bg-primary/5 transition-colors duration-300 ease-in-out"
+            disabled={speakers.length === 0}
+            aria-disabled={speakers.length === 0}
+            title={speakers.length === 0 ? "Speaker lineup is not published yet" : undefined}
+            className={
+              speakers.length === 0
+                ? "h-12 cursor-not-allowed border-gray-300! bg-gray-100! px-8 py-3! text-[15px] text-gray-400! opacity-70 hover:border-gray-300! hover:bg-gray-100! hover:text-gray-400!"
+                : "h-12 border-primary! px-8 py-3! text-[15px] text-primary! transition-colors duration-300 ease-in-out hover:border-primary! hover:bg-primary/5 hover:text-primary!"
+            }
             onClick={() => {
               const target = document.getElementById("speakers");
               if (!target) return;
