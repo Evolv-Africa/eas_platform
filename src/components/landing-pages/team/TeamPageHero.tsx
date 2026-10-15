@@ -4,7 +4,10 @@ const TeamPageHero: FC = () => {
   return (
     <div className="w-full px-5 py-10 md:py-20 lg:py-32">
       <div className="mx-auto flex max-w-320 w-full flex-col gap-6">
-        <div className="w-full lg:w-1/2">
+        <h1 className="font-neue-machina text-4xl font-extrabold leading-[1.05] tracking-tight text-[#00081d] sm:text-5xl md:hidden">
+          These are the People Behind Evolv Africa
+        </h1>
+        <div className="hidden w-full md:block lg:w-1/2">
           <h1 className="font-neue-machina text-4xl font-extrabold leading-[1.05] tracking-tight text-[#00081d] sm:text-5xl md:text-6xl lg:text-7xl">
             These are the
           </h1>
@@ -15,10 +18,10 @@ const TeamPageHero: FC = () => {
             <div className="hidden h-0.5 w-full max-w-50 bg-[#00081d] sm:block" />
           </div>
         </div>
-        <div className="w-full flex items-end justify-between">
-          <p className="mt-6 w-full font-poppins font-regular text-[20px] leading-7 text-gray-600 md:max-w-md md:text-xl md:leading-8 max-w-105">
+        <div className="w-full flex flex-col-reverse items-start gap-6 md:flex-row md:items-end md:justify-between">
+          <p className="mt-0 w-full font-poppins font-regular text-[20px] leading-7 text-gray-600 md:mt-6 md:max-w-md md:text-xl md:leading-8 max-w-105">
             A community doesn’t build itself. These are the people working behind the scenes to create spaces where ideas grow and connections matter.          </p>
-          <div className="w-full lg:w-1/2 lg:text-right">
+          <div className="hidden w-full md:block lg:w-1/2 lg:text-right">
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2 lg:justify-end">
               <div className="hidden h-0.5 w-full max-w-37.5 bg-[#00081d] lg:order-first lg:block" />
               <h1 className="font-neue-machina text-4xl font-extrabold leading-[1.05] tracking-tight text-[#00081d] sm:text-5xl md:text-6xl lg:text-7xl">
