@@ -39,6 +39,7 @@ const PeopleCard = ({ person, isActive, onSelect }: PeopleCardProps) => {
             {person.qa.answer}
           </p>
 
+          {(person.musicMood.song || person.musicMood.artist) && (
           <div className="mt-4 flex flex-col flex-wrap gap-2 text-xs text-gray-600 lg:flex-row lg:items-center lg:gap-5">
             <div className="flex items-center">
               <Icon
@@ -55,6 +56,7 @@ const PeopleCard = ({ person, isActive, onSelect }: PeopleCardProps) => {
               </span>
             </div>
           </div>
+          )}
         </div>
 
         <div className="flex w-full items-center gap-3 pt-1 md:w-auto md:justify-start md:pt-0">

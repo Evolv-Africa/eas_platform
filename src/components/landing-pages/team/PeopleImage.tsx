@@ -33,7 +33,7 @@ const PeopleImage: FC<PeopleImageProps> = ({ activePerson }) => {
       </div>
 
       <AnimatePresence mode="wait">
-        {activePerson && (
+        {activePerson?.image && (
           <motion.img
             key={activePerson.id}
             src={activePerson.image}
