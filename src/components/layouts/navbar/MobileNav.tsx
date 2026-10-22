@@ -1,5 +1,5 @@
 import { Button } from "@/components/core";
-import { NavMenu } from "@/constants";
+import { NavMenu, VOLUNTEER_URL } from "@/constants";
 import { type FC, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import type { Variants } from "motion/react";
@@ -128,7 +128,14 @@ export const MobileNav: FC = () => {
                 })}
               </div>
 
-              <motion.div className="mt-auto" variants={mobileItemVariants}>
+              <motion.div className="mt-auto flex flex-col gap-3" variants={mobileItemVariants}>
+                <Button
+                  text="Volunteer"
+                  size="giant"
+                  variant="outline"
+                  className="w-full border-primary! text-primary!"
+                  onClick={() => window.open(VOLUNTEER_URL, "_blank", "noopener,noreferrer")}
+                />
                 <Button
                   text="Become a member"
                   size="giant"

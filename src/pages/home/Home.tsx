@@ -15,6 +15,7 @@ import { Speakers } from "@/components/landing-pages/Events";
 import { getMainEventSpeakers, getMainEventSponsors } from "@/services/sanity/queries";
 import type { SanitySpeaker, SanitySponsor } from "@/types";
 import { Button } from "@/components/core";
+import { VOLUNTEER_URL } from "@/constants";
 
 const REGISTER_URL = "https://fewticket.com/discover/The-defining-decade-from-narrative-to-bold-actions";
 
@@ -90,18 +91,27 @@ const Home: FC = () => {
           </Button>
         </div>
       </Hero>
+      <section className="px-5 pt-10 md:pt-16">
+        <div className="mx-auto flex max-w-320 flex-col items-center justify-between gap-4 rounded-xl bg-blue-200 px-6 py-6 text-center md:flex-row md:px-10 md:text-left">
+          <p className="font-poppins text-base leading-6 md:text-lg">
+            <span className="font-semibold">Want to be part of the story?</span>{" "}
+            Volunteer and help us make EAS 2026 unforgettable.
+          </p>
+          <Button
+            text="Volunteer with us"
+            size="giant"
+            onClick={() => window.open(VOLUNTEER_URL, "_blank", "noopener,noreferrer")}
+          />
+        </div>
+      </section>
+      {speakers.length > 0 && (
+        <div id="speakers">
+          <Speakers title="The Voices Driving the Decade" desc="Hear from key leaders across tech, finance, and enterprise who are turning ambitious ideas into measurable impact across the continent." sanitySpeakers={speakers} />
+        </div>
+      )}
       <WhoWeAre />
       <WhatWeDo />
       <OurImpact />
-      <div id="speakers">
-        {speakers.length > 0 && (
-          <Speakers
-            title="The Voices Driving the Decade"
-            desc="Hear from key leaders across tech, finance, and enterprise who are turning ambitious ideas into measurable impact across the continent."
-            sanitySpeakers={speakers}
-          />
-        )}
-      </div>
       <OurNetwork />
       <Blogs />
     </>
