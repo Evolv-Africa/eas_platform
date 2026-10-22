@@ -104,7 +104,11 @@ const Home: FC = () => {
           />
         </div>
       </section>
-      {speakers.length > 0 && <Speakers title="The Voices Driving the Decade" desc="Hear from key leaders across tech, finance, and enterprise who are turning ambitious ideas into measurable impact across the continent." sanitySpeakers={speakers} />}
+      {speakers.length > 0 && (
+        <div id="speakers">
+          <Speakers title="The Voices Driving the Decade" desc="Hear from key leaders across tech, finance, and enterprise who are turning ambitious ideas into measurable impact across the continent." sanitySpeakers={speakers} />
+        </div>
+      )}
       <WhoWeAre />
       <WhatWeDo />
       <OurImpact />
