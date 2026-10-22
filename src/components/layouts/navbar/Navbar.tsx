@@ -1,5 +1,5 @@
 import { Button, Icon } from "@/components/core";
-import { NavMenu } from "@/constants";
+import { NavMenu, VOLUNTEER_URL } from "@/constants";
 import { type FC } from "react";
 import { motion } from "motion/react";
 import { Link, useLocation } from "react-router-dom";
@@ -51,7 +51,8 @@ export const Navbar: FC<{ offset?: boolean }> = ({ offset = false }) => {
         </div>
 
         {/* Desktop CTA */}
-        <div className="hidden lg:block">
+        <div className="hidden lg:flex items-center gap-3">
+          <Button text="Volunteer" size="giant" variant="outline" className="border-primary! text-primary! bg-transparent! hover:bg-primary/10!" onClick={() => window.open(VOLUNTEER_URL, "_blank", "noopener,noreferrer")} />
           <Button text="Become a member" size="giant" onClick={() => window.open("https://chat.whatsapp.com/HCB1mO4joqb79M1UcwquN5?s=cl&p=a&mlu=4&ilr=4", "_blank", "noopener,noreferrer")} />
         </div>
 

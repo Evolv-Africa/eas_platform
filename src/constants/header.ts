@@ -1,5 +1,8 @@
 import { NavItem } from "@/types";
 
+// TODO: replace with the actual volunteer link
+export const VOLUNTEER_URL = "https://forms.gle/x5vyFLF6rpcw62Td9";
+
 export const NavMenu: NavItem[] = [
   {
     id: 1,
