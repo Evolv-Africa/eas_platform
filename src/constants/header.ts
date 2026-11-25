@@ -29,3 +29,4 @@ export const NavMenu: NavItem[] = [
     path: "/events",
   },
 ];
+export const REGISTER_URL = "https://fewticket.com/discover/The-defining-decade-from-narrative-to-bold-actions";

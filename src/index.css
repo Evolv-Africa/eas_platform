@@ -233,3 +233,32 @@ input[button] {
       231px calc(100% - 181px),
       0 calc(100% - 181px));
 }
+/* Glitter effect for the early bird top bar */
+@keyframes glitter-sweep {
+  0% { transform: translateX(-120%) skewX(-20deg); }
+  100% { transform: translateX(100vw) skewX(-20deg); }
+}
+@keyframes glitter-twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.3) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(90deg); }
+}
+.glitter-sweep {
+  animation: glitter-sweep 3s ease-in-out infinite;
+}
+@media (min-width: 1024px) {
+  .glitter-sweep { animation-duration: 4.5s; }
+}
+.glitter-star {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+  filter: drop-shadow(0 0 4px #fde68a);
+  opacity: 0;
+  animation: glitter-twinkle 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .glitter-sweep, .glitter-star { animation: none; }
+}
